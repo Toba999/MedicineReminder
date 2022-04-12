@@ -5,6 +5,14 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="kGravishBlueColor">#FF9BA1D2</color>
+    <color name="gradientColor1">#FF9BA1D2</color>
+    <color name="gradientColor2">#FF00ff9d</color>
+
+    <!-- Colors that may be used -->
+    <color name="black">#FF000000</color>  <!-- Text color -->
+    <color name="white">#FFFFFFFF</color> <!-- Card, title's bar and icon's title color -->
+    <color name="barColor">#00bcd5</color> <!-- bars and icons color -->
+    <color name="ScreenColor">#ecf6ee</color> <!-- Screen color -->
 </resources>
