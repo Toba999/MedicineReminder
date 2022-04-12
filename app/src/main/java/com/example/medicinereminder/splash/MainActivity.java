@@ -1,8 +1,10 @@
-package com.example.medicinereminder;
+package com.example.medicinereminder.splash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.medicinereminder.R;
 
 public class MainActivity extends AppCompatActivity {
 
