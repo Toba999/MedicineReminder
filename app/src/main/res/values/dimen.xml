@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="splash_title_text_size">60sp</dimen>
+    <dimen name="splash_text_size">25sp</dimen>
+    <dimen name="button_background_radius">30dp</dimen>
+
+    <!--TODO Step 3: For the best practices dimen values in the dimen.xml file.-->
+    <!--START-->
+    <dimen name="auth_header_image_height">350dp</dimen>
+    <dimen name="auth_logo_width_size">220dp</dimen>
+    <dimen name="auth_logo_height_size">100dp</dimen>
+    <dimen name="title_textSize">18sp</dimen>
+    <dimen name="et_textSize">16sp</dimen>
+    <dimen name="et_SecTextSize">14sp</dimen>
+    <dimen name="et_padding">16dp</dimen>
+    <dimen name="clickable_text_view_padding">5dp</dimen>
+    <dimen name="forgot_password_textSize">14sp</dimen>
+    <dimen name="btn_textSize">18sp</dimen>
+    <dimen name="btn_padding">8dp</dimen>
+    <dimen name="lbl_text_view_textSize">16sp</dimen>
+    <dimen name="frame_header_height">60dp</dimen>
+
+    <dimen name="toolbar_title_paddingStart">-12dp</dimen>
+    <dimen name="toolbar_title_text_size">18sp</dimen>
+    <dimen name="txt_terms_condition_marginStart">10dp</dimen>
+    <dimen name="txt_terms_and_condition_textSize">14sp</dimen>
+    <dimen name="button_paddingTop_Bottom">8dp</dimen>
+    <dimen name="progress_dialog_content_padding">10dp</dimen>
+    <dimen name="progress_bar_size">50dp</dimen>
+    <dimen name="progress_text_marginStart">16dp</dimen>
+    <dimen name="progress_text_size">16dp</dimen>
+    <dimen name="forgot_password_title_textSize">18dp</dimen>
+    <dimen name="forgot_password_title_description_textSize">14dp</dimen>
+    <!--END-->
+
+</resources>
