@@ -6,9 +6,6 @@ import com.google.type.DateTime;
 
 import java.util.List;
 
-enum MeasruingUnit{pills, ml, gr, mg, drops}
-enum MedicineType{pills, drops, injection, powder, syrup}
-
 public class Medicine {
     private int id;
     private String name;
