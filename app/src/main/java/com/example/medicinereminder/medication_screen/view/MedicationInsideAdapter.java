@@ -44,13 +44,13 @@ public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsi
     }
 
     public void setImage(MedicationInsideViewHolder holder, String imgName){
-        if(imgName.equals(MedicineType.drops))
+        if(imgName.equals(MedicineType.drops.name()))
             holder.medImage.setImageResource(R.mipmap.drops);
-        else if(imgName.equals(MedicineType.injection))
+        else if(imgName.equals(MedicineType.injection.name()))
             holder.medImage.setImageResource(R.mipmap.injections);
-        else if(imgName.equals(MedicineType.pills))
+        else if(imgName.equals(MedicineType.pills.name()))
             holder.medImage.setImageResource(R.mipmap.pills);
-        else if(imgName.equals(MedicineType.syrup))
+        else if(imgName.equals(MedicineType.syrup.name()))
             holder.medImage.setImageResource(R.mipmap.syrup);
         else
             holder.medImage.setImageResource(R.mipmap.powder);
