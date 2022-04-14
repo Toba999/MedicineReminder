@@ -8,4 +8,18 @@
     <string name="Email">Email</string>
     <string name="SignUp">Sign Up</string>
     <string name="UserName">User Name</string>
+    <string name="display">Display</string>
+    <string name="medicine_name">Medicine Name :</string>
+    <string name="medicine_type">Medicine Type :</string>
+    <string name="remaining_amount">Remaining Amount :</string>
+    <string name="doseAmount">DoseAmount :</string>
+    <string name="alarm_starts_at">Alarm Starts at :</string>
+    <string name="alarm_type">Alarm Type :</string>
+    <string name="start_date">Start Date :</string>
+    <string name="end_date">End Date :</string>
+    <string name="bottle_size">Bottle Size :</string>
+    <string name="how_to_use">How to use :</string>
+    <string name="refill">Refill</string>
+    <string name="add_dose">Add Dose</string>
+    <string name="edit">Edit</string>
 </resources>
