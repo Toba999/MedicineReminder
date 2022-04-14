@@ -10,13 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicineReminder">
         <activity
-            android:name=".DisplayMedicine.DisplayMedActivity"
-            android:screenOrientation="portrait"
+            android:name=".signup.SignUpActivity"
             android:exported="true" />
         <activity
-            android:name=".EditMedicine.EditMedActivity"
-            android:screenOrientation="portrait"
+            android:name=".login.LoginActivity"
             android:exported="true" />
+        <activity
+            android:name=".DisplayMedicine.DisplayMedActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditMedicine.EditMedActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".splash.MainActivity"
             android:exported="true">

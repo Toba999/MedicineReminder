@@ -5,13 +5,21 @@
       <map>
         <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/activity_main.xml" value="0.2421875" />
         <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/fragment_medication.xml" value="0.2421875" />
+        <entry key="..\:/Project/MedicineReminder/app/src/main/res/drawable/edit_text.xml" value="0.2169230769230769" />
+        <entry key="..\:/Project/MedicineReminder/app/src/main/res/drawable/email.xml" value="0.2169230769230769" />
+        <entry key="..\:/Project/MedicineReminder/app/src/main/res/drawable/lock2.xml" value="0.2169230769230769" />
+        <entry key="..\:/Project/MedicineReminder/app/src/main/res/drawable/person2.xml" value="0.2169230769230769" />
+        <entry key="..\:/Project/MedicineReminder/app/src/main/res/drawable/vi_bg.xml" value="0.20092592592592592" />
+        <entry key="..\:/Project/MedicineReminder/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Project/MedicineReminder/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Project/MedicineReminder/app/src/main/res/layout/activity_sign_up.xml" value="0.18" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/activity_display_med.xml" value="0.18568840579710144" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/activity_edit_med.xml" value="0.18568840579710144" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/activity_main.xml" value="0.18568840579710144" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -2,4 +2,10 @@
     <string name="app_name">Medicine Reminder</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="WelcomToRemiderApp">Welcom To Remider App</string>
+    <string name="Login">Login</string>
+    <string name="Password">" Password"</string>
+    <string name="Email">Email</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="UserName">User Name</string>
 </resources>

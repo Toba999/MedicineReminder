@@ -14,5 +14,6 @@
     <color name="black">#FF000000</color>  <!-- Text color -->
     <color name="white">#FFFFFFFF</color> <!-- Card, title's bar and icon's title color -->
     <color name="barColor">#00bcd5</color> <!-- bars and icons color -->
-    <color name="ScreenColor">#ecf6ee</color> <!-- Screen color -->
+    <color name="ScreenColor">#ecf6ee</color>
+    <color name="mainColor">#24799F</color> <!-- Screen color -->
 </resources>
