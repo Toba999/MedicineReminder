@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
         txtSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Inten
                 startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
             }
         });
