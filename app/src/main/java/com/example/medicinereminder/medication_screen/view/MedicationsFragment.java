@@ -13,15 +13,12 @@ import android.view.ViewGroup;
 import com.example.medicinereminder.R;
 import com.example.medicinereminder.medication_screen.presenter.MedicationFragmentPresenter;
 import com.example.medicinereminder.medication_screen.presenter.MedicationFragmentPresenterInterface;
-import com.example.medicinereminder.services.model.Medicine;
 
-import java.util.List;
-
-public class MedicationFragment extends Fragment implements MedicationFragmentInterface{
+public class MedicationsFragment extends Fragment implements MedicationFragmentInterface{
 
     MedicationFragmentPresenterInterface medicationPresenter;
 
-    public MedicationFragment() {
+    public MedicationsFragment() {
         // Required empty public constructor
     }
 
@@ -35,7 +32,7 @@ public class MedicationFragment extends Fragment implements MedicationFragmentIn
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_medication, container, false);
+        View view = inflater.inflate(R.layout.fragment_medications, container, false);
         initRecyclerView(view);
         return view;
     }

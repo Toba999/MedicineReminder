@@ -1,6 +1,7 @@
 package com.example.medicinereminder.medication_screen.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,19 +12,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medicinereminder.DisplayMedicine.DisplayMedActivity;
 import com.example.medicinereminder.R;
-import com.example.medicinereminder.services.model.Medicine;
+import com.example.medicinereminder.services.model.MedicineStore;
 import com.example.medicinereminder.services.model.MedicineType;
 
 import java.util.List;
 
 public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsideAdapter.MedicationInsideViewHolder> {
 
-    List<Medicine> medicines;
+    List<MedicineStore> medicineStores;
     Context context;
 
-    public MedicationInsideAdapter(Context context, List<Medicine> medicines) {
-        this.medicines = medicines;
+    public MedicationInsideAdapter(Context context, List<MedicineStore> medicineStores) {
+        this.medicineStores = medicineStores;
         this.context = context;
     }
 
@@ -35,12 +37,16 @@ public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsi
 
     @Override
     public void onBindViewHolder(@NonNull MedicationInsideViewHolder holder, int position) {
-        holder.medNameTextView.setText(medicines.get(position).getName());
-        String occ = medicines.get(position).getRepetition();
+        holder.medNameTextView.setText(medicineStores.get(position).getName());
+        String occ = medicineStores.get(position).getRepetition();
         holder.medOccuranceTextView.setText(occ);
-        String imgName = medicines.get(position).getType();
+        String imgName = medicineStores.get(position).getType();
         setImage(holder, imgName);
-        holder.medNotificationSwitch.setChecked(medicines.get(position).getActive());
+        holder.medNotificationSwitch.setChecked(medicineStores.get(position).getActive());
+        holder.view.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), DisplayMedActivity.class);
+            v.getContext().startActivity(intent);
+        });
     }
 
     public void setImage(MedicationInsideViewHolder holder, String imgName){
@@ -58,8 +64,8 @@ public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsi
 
     @Override
     public int getItemCount() {
-        if(medicines != null)
-            return medicines.size();
+        if(medicineStores != null)
+            return medicineStores.size();
         else
             return 0;
     }
@@ -69,9 +75,11 @@ public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsi
         TextView medNameTextView;
         TextView medOccuranceTextView;
         Switch medNotificationSwitch;
+        View view;
 
         public MedicationInsideViewHolder(@NonNull View view) {
             super(view);
+            this.view=view;
             medImage = view.findViewById(R.id.medicationRowImageView);
             medNameTextView = view.findViewById(R.id.medicationNameTextView);
             medOccuranceTextView = view.findViewById(R.id.medicationoccuranceTextView);
