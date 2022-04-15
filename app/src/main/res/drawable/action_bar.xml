@@ -6,8 +6,8 @@
                 android:startColor="@color/DarkBlue"
                 android:endColor="@color/LightBlue"
                 android:type="linear" />
-            <corners android:bottomRightRadius="50dp"
-                android:bottomLeftRadius="50dp"/>
+            <corners android:bottomRightRadius="30dp"
+                android:bottomLeftRadius="30dp"/>
         </shape>
 
     </item>
