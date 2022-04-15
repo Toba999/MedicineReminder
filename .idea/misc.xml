@@ -3,8 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/drawable/action_bar.xml" value="0.1359375" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/activity_home_screen.xml" value="0.11979166666666667" />
         <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/activity_main.xml" value="0.2421875" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/activity_patient.xml" value="0.23233695652173914" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/activity_tracker.xml" value="0.22447916666666667" />
         <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/fragment_medication.xml" value="0.2421875" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/fragment_medications.xml" value="0.23233695652173914" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/fragment_more.xml" value="0.2391304347826087" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/fragment_patient.xml" value="0.23233695652173914" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/medication_inactive_active_row.xml" value="0.23233695652173914" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/patient_row.xml" value="0.23233695652173914" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/tracker_row.xml" value="0.23233695652173914" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_add.xml" value="0.18552631578947368" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_add_photo.xml" value="0.18552631578947368" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_add_product.xml" value="0.18552631578947368" />

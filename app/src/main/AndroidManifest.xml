@@ -10,23 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicineReminder">
         <activity
+            android:name=".patient_screen.view.PatientActivity"
+            android:exported="true" />
+        <activity android:name=".tracker_screen.view.TrackerActivity"
+            android:exported="true"/>
+        <activity
             android:name=".DisplayMedicine.DisplayMedActivity"
             android:exported="true"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
-         android:name=".signup.SignUpActivity"
+            android:name=".signup.SignUpActivity"
             android:exported="true" />
         <activity
             android:name=".login.LoginActivity"
             android:exported="true" />
-
         <activity
             android:name=".EditMedicine.EditMedActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-
             android:name=".HomeScreen.view.Home_Screen"
             android:exported="true">
             <intent-filter>
@@ -34,15 +36,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-        <activity android:name=".splash.MainActivity"
+        <activity
+            android:name=".splash.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
