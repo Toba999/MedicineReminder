@@ -29,4 +29,6 @@
     <string name="AddHealthTaker">Add Health Taker</string>
     <string name="takerDescription">A Health Taker ia a family member or friend that track your doses and help you to take your meds on the time</string>
 
+    <string name="Profile">Profile</string>
+    <string name="Gender">Gender</string>
 </resources>
