@@ -20,6 +20,6 @@
         android:id="@+id/medicationFragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.medicinereminder.medication_screen.view.MedicationFragment" />
+        android:name="com.example.medicinereminder.medication_screen.view.MedicationsFragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

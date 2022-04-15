@@ -2,24 +2,29 @@ package com.example.medicinereminder.services.model;
 
 import java.util.List;
 
-enum UserType { PATIENT, HEALTHTRACKER}
 
 public class User {
     String fullName;
     String email;
     String password;
-    String type;
-    List<User> PatientOrHealthTracker;
+    List<String> patients;
+    List<String> healthTrackers;
 
     public User() {
     }
 
-    public User(String fullName, String email, String password, String type, List<User> patientOrHealthTracker) {
+    public User(String fullName, String email, String password) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;
-        this.type = type;
-        PatientOrHealthTracker = patientOrHealthTracker;
+    }
+
+    public User(String fullName, String email, String password, List<String> patient, List<String> healthTracker) {
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+        this.patients = patient;
+        this.healthTrackers = healthTracker;
     }
 
     public String getFullName() {
@@ -46,19 +51,25 @@ public class User {
         this.password = password;
     }
 
-    public String getType() {
-        return type;
+    public void setPatient(List<String> patients) {
+        this.patients = patients;
+    }
+    public void addPatient(String patient) {
+        patients.add(patient);
+    }
+    public void addHealthTracker(String healthTracker) {
+        healthTrackers.add(healthTracker);
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public List<String> getPatients() {
+        return patients;
     }
 
-    public List<User> getPatientOrHealthTracker() {
-        return PatientOrHealthTracker;
+    public List<String> getHealthTrackers() {
+        return healthTrackers;
     }
 
-    public void setPatientOrHealthTracker(List<User> patientOrHealthTracker) {
-        PatientOrHealthTracker = patientOrHealthTracker;
+    public void setHealthTracker(List<String> healthTrackers) {
+        this.healthTrackers = healthTrackers;
     }
 }

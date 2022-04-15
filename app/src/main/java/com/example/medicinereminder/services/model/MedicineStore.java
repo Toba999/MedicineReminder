@@ -6,38 +6,28 @@ import com.google.type.DateTime;
 
 import java.util.List;
 
-public class Medicine {
+public class MedicineStore {
     private int id;
     private String name;
     private String type;
     private DateTime startDate;
     private DateTime endDate;
-    private String repetition; //once-daily-weekly-certainDays(ex.saturday, monday, wendsday)
+    private String repetition; //once-daily-weekly-certainDays(ex.saturday, monday, wednesday)
     private int dosesPerDay; //for example 2 in day
     private int bottleAmount;
     private int currentPills;
     private int refillPills;
     private Boolean isActive;
-    private List<Dose> doses;
+    private DateTime dateTime;
+    private Boolean isTaken;
+    private Boolean isSnoozed;
+    private List<String> allDosesDates;
+    private List<String> timesPerDay;
 
-    public Medicine() {
+    public MedicineStore() {
     }
 
-    public Medicine(int id, String name, String type, DateTime startDate, DateTime endDate, String repetition, int dosesPerDay,
-                    int bottleAmount, int currentPills, int refillPills, Boolean isActive, List<Dose> doses) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.repetition = repetition;
-        this.dosesPerDay = dosesPerDay;
-        this.bottleAmount = bottleAmount;
-        this.currentPills = currentPills;
-        this.refillPills = refillPills;
-        this.isActive = isActive;
-        this.doses = doses;
-    }
+
 
     public int getId() {
         return id;
@@ -95,13 +85,6 @@ public class Medicine {
         this.dosesPerDay = dosesPerDay;
     }
 
-    public List<Dose> getDoses() {
-        return doses;
-    }
-
-    public void setDoses(List<Dose> doses) {
-        this.doses = doses;
-    }
 
     public int getBottleAmount() {
         return bottleAmount;
