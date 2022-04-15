@@ -10,10 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicineReminder">
         <activity
+
             android:name=".patient_screen.view.PatientActivity"
             android:exported="true" />
         <activity android:name=".tracker_screen.view.TrackerActivity"
             android:exported="true"/>
+
+            android:name=".addtaker.AddTakerActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
         <activity
             android:name=".DisplayMedicine.DisplayMedActivity"
             android:exported="true"
@@ -31,11 +43,15 @@
         <activity
             android:name=".HomeScreen.view.Home_Screen"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
+
         </activity>
         <activity
             android:name=".splash.MainActivity"
