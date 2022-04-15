@@ -52,7 +52,7 @@
             app:layout_constraintWidth_percent=".8" />
 
         <EditText
-            android:id="@+id/editEPasswordSign"
+            android:id="@+id/editPasworedSign"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text"
@@ -141,7 +141,7 @@
 
 
         <Button
-            android:id="@+id/btnSign"
+            android:id="@+id/btnSignUp"
             android:layout_width="200dp"
             android:layout_height="55dp"
             android:layout_marginTop="50dp"
@@ -151,6 +151,7 @@
             android:textStyle="bold"
             app:cornerRadius="20dp"
             android:textColor="@color/white"
+            android:background="@drawable/btn_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -166,17 +167,17 @@
             android:text="already  have  account Login"
             android:textColor="@color/barColor"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btnSign"
+            app:layout_constraintEnd_toEndOf="@+id/btnSignUp"
             app:layout_constraintHorizontal_bias="0.94"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSign"
+            app:layout_constraintTop_toBottomOf="@+id/btnSignUp"
             app:layout_constraintVertical_bias="0.057" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageLogo"
+        android:id="@+id/imageLogoTaker"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -196,7 +197,7 @@
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageLogo"
+        app:layout_constraintTop_toBottomOf="@id/imageLogoTaker"
         app:layout_constraintVertical_bias="0.2" />
 
 
