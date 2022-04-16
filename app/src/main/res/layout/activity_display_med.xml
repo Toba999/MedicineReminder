@@ -300,10 +300,10 @@
 
                 <Button
                     android:id="@+id/btnAddDose"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="119dp"
-                    android:layout_marginEnd="119dp"
+                    android:layout_width="284dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="34dp"
+                    android:layout_marginEnd="35dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/btn_background"
                     android:foreground="?attr/selectableItemBackground"
