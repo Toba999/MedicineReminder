@@ -13,13 +13,13 @@
 
             android:name=".patient_screen.view.PatientActivity"
             android:exported="true" />
+
         <activity android:name=".tracker_screen.view.TrackerActivity"
             android:exported="true"/>
 
-            android:name=".addtaker.AddTakerActivity"
+        <activity
             android:name=".profile.ProfileActivity"
             android:exported="true" >
-           
         </activity>
         <activity
             android:name=".addtaker.AddTakerActivity"
@@ -50,6 +50,7 @@
         <activity
             android:name=".HomeScreen.view.Home_Screen"
             android:exported="true">
+<<<<<<< Updated upstream
 
 
         </activity>
@@ -58,11 +59,13 @@
             android:exported="true"
             android:screenOrientation="portrait">
 
+=======
+>>>>>>> Stashed changes
 
 
 
         </activity>
-            android:exported="true"></activity>
+
         <activity
             android:name=".splash.MainActivity"
             android:exported="true"

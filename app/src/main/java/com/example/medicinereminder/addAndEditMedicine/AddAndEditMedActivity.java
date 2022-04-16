@@ -8,10 +8,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+<<<<<<< Updated upstream
 import com.example.medicinereminder.databinding.ActivityAddEditMedBinding;
 
 public class AddAndEditMedActivity extends AppCompatActivity {
     private ActivityAddEditMedBinding binding;
+=======
+import com.example.medicinereminder.databinding.ActivityaddEditMedBinding;
+
+public class AddAndEditMedActivity extends AppCompatActivity {
+    private ActivityaddEditMedBinding binding;
+>>>>>>> Stashed changes
 
     ArrayAdapter<CharSequence> adapterMedType;
     ArrayAdapter<CharSequence> adapterEating;
@@ -30,7 +37,11 @@ public class AddAndEditMedActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< Updated upstream
         binding=ActivityAddEditMedBinding.inflate(getLayoutInflater());
+=======
+        binding=ActivityaddEditMedBinding.inflate(getLayoutInflater());
+>>>>>>> Stashed changes
         setContentView(binding.getRoot());
         handleSpinners();
 

@@ -43,4 +43,16 @@
 
     <string name="Profile">Profile</string>
     <string name="Gender">Gender</string>
+    <string name="et_medicine_name">Medicine Name</string>
+    <string name="number_of_doses">Number of Doses</string>
+    <string name="strength">Strength</string>
+    <string name="medicine_left">Medicine Left</string>
+    <string name="medicine_size">Medicine Size</string>
+    <string name="medicine_reason">Medicine Reason</string>
+    <string name="start_date_add">Start Date</string>
+    <string name="selected_start_date">Selected Start Date</string>
+    <string name="end_date_add">End Date</string>
+    <string name="selected_end_date">Selected End Date</string>
+    <string name="done">Done</string>
+    <string name="refill_reminder">Refill reminder</string>
 </resources>
