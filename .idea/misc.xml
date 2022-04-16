@@ -11,7 +11,6 @@
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/activity_home_screen.xml" value="0.2" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/activity_main.xml" value="0.2554347826086957" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/activity_main2.xml" value="0.2554347826086957" />
-        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/fragment_home.xml" value="0.152" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/fragment_medication.xml" value="0.2554347826086957" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/fragment_medications.xml" value="0.2" />
@@ -19,21 +18,12 @@
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medication_inactive_active_row.xml" value="0.23052536231884058" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medication_row.xml" value="0.264" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medicine_cell.xml" value="0.4" />
-        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medicines_section_cell.xml" value="0.4" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medicines_section_cell.xml" value="0.152" />
         <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/activity_main.xml" value="0.2421875" />
         <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/fragment_medication.xml" value="0.2421875" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/activity_display_med.xml" value="0.18568840579710144" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/activity_edit_med.xml" value="0.18568840579710144" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/activity_main.xml" value="0.18568840579710144" />
-        <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/activity_sign_up.xml" value="0.5" />
-        <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/fragment_home.xml" value="0.17192982456140352" />
-        <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/fragment_medication.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/fragment_medications.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/fragment_more.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/dell/Desktop/projectlast/MedicineReminder/app/src/main/res/layout/activity_add_taker.xml" value="0.22" />
-        <entry key="..\:/Users/dell/Desktop/projectlast/MedicineReminder/app/src/main/res/layout/activity_login.xml" value="0.18" />
-        <entry key="..\:/Users/dell/Desktop/projectlast/MedicineReminder/app/src/main/res/layout/activity_sign_up.xml" value="0.18" />
       </map>
     </option>
   </component>

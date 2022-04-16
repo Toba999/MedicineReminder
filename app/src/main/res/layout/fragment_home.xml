@@ -17,6 +17,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/outter_recyleview"
         android:layout_width="0dp"
@@ -26,3 +29,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
