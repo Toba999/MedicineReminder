@@ -34,4 +34,13 @@
     <string name="selected_end_date">Selected End Date</string>
     <string name="done">Done</string>
     <string name="refill_reminder">Refill reminder</string>
+
+    <string name="more">More</string>
+
+    <string name="AddTaker">Add</string>
+    <string name="AddHealthTaker">Add Health Taker</string>
+    <string name="takerDescription">A Health Taker ia a family member or friend that track your doses and help you to take your meds on the time</string>
+
+    <string name="Profile">Profile</string>
+    <string name="Gender">Gender</string>
 </resources>

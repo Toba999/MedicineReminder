@@ -43,6 +43,10 @@ public class MedicineOfDayRecyleAdapter extends RecyclerView.Adapter<MedicineOfD
         if(position != 0){
             holder.dayTxt.setText("Tomorrow");
         }
+        else{
+            holder.dayTxt.setText("Today");
+
+        }
         setInnerRecycleView(holder.medsRecyleView,dummData);
 
     }
@@ -53,7 +57,7 @@ public class MedicineOfDayRecyleAdapter extends RecyclerView.Adapter<MedicineOfD
         RecyclerView medsRecyleView;
         public MedViewHolder(@NonNull View itemView) {
             super(itemView);
-            dayTxt = itemView.findViewById(R.id.H_medicine_name_txt);
+            dayTxt = itemView.findViewById(R.id.H_day_txt);
             medsRecyleView = itemView.findViewById(R.id.H_meds_recyleview);
         }
     }

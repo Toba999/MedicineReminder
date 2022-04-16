@@ -48,6 +48,8 @@ dependencies {
     def fragment_version = "1.4.1"
     // Java language implementation
     implementation "androidx.fragment:fragment:$fragment_version"
+    //circular image
+    implementation 'com.mikhaellopez:circularimageview:4.3.0'
     annotationProcessor "androidx.room:room-compiler:2.4.2"
     implementation 'com.mikhaellopez:circularimageview:4.3.0'
     implementation 'com.gauravk.bubblenavigation:bubblenavigation:1.0.7'

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.LoginActivity">
+    tools:context=".profile.ProfileActivity">
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/imageFilterView"
@@ -14,7 +14,7 @@
         android:src="@drawable/login_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent=".37"
+        app:layout_constraintHeight_percent=".26"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0" />
@@ -22,7 +22,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent=".68"
+        app:layout_constraintHeight_percent=".78"
         app:layout_constraintVertical_bias="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,14 +30,28 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/vi_bg">
 
-        <EditText
-            android:id="@+id/editEmailLogin"
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/UserName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias=".15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias=".15"
+            app:layout_constraintWidth_percent=".8"/>
+
+
+
+        <TextView
+            android:id="@+id/txtUserNameProfile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text"
             android:drawableStart="@drawable/person2"
-            android:hint="@string/Email"
-            android:inputType="textEmailAddress"
+            android:hint="@string/UserName"
             android:minHeight="48dp"
             android:paddingStart="20dp"
             android:paddingTop="10dp"
@@ -47,18 +61,29 @@
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias=".3"
+            app:layout_constraintVertical_bias=".22"
             app:layout_constraintWidth_percent=".8" />
 
-        <EditText
-            android:id="@+id/editPasworedLogin"
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Gender"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias=".15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias=".32"
+            app:layout_constraintWidth_percent=".8" />
+
+        <TextView
+            android:id="@+id/txtGenderProfile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/edit_text"
-            android:drawableStart="@drawable/lock2"
-            android:hint="@string/Password"
-            android:inputType="textPassword"
+            android:text="@string/Gender"
             android:minHeight="48dp"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
@@ -67,40 +92,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editEmailLogin"
-            app:layout_constraintVertical_bias="0"
+            app:layout_constraintTop_toBottomOf="@id/txtUserNameProfile"
+            app:layout_constraintVertical_bias="0.05"
             app:layout_constraintWidth_percent=".8" />
-
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="200dp"
-            android:layout_height="55dp"
-            android:backgroundTint="@color/mainColor"
-            android:text="@string/Login"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:background="@drawable/btn_background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias=".7"
-            app:layout_constraintWidth_percent=".8" />
-
-        <TextView
-            android:id="@+id/txtSign"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="have no account sign up"
-            android:textColor="@color/barColor"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-            app:layout_constraintHorizontal_bias="0.838"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-            app:layout_constraintVertical_bias="0.0" />
 
 
 
@@ -108,11 +102,22 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
+        android:id="@+id/exitProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_baseline_cancel_24"
+        android:layout_margin="8dp"
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
         android:id="@+id/imageLogoTaker"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/logo"
+        android:src="@mipmap/profile_male"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -122,7 +127,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/WelcomToRemiderApp"
+        android:text="@string/Profile"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
