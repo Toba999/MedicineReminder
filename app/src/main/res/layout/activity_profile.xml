@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addtaker.AddTakerActivity">
+    tools:context=".profile.ProfileActivity">
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/imageFilterView"
@@ -30,25 +30,23 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/vi_bg">
 
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/UserName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias=".15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias=".15"
+            app:layout_constraintWidth_percent=".8"/>
+
 
 
         <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:padding="10dp"
-            android:text="@string/takerDescription"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias=".5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias=".05"
-            app:layout_constraintWidth_percent=".8" />
-
-        <EditText
-            android:id="@+id/editUserNameTaker"
+            android:id="@+id/txtUserNameProfile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text"
@@ -63,18 +61,29 @@
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias=".3"
+            app:layout_constraintVertical_bias=".22"
             app:layout_constraintWidth_percent=".8" />
 
-        <EditText
-            android:id="@+id/editEmailTaker"
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Gender"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias=".15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias=".32"
+            app:layout_constraintWidth_percent=".8" />
+
+        <TextView
+            android:id="@+id/txtGenderProfile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/edit_text"
-            android:drawableStart="@drawable/ic_baseline_email_24"
-            android:hint="@string/Email"
-            android:inputType="textEmailAddress"
+            android:text="@string/Gender"
             android:minHeight="48dp"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
@@ -83,25 +92,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/editUserNameTaker"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintWidth_percent=".8" />
-
-        <Button
-            android:id="@+id/btnAddTaker"
-            android:layout_width="200dp"
-            android:layout_height="55dp"
-            android:background="@drawable/btn_background"
-            android:backgroundTint="@color/mainColor"
-            android:text="@string/AddTaker"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias=".7"
+            app:layout_constraintTop_toBottomOf="@id/txtUserNameProfile"
+            app:layout_constraintVertical_bias="0.05"
             app:layout_constraintWidth_percent=".8" />
 
 
@@ -110,7 +102,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/exitTaker"
+        android:id="@+id/exitProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -135,7 +127,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/AddHealthTaker"
+        android:text="@string/Profile"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
