@@ -1,6 +1,7 @@
 package com.example.medicinereminder.HomeScreen;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicinereminder.HomeScreen.view.MedicineOfDayRecyleAdapter;
 import com.example.medicinereminder.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Calendar;
 
@@ -22,6 +24,7 @@ import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 public class HomeFragment extends Fragment {
 
     RecyclerView recyclerView;
+    FloatingActionButton addMedicineBtn;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -36,8 +39,19 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initView(view);
         initRecycleView(view);
         initCalendarView(view);
+    }
+
+    void initView(View view){
+        addMedicineBtn = view.findViewById(R.id.addMedicine);
+        addMedicineBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("floating_Btn Test","did Clicked");
+            }
+        });
     }
 
     void initRecycleView(View view) {
