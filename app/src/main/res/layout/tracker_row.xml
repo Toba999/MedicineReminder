@@ -16,7 +16,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:id="@+id/constraintLayout">
 
             <TextView
                 android:id="@+id/trackerEmail"
@@ -29,6 +30,14 @@
                 android:text="thoriahamdy743@gmail.com"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_margin="13dp"
+                android:id="@+id/deleteTracker"
+                android:src="@drawable/ic_vector_delete_swipe"
+                app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+                app:layout_constraintEnd_toEndOf="@+id/constraintLayout"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

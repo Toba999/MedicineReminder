@@ -10,13 +10,14 @@
         android:id="@+id/home_fragmentcontainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/home_navigationBar">
+        android:layout_above="@id/home_navigationBar"
+        android:background="@color/ScreenColor">
 
     </FrameLayout>
     <com.gauravk.bubblenavigation.BubbleNavigationLinearView
         android:id="@+id/home_navigationBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:background="@drawable/round_corners_bar"
@@ -30,9 +31,9 @@
             app:bt_icon="@drawable/home"
             app:bt_active="true"
             android:layout_weight="1"
-            app:bt_colorActive="#1529D5"
+            app:bt_colorActive="@color/mainColor"
             app:bt_colorInactive="@color/black"
-            android:layout_margin="15dp"/>
+            android:layout_margin="10dp"/>
 
         <com.gauravk.bubblenavigation.BubbleToggleView
             android:id="@+id/medication_section"
@@ -41,10 +42,10 @@
             app:bt_title="Medications"
             app:bt_icon="@drawable/medications"
             app:bt_active="true"
-            app:bt_colorActive="#1529D5"
+            app:bt_colorActive="@color/mainColor"
             app:bt_colorInactive="@color/black"
             android:layout_weight="1"
-            android:layout_margin="15dp">
+            android:layout_margin="10dp">
         </com.gauravk.bubblenavigation.BubbleToggleView>
 
         <com.gauravk.bubblenavigation.BubbleToggleView
@@ -54,10 +55,10 @@
             app:bt_title="More"
             app:bt_icon="@drawable/more"
             app:bt_active="true"
-            app:bt_colorActive="#1529D5"
+            app:bt_colorActive="@color/mainColor"
             app:bt_colorInactive="@color/black"
             android:layout_weight="1"
-            android:layout_margin="15dp">
+            android:layout_margin="10dp">
         </com.gauravk.bubblenavigation.BubbleToggleView>
 
     </com.gauravk.bubblenavigation.BubbleNavigationLinearView>
