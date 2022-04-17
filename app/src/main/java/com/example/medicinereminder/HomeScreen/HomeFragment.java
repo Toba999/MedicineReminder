@@ -22,7 +22,6 @@ import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 public class HomeFragment extends Fragment {
 
     RecyclerView recyclerView;
-
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -37,7 +36,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         initRecycleView(view);
         initCalendarView(view);
     }
