@@ -6,16 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".HomeScreen.HomeFragment">
 
-    <TextView
-        android:id="@+id/textView"
+<!--    <TextView-->
+<!--        android:id="@+id/textView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="114dp"-->
+<!--        android:gravity="center"-->
+<!--        android:text="ClinderView"-->
+<!--        android:textSize="24sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <devs.mulham.horizontalcalendar.HorizontalCalendarView
+        android:id="@+id/myCalendarView"
         android:layout_width="match_parent"
-        android:layout_height="114dp"
-        android:gravity="center"
-        android:text="ClinderView"
-        android:textSize="24sp"
+        android:layout_height="wrap_content"
+        android:background="@color/DarkBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:selectorColor="@color/DarkBlue"
+        app:textColorSelected="@color/white"
+        tools:ignore="SpeakableTextPresentCheck" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/outter_recyleview"
@@ -24,5 +37,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/myCalendarView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
