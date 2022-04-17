@@ -9,24 +9,13 @@
     <FrameLayout
         android:id="@+id/fl_header_image"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:background="@drawable/action_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/iv_dis_back"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="start"
-                android:layout_marginLeft="30dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_white_color_back_24dp" />
 
             <TextView
                 android:id="@+id/tv_title"
@@ -48,6 +37,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fl_header_image">
 
@@ -95,7 +85,7 @@
         android:id="@+id/line1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        android:background="@color/colorLightGray"/>
+        android:background="@color/ScreenColor"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -110,14 +100,14 @@
         android:padding="20dp"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:background="?android:selectableItemBackground"/>
+        android:background="@color/white"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="3dp"
         android:id="@+id/line2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/moreMyProfileButton"
-        android:background="@color/colorLightGray"/>
+        android:background="@color/ScreenColor"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -132,14 +122,14 @@
         android:padding="20dp"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:background="?android:selectableItemBackground"/>
+        android:background="@color/white"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="3dp"
         android:id="@+id/line3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/morePatientButton"
-        android:background="@color/colorLightGray"/>
+        android:background="@color/ScreenColor"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -154,13 +144,13 @@
         android:padding="20dp"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:background="?android:selectableItemBackground"/>
+        android:background="@color/white"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="3dp"
         android:id="@+id/line4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/moreTrackerButton"
-        android:background="@color/colorLightGray"/>
+        android:background="@color/ScreenColor"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

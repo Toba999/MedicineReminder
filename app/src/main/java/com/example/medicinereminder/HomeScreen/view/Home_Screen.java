@@ -15,8 +15,7 @@ import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 
 import java.util.Calendar;
 
-import devs.mulham.horizontalcalendar.HorizontalCalendar;
-import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
+
 
 public class Home_Screen extends AppCompatActivity {
 
