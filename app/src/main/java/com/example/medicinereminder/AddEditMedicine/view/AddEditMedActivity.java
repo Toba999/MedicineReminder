@@ -9,13 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.medicinereminder.R;
 import com.example.medicinereminder.databinding.ActivityAddEditMedBinding;
-import com.example.medicinereminder.services.model.MedicationPOJO;
+import com.example.medicinereminder.model.MedicationPOJO;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.text.DateFormat;

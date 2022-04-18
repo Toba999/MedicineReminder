@@ -1,6 +1,6 @@
 package com.example.medicinereminder.medication_screen.presenter;
 
-import com.example.medicinereminder.services.model.MedicationPOJO;
+import com.example.medicinereminder.model.MedicationPOJO;
 
 import java.util.List;
 

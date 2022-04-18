@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicinereminder.DisplayMedicine.DisplayMedActivity;
 import com.example.medicinereminder.R;
-import com.example.medicinereminder.services.model.MedicationPOJO;
+import com.example.medicinereminder.model.MedicationPOJO;
 
 import java.util.List;
 
