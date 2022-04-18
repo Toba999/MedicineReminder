@@ -4,8 +4,9 @@ import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-@SuppressLint("ParcelCreator")
-public class TrackerDTO implements Parcelable {
+import java.io.Serializable;
+
+public class TrackerDTO implements Serializable {
     private String patientEmail;
     private String name;
     private String email;
@@ -55,13 +56,5 @@ public class TrackerDTO implements Parcelable {
         this.requestID = requestID;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
 }
