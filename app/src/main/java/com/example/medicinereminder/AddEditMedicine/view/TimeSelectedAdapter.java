@@ -24,8 +24,8 @@ public class TimeSelectedAdapter extends RecyclerView.Adapter<TimeSelectedAdapte
         return timeMap;
     }
 
-    public void setTimeAndDose(){
-        timeMap = new HashMap<>();
+    public void setTimeAndDose(Map<String, Boolean> map){
+        timeMap = map;
     }
 
     public TimeSelectedAdapter(int n ,  Context context, Map<String,Boolean> map) {
