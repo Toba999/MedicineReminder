@@ -11,6 +11,10 @@ import com.example.medicinereminder.R;
 import com.example.medicinereminder.login.LoginActivity;
 
 public class SignUpActivity extends AppCompatActivity {
+
+    public static final String SHARED_PER = "SHARED_PER";
+    public static String EMAIL;
+
     TextView txtLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

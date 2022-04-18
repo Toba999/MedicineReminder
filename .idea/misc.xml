@@ -6,12 +6,18 @@
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/drawable/action_bar.xml" value="0.1962962962962963" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/drawable/btn_background.xml" value="0.1962962962962963" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/drawable/round_corners_bar.xml" value="0.1962962962962963" />
+        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/activity_add_edit_med.xml" value="0.2259963768115942" />
+        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/activity_add_taker.xml" value="0.2259963768115942" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/activity_display_med.xml" value="0.2554347826086957" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/activity_edit_med.xml" value="0.2554347826086957" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/activity_home_screen.xml" value="0.2" />
+        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/activity_login.xml" value="0.2259963768115942" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/activity_main.xml" value="0.2554347826086957" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/activity_main2.xml" value="0.2554347826086957" />
-        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/activity_profile.xml" value="0.2259963768115942" />
+        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/activity_sign_up.xml" value="0.22146739130434784" />
+        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/activity_tracker.xml" value="0.2259963768115942" />
+        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/fragment_home.xml" value="0.2536924413553432" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/fragment_medication.xml" value="0.2554347826086957" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/fragment_medications.xml" value="0.2" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/fragment_more.xml" value="0.2" />
@@ -19,6 +25,10 @@
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medication_row.xml" value="0.264" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medicine_cell.xml" value="0.4" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medicines_section_cell.xml" value="0.4" />
+
+        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/patient_row.xml" value="0.2259963768115942" />
+        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/tracker_row.xml" value="0.2259963768115942" />
+
         <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/drawable/action_bar.xml" value="0.1359375" />
         <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/activity_main.xml" value="0.2421875" />
         <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/activity_patient.xml" value="0.23233695652173914" />
@@ -30,6 +40,41 @@
         <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/medication_inactive_active_row.xml" value="0.23233695652173914" />
         <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/patient_row.xml" value="0.23233695652173914" />
         <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/tracker_row.xml" value="0.23233695652173914" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_add.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_add_photo.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_add_product.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_chevron_right.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_dashboard.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_delete.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_delete_swipe.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_edit_swipe.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_remove.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_settings.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable-v24/ic_white_color_back_24dp.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable/action_bar.xml" value="0.1578125" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable/ic_launcher_background.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable/lock2.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable/medications.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable/more.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable/person2.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable/round_corners_bar.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable/tv_background.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable/vi_bg.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/drawable/view_shape.xml" value="0.25833333333333336" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/layout/activity_home_screen.xml" value="0.4" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/layout/activity_tracker.xml" value="0.14166666666666666" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/layout/fragment_home.xml" value="0.1390625" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/layout/fragment_medications.xml" value="0.14166666666666666" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/layout/fragment_more.xml" value="0.14166666666666666" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/layout/medication_inactive_active_row.xml" value="0.14166666666666666" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/layout/medication_row.xml" value="0.14166666666666666" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/layout/medicine_cell.xml" value="0.2421875" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/layout/medicines_section_cell.xml" value="0.2421875" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/layout/patient_row.xml" value="0.4" />
+        <entry key="..\:/ITI_Courses/AndroidCourse/Projects/new/MedicineReminder/app/src/main/res/layout/tracker_row.xml" value="0.2421875" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_add.xml" value="0.18552631578947368" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_add_photo.xml" value="0.18552631578947368" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/drawable-v24/ic_vector_add_product.xml" value="0.18552631578947368" />
@@ -51,6 +96,7 @@
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/drawable/tv_background.xml" value="0.18552631578947368" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/drawable/view_shape.xml" value="0.18552631578947368" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/activity_add_edit_med.xml" value="0.18" />
+
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/activity_display_med.xml" value="0.18568840579710144" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/activity_edit_med.xml" value="0.18568840579710144" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/activity_home_screen.xml" value="0.18614130434782608" />

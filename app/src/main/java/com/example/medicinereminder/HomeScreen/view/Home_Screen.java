@@ -13,6 +13,7 @@ import com.example.medicinereminder.medication_screen.view.MedicationsFragment;
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 
+
 public class Home_Screen extends AppCompatActivity {
 
     BubbleNavigationLinearView bNaviView;
@@ -57,10 +58,12 @@ public class Home_Screen extends AppCompatActivity {
         });
 
 
+
     }
 
     void initUI()
     {
         bNaviView = findViewById(R.id.home_navigationBar);
     }
+
 }

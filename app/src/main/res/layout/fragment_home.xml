@@ -6,16 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".HomeScreen.HomeFragment">
 
-    <TextView
-        android:id="@+id/textView"
+<!--    <TextView-->
+<!--        android:id="@+id/textView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="114dp"-->
+<!--        android:gravity="center"-->
+<!--        android:text="ClinderView"-->
+<!--        android:textSize="24sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="114dp"
-        android:gravity="center"
-        android:text="ClinderView"
-        android:textSize="24sp"
+        android:layout_height="wrap_content"
+        android:id="@+id/myCalendarCardView"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+        <devs.mulham.horizontalcalendar.HorizontalCalendarView
+            android:id="@+id/myCalendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:selectorColor="@color/ScreenColor"
+            app:textColorSelected="@color/black"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.cardview.widget.CardView>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/outter_recyleview"
@@ -24,5 +47,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/myCalendarView" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/addMedicine"
+        android:src="@drawable/plus_icon"
+        android:backgroundTint="@color/LightBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
