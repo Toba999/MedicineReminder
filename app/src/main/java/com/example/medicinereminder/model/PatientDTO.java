@@ -5,15 +5,15 @@ public class PatientDTO {
     private String email;
     private String patientEmail;
     private String name;
-    private int profileImg;
+    private int img;
     private int ID;
 
     public int getProfileImg() {
-        return profileImg;
+        return img;
     }
 
     public void setProfileImg(int profileImg) {
-        this.profileImg = profileImg;
+        this.img = profileImg;
     }
 
     public int getID() {
@@ -22,6 +22,13 @@ public class PatientDTO {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public PatientDTO(String email, String patientEmail, String name, int img) {
+        this.email = email;
+        this.patientEmail = patientEmail;
+        this.name = name;
+        this.img = img;
     }
 
     public PatientDTO() {

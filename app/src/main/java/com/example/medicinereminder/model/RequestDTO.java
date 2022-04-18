@@ -18,6 +18,13 @@ public class RequestDTO implements Serializable {
     public RequestDTO() {
     }
 
+    public RequestDTO(String name, String email, String myEmail, int acceptance) {
+        this.name = name;
+        this.email = email;
+        this.myEmail = myEmail;
+        this.acceptance = acceptance;
+    }
+
     public RequestDTO(String name, String email, String myEmail, int acceptance, String id) {
         this.name = name;
         this.email = email;
