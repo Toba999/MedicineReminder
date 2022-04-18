@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -55,18 +56,18 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
     //editable
     private String dosePerDay = "";
     private String medicationName;
-    private String weight = "";
     private String start_date;
     private String end_date;
     private String strength = "";
     private String leftNumber = "";
     private String leftNumberReminder = "";
+    private String medicineSize = "";
     private String reason = "";
 
     private Map<String, Boolean> timeSimpleTaken;
-    private Map<String, Boolean> dateTimeSimpleTaken;
-    private Map<String, Boolean> dateTimeAbsTaken;
-    private List<String> dateTimeAbs;
+    private Map<String, Boolean> dateTimeSimpleTaken=new HashMap<>();
+    private Map<String, Boolean> dateTimeAbsTaken=new HashMap<>();
+    private List<String> timeAbs;
 
     private TimeSelectedAdapter timeSelectedAdapter;
 
@@ -359,6 +360,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
         strength = binding.etEditStrengthDose.getEditableText().toString();
         leftNumber = binding.etEditLeft.getEditableText().toString();
         leftNumberReminder = binding.etRefillReminder.getEditableText().toString();
+        medicineSize = binding.etEditMedSize.getEditableText().toString();
         reason = binding.etEditReason.getEditableText().toString();
     }
     private void setEditTextResultToPOJO() {
@@ -373,8 +375,9 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
             medication.setStartDate(startDate);
         if (!end_date.equals("Selected End Date"))
             medication.setEndDate(endDate);
-        if (!weight.isEmpty())
-            medication.setWeight(Integer.parseInt(weight));
+        if (!medicineSize.isEmpty())
+            medication.setMedicineSize(Integer.parseInt(medicineSize));
+
         medication.setMedicationReason(reason);
     }
 
@@ -388,9 +391,42 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
 
 
     private void setArraysAndMapsResultToPOJO() {
-        Log.i("map", Arrays.toString(timeSelectedAdapter.getTimeMap().entrySet().toArray()));
         timeSimpleTaken=timeSelectedAdapter.getTimeMap();
-        //Todo set medication pojo arrays
+        timeAbs=timeSelectedAdapter.getTimeList();
+        int day;
+        switch(takeTimePerWeek){
+            case "Everyday":
+                day=1;
+                break;
+            case "every two days":
+                day=2;
+                break;
+            case "every three days":
+                day=3;
+                break;
+            case "every four days":
+                day=4;
+                break;
+            case "every five days":
+                day=5;
+                break;
+            case "once a week":
+                day=7;
+                break;
+            default:
+                day=1;
+        }
+        for (long i= startDate;i<=endDate;i+=(day*24*60*60000L)){
+            dateTimeSimpleTaken.put(getDateString(i),false);
+            for (int j=0;j<timeAbs.size();j++)
+            dateTimeAbsTaken.put((i+timeAbs.get(j))+"",false);
+        }
+        Log.i("map", Arrays.toString(dateTimeSimpleTaken.entrySet().toArray()));
+        Log.i("map", Arrays.toString(dateTimeAbsTaken.entrySet().toArray()));
+        Log.i("map", Arrays.toString(timeSelectedAdapter.getTimeMap().entrySet().toArray()));
+        Log.i("map", String.valueOf(timeAbs));
+        //Todo finalize arrays to pojo
+
     }
 
 

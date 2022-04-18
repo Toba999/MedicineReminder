@@ -4,8 +4,9 @@ import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-@SuppressLint("ParcelCreator")
-public class RequestDTO implements Parcelable {
+import java.io.Serializable;
+
+public class RequestDTO implements Serializable {
 
     private String name;
     private  String email;
@@ -65,12 +66,5 @@ public class RequestDTO implements Parcelable {
         this.requestID = requestID;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
 
-    }
 }

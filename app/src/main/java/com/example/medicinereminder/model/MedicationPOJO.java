@@ -9,12 +9,12 @@ import androidx.room.PrimaryKey;
 
 import com.google.firebase.database.annotations.NotNull;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-@SuppressLint("ParcelCreator")
 @Entity(tableName = "medications")
-public class MedicationPOJO implements Parcelable {
+public class MedicationPOJO implements Serializable {
     @NotNull
     @PrimaryKey
     private String id;
@@ -23,7 +23,6 @@ public class MedicationPOJO implements Parcelable {
     private String medicationName;
     private int strength;
     private String strengthType;
-    private int weight;
     private String medicationType;
     private int imageID;
     private String instruction;
@@ -81,14 +80,6 @@ public class MedicationPOJO implements Parcelable {
 
     public void setStrengthType(String strengthType) {
         this.strengthType = strengthType;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
     }
 
     public int getImageID() {
@@ -229,15 +220,6 @@ public class MedicationPOJO implements Parcelable {
         isActive = active;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-
-    }
 }
 
 
