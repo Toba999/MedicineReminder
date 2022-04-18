@@ -54,6 +54,8 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:2.4.2"
     implementation 'com.mikhaellopez:circularimageview:4.3.0'
     implementation 'com.gauravk.bubblenavigation:bubblenavigation:1.0.7'
+    implementation 'com.google.code.gson:gson:2.9.0'
+
 
 
 

@@ -34,7 +34,7 @@
             android:name=".login.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".AddEditMedicine.AddEditMedActivity"
+            android:name=".AddEditMedicine.view.AddEditMedActivity"
             android:exported="true"
             android:screenOrientation="portrait" >
             <intent-filter>

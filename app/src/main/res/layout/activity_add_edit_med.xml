@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddEditMedicine.AddEditMedActivity">
+    tools:context=".AddEditMedicine.view.AddEditMedActivity">
 
     <FrameLayout
         android:id="@+id/fl_header_image"
@@ -18,13 +18,13 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/iv_dis_back"
+                android:id="@+id/iv_add_back"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="start"
-                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_white_color_back_24dp" />
 
