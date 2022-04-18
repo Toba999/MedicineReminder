@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -15,7 +16,7 @@ import java.util.Map;
 @SuppressLint("ParcelCreator")
 @Entity(tableName = "medications")
 public class MedicationPOJO implements Parcelable {
-    @NotNull
+    @NonNull
     @PrimaryKey
     private String id;
 
@@ -123,9 +124,9 @@ public class MedicationPOJO implements Parcelable {
         this.leftNumberReminder = leftNumberReminder;
     }
 
-    public boolean isActive() {
-        return isActive;
-    }
+//    public boolean isActive() {
+//        return isActive;
+//    }
 
     public Map<String, Boolean> getDateTimeSimpleTaken() {
         return dateTimeSimpleTaken;
