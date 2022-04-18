@@ -19,9 +19,13 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class AddEditMedActivity extends AppCompatActivity implements onClickAddMedication, AddAndEditMedicationInterface {
     //select Add or Edit Screen
@@ -58,6 +62,11 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
     private String leftNumber = "";
     private String leftNumberReminder = "";
     private String reason = "";
+
+    private Map<String, Boolean> timeSimpleTaken;
+    private Map<String, Boolean> dateTimeSimpleTaken;
+    private Map<String, Boolean> dateTimeAbsTaken;
+    private List<String> dateTimeAbs;
 
     private TimeSelectedAdapter timeSelectedAdapter;
 
@@ -261,6 +270,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                 setSpinnerResultToPOJO();
                 setArraysAndMapsResultToPOJO();
                 onClick(medication);
+                //Todo handle sending the object to display activity and work manager and navigate
                 /*
                 setWorkTimer();
                 Bundle bundle = new Bundle();
@@ -293,6 +303,8 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                 setArraysAndMapsResultToPOJO();
                 medication.setId(Calendar.getInstance().getTimeInMillis()+medicationName+endDate);
                 onClick(medication);
+                //Todo handle  work manager and navigation to home screen
+
                 /*
                 setWorkTimer();
                 Navigation.findNavController(v).navigate(R.id.action_fragment_add_Medication_to_fragment_home);
@@ -338,6 +350,8 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
     public void addMedication(MedicationPOJO medication) {
 
     }
+
+
     private void getEditableText() {
         medicationName = binding.etEditMedName.getEditableText().toString().trim();
         start_date = binding.tvSelectedStartDate.getText().toString().trim();
@@ -374,8 +388,9 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
 
 
     private void setArraysAndMapsResultToPOJO() {
-
-        //medication.setActive(!timeAndDoseAdapter.getTimeAndDose().isEmpty());
+        Log.i("map", Arrays.toString(timeSelectedAdapter.getTimeMap().entrySet().toArray()));
+        timeSimpleTaken=timeSelectedAdapter.getTimeMap();
+        //Todo set medication pojo arrays
     }
 
 
@@ -431,6 +446,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         if (medication.getTimeSimpleTaken() != null && medication.getTimeSimpleTaken().size() != 0) {
             n = medication.getDateTimeAbs().size();
+            timeSelectedAdapter.setTimeAndDose(medication.getTimeSimpleTaken());
         }
         timeSelectedAdapter = new TimeSelectedAdapter(n, this, medication.getTimeSimpleTaken());
         binding.recycleChooseTime.setLayoutManager(layoutManager);
@@ -481,7 +497,20 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
         binding.etEditMedSize.setText(medication.getMedicineSize()+"");
         binding.etRefillReminder.setText(medication.getLeftNumberReminder()+"");
     }
+/*
+    private void logText() {
+        Log.i("model***",
+                binding.etEditMedName.getEditableText().toString().trim()+
+                        binding.tvSelectedStartDate.getText().toString().trim()+
+                        binding.tvSelectedEndDate.getText().toString().trim()+
+                        binding.etEditStrengthDose.getEditableText().toString()+
+                        binding.etEditLeft.getEditableText().toString()+
+                        binding.etRefillReminder.getEditableText().toString()+
+                        binding.etEditReason.getEditableText().toString()
+        );
+    }
 
+ */
 
     //Todo set worker notification
 /*
