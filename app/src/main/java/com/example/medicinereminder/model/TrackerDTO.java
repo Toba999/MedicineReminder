@@ -9,15 +9,17 @@ public class TrackerDTO implements Parcelable {
     private String patientEmail;
     private String name;
     private String email;
+    private int img;
     private String requestID;
 
     public TrackerDTO() {
     }
 
-    public TrackerDTO(String patientEmail, String name, String email, String requestID) {
+    public TrackerDTO(String patientEmail, String name, String email, int img, String requestID) {
         this.patientEmail = patientEmail;
         this.name = name;
         this.email = email;
+        this.img = img;
         this.requestID = requestID;
     }
 
