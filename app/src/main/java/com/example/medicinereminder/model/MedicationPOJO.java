@@ -16,9 +16,9 @@ import java.util.Map;
 
 @Entity(tableName = "medications")
 public class MedicationPOJO implements Serializable {
-    @NotNull
 
     @PrimaryKey
+    @NonNull
     private String id;
 
     @NotNull
