@@ -14,17 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicinereminder.DisplayMedicine.DisplayMedActivity;
 import com.example.medicinereminder.R;
-import com.example.medicinereminder.services.model.MedicineStore;
-import com.example.medicinereminder.services.model.MedicineType;
+import com.example.medicinereminder.services.model.MedicationPOJO;
 
 import java.util.List;
 
 public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsideAdapter.MedicationInsideViewHolder> {
 
-    List<MedicineStore> medicineStores;
+    List<MedicationPOJO> medicineStores;
     Context context;
 
-    public MedicationInsideAdapter(Context context, List<MedicineStore> medicineStores) {
+    public MedicationInsideAdapter(Context context, List<MedicationPOJO> medicineStores) {
         this.medicineStores = medicineStores;
         this.context = context;
     }
@@ -37,12 +36,12 @@ public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsi
 
     @Override
     public void onBindViewHolder(@NonNull MedicationInsideViewHolder holder, int position) {
-        holder.medNameTextView.setText(medicineStores.get(position).getName());
-        String occ = medicineStores.get(position).getRepetition();
+        holder.medNameTextView.setText(medicineStores.get(position).getMedicationName());
+        String occ = medicineStores.get(position).getTakeTimePerDay();
         holder.medOccuranceTextView.setText(occ);
-        String imgName = medicineStores.get(position).getType();
+        String imgName = medicineStores.get(position).getMedicationType();
         setImage(holder, imgName);
-        holder.medNotificationSwitch.setChecked(medicineStores.get(position).getActive());
+        holder.medNotificationSwitch.setChecked(medicineStores.get(position).getIsActive());
         holder.view.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), DisplayMedActivity.class);
             v.getContext().startActivity(intent);
@@ -50,13 +49,13 @@ public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsi
     }
 
     public void setImage(MedicationInsideViewHolder holder, String imgName){
-        if(imgName.equals(MedicineType.drops.name()))
+        if(imgName.equals("drops"))
             holder.medImage.setImageResource(R.mipmap.drops);
-        else if(imgName.equals(MedicineType.injection.name()))
+        else if(imgName.equals("injections"))
             holder.medImage.setImageResource(R.mipmap.injections);
-        else if(imgName.equals(MedicineType.pills.name()))
+        else if(imgName.equals("pills"))
             holder.medImage.setImageResource(R.mipmap.pills);
-        else if(imgName.equals(MedicineType.syrup.name()))
+        else if(imgName.equals("syrup"))
             holder.medImage.setImageResource(R.mipmap.syrup);
         else
             holder.medImage.setImageResource(R.mipmap.powder);

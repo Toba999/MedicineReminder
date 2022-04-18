@@ -3,17 +3,15 @@ package com.example.medicinereminder.medication_screen.presenter;
 import android.content.Context;
 
 import com.example.medicinereminder.medication_screen.view.MedicationFragmentInterface;
-import com.example.medicinereminder.services.model.MedicineStore;
-import com.example.medicinereminder.services.model.MedicineType;
-import com.example.medicinereminder.services.model.Occurance;
+import com.example.medicinereminder.services.model.MedicationPOJO;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MedicationFragmentPresenter implements MedicationFragmentPresenterInterface {
-    List<MedicineStore> medicineStores;
-    List<MedicineStore> activeMedicineStores;
-    List<MedicineStore> inActiveMedicineStores;
+    List<MedicationPOJO> medicineStores;
+    List<MedicationPOJO> activeMedicineStores;
+    List<MedicationPOJO> inActiveMedicineStores;
     MedicationFragmentInterface medicationFragmentInterface;
 
     public MedicationFragmentPresenter(Context context, MedicationFragmentInterface medicationFragmentInterface) {
@@ -22,28 +20,28 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
     }
 
     @Override
-    public List<MedicineStore> getMedicines() {
+    public List<MedicationPOJO> getMedicines() {
         medicineStores = new ArrayList<>();
         //int id, String name, String type, DateTime startDate, DateTime endDate, String repetition, int dosesPerDay,
         //                    int bottleAmount, int currentPills, int refillPills, Boolean isActive, List<Dose> doses)
         //fake data
-        MedicineStore medicineStore = new MedicineStore();
-        medicineStore.setName("Depacken");
-        medicineStore.setType(MedicineType.pills.name());
+        MedicationPOJO medicineStore = new MedicationPOJO();
+        medicineStore.setMedicationName("Depacken");
+        medicineStore.setMedicationType("pills");
         medicineStore.setActive(true);
-        medicineStore.setRepetition(Occurance.once.name());
+        medicineStore.setTakeTimePerDay("once");
         medicineStores.add(medicineStore);
-        medicineStore = new MedicineStore();
-        medicineStore.setName("panadol");
-        medicineStore.setType(MedicineType.pills.name());
+        medicineStore = new MedicationPOJO();
+        medicineStore.setMedicationName("panadol");
+        medicineStore.setMedicationType("pills");
         medicineStore.setActive(true);
-        medicineStore.setRepetition(Occurance.once.name());
+        medicineStore.setTakeTimePerDay("once");
         medicineStores.add(medicineStore);
-        medicineStore = new MedicineStore();
-        medicineStore.setName("Elcarnatine");
-        medicineStore.setType(MedicineType.syrup.name());
+        medicineStore = new MedicationPOJO();
+        medicineStore.setMedicationName("Elcarnatine");
+        medicineStore.setMedicationType("syrup");
         medicineStore.setActive(false);
-        medicineStore.setRepetition(Occurance.once.name());
+        medicineStore.setTakeTimePerDay("once");
         medicineStores.add(medicineStore);
         //----------------------------------------
         return medicineStores;
@@ -58,12 +56,12 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
     }
 
     @Override
-    public List<MedicineStore> getActiveMedicines(){
+    public List<MedicationPOJO> getActiveMedicines(){
         return activeMedicineStores;
     }
 
     @Override
-    public List<MedicineStore> getInactiveMedicines(){
+    public List<MedicationPOJO> getInactiveMedicines(){
         return inActiveMedicineStores;
     }
     @Override
@@ -71,8 +69,8 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
         getMedicines();
         activeMedicineStores = new ArrayList<>();
         inActiveMedicineStores = new ArrayList<>();
-        for (MedicineStore medicineStore : medicineStores) {
-            if (medicineStore.getActive() == true)
+        for (MedicationPOJO medicineStore : medicineStores) {
+            if (medicineStore.getIsActive() == true)
                 activeMedicineStores.add(medicineStore);
             else
                 inActiveMedicineStores.add(medicineStore);

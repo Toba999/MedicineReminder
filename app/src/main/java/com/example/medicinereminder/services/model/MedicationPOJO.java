@@ -1,0 +1,243 @@
+package com.example.medicinereminder.services.model;
+
+import android.annotation.SuppressLint;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import com.google.firebase.database.annotations.NotNull;
+
+import java.util.List;
+import java.util.Map;
+
+@SuppressLint("ParcelCreator")
+@Entity(tableName = "medications")
+public class MedicationPOJO implements Parcelable {
+    @NotNull
+    @PrimaryKey
+    private String id;
+
+    @NotNull
+    private String medicationName;
+    private int strength;
+    private String strengthType;
+    private int weight;
+    private String medicationType;
+    private int imageID;
+    private String instruction;
+
+
+    private int leftNumber;
+    private int leftNumberReminder;
+    private int medicineSize;
+    private boolean isActive;
+    private String medicationReason;
+
+    @NotNull
+    private Long startDate;
+    @NotNull
+    private Long endDate;
+    private String takeTimePerDay;
+    private String takeTimePerWeek;
+
+    private Map<String, Boolean> TimeSimpleTaken;
+    private Map<String, Boolean> dateTimeSimpleTaken;
+    private Map<String, Boolean> dateTimeAbsTaken;
+    private List<String> dateTimeAbs;
+
+    public Map<String, Boolean> getTimeSimpleTaken() {
+        return TimeSimpleTaken;
+    }
+
+    public void setTimeSimpleTaken(Map<String, Boolean> timeSimpleTaken) {
+        TimeSimpleTaken = timeSimpleTaken;
+    }
+
+    public int getMedicineSize() {
+        return medicineSize;
+    }
+
+    public void setMedicineSize(int medicineSize) {
+        this.medicineSize = medicineSize;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public String getStrengthType() {
+        return strengthType;
+    }
+
+    public void setStrengthType(String strengthType) {
+        this.strengthType = strengthType;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public int getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(int imageID) {
+        this.imageID = imageID;
+    }
+
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
+    }
+
+    public int getLeftNumber() {
+        return leftNumber;
+    }
+
+    public void setLeftNumber(int leftNumber) {
+        this.leftNumber = leftNumber;
+    }
+
+    public int getLeftNumberReminder() {
+        return leftNumberReminder;
+    }
+
+    public void setLeftNumberReminder(int leftNumberReminder) {
+        this.leftNumberReminder = leftNumberReminder;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public Map<String, Boolean> getDateTimeSimpleTaken() {
+        return dateTimeSimpleTaken;
+    }
+
+    public void setDateTimeSimpleTaken(Map<String, Boolean> dateTimeSimpleTaken) {
+        this.dateTimeSimpleTaken = dateTimeSimpleTaken;
+    }
+
+    public Map<String, Boolean> getDateTimeAbsTaken() {
+        return dateTimeAbsTaken;
+    }
+
+    public void setDateTimeAbsTaken(Map<String, Boolean> dateTimeAbsTaken) {
+        this.dateTimeAbsTaken = dateTimeAbsTaken;
+    }
+
+    public List<String> getDateTimeAbs() {
+        return dateTimeAbs;
+    }
+
+    public void setDateTimeAbs(List<String> dateTimeAbs) {
+        this.dateTimeAbs = dateTimeAbs;
+    }
+
+    public String getMedicationReason() {
+        return medicationReason;
+    }
+
+    public void setMedicationReason(String medicationReason) {
+        this.medicationReason = medicationReason;
+    }
+
+    public String getTakeTimePerWeek() {
+        return takeTimePerWeek;
+    }
+
+    public void setTakeTimePerWeek(String takeTimePerWeek) {
+        this.takeTimePerWeek = takeTimePerWeek;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+
+
+    @NotNull
+    public String getMedicationName() {
+        return medicationName;
+    }
+
+    public void setMedicationName(@NotNull String medicationName) {
+        this.medicationName = medicationName;
+    }
+
+
+
+    public String getMedicationType() {
+        return medicationType;
+    }
+
+    public void setMedicationType(String medicationType) {
+        this.medicationType = medicationType;
+    }
+
+
+    @NotNull
+    public Long getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(@NotNull Long startDate) {
+        this.startDate = startDate;
+    }
+
+    @NotNull
+    public Long getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(@NotNull Long endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getTakeTimePerDay() {
+        return takeTimePerDay;
+    }
+
+    public void setTakeTimePerDay(String takeTimePerDay) {
+        this.takeTimePerDay = takeTimePerDay;
+    }
+
+
+
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+    }
+}
+
+

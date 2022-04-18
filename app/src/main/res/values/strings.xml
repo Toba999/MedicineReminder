@@ -43,5 +43,8 @@
 
     <string name="Profile">Profile</string>
     <string name="Gender">Gender</string>
+    <string name="select_time">Select Time</string>
+    <string name="time_selected">time selected</string>
+    <string name="weight">Weight</string>
 
 </resources>
