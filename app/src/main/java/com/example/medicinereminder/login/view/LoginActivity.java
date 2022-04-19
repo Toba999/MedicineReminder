@@ -1,4 +1,4 @@
-package com.example.medicinereminder.login;
+package com.example.medicinereminder.login.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.medicinereminder.R;
-import com.example.medicinereminder.signup.SignUpActivity;
+import com.example.medicinereminder.signup.view.SignUpActivity;
 
 public class LoginActivity extends AppCompatActivity {
     TextView txtSign;
