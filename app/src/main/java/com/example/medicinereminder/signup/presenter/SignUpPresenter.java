@@ -18,35 +18,28 @@ import java.util.List;
 
 public class SignUpPresenter implements SignupPresenterInterface, NetworkDelegate {
 
-    private Activity myActivity;
     private Context context;
     private SignUpActivityInterface view;
- //   private Repository repository;
-    FirebaseNetwork firebaseNetwork;
-     public SignUpPresenter(Activity myActivity, SignUpActivityInterface view) {
-       // this.context = context;
+    private Repository repository;
+     public SignUpPresenter(Context context, SignUpActivityInterface view) {
+        this.context = context;
         this.view = view;
-        this.myActivity = myActivity;
-        //firebaseNetwork = FirebaseNetwork.getInstance(myActivity);
-        //firebaseNetwork.setNetworkDelegate(this);
-      //  repository = Repository.getInstance;
-       // this.repository = repository;
-      //  repository.setMyDelegation(this);
+        repository = Repository.getInstance(this,context);
+
     }
 
     @Override
     public void registerWithEmailAndPass(Activity activity,String email, String password, String name) {
-       firebaseNetwork.registerWithEmailAndPass(activity,email,password,name);
+         repository.registerWithEmailAndPass(activity,email,password,name);
     }
     @Override
     public void onSuccess() {
         view.setSuccessfulResponse();
-
     }
 
  @Override
- public void onFailure(String errorMessage, Task<AuthResult> task) {
-        view.setFailureResponse(errorMessage,task);
+ public void onFailure(Task<AuthResult> task) {
+        view.setFailureResponse(task);
 
  }
 

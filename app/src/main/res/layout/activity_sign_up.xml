@@ -36,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text"
-            android:drawableStart="@drawable/person2"
+            android:drawableStart="@drawable/ic_baseline_email_24"
             android:hint="@string/Email"
             android:inputType="textEmailAddress"
             android:minHeight="48dp"

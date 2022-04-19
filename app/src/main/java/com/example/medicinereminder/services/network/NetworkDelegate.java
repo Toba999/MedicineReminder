@@ -12,7 +12,7 @@ import java.util.List;
 public interface NetworkDelegate {
 
     void onSuccess();
-    void onFailure(String errorMessage, Task<AuthResult> task);
+    void onFailure( Task<AuthResult> task);
     void onFailure(String errorMessage);
 
     // for response
