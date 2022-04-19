@@ -90,13 +90,14 @@ public class LocalSource implements LocalSourceInterface{
         return dao.getMedicationDay(time);
     }
 
-    //@Override
-//    public Single<List<MedicationPOJO>> getMedicationDayWorkManger(long time) {
-//        return dao.getMedicationDayWorkManger(time);
-//    }
-//
-//    @Override
-//    public Single<List<MedicationPOJO>> getRefillReminderList(long time) {
-//        return  dao.getRefillReminderList(time);
-//    }
+    @Override
+    public Single<List<MedicationPOJO>> getMedicationDayWorkManger(long time) {
+        return dao.getMedicationDayWorkManger(time);
+    }
+
+    @Override
+    public Single<List<MedicationPOJO>> getRefillReminderList(long time,int left) {
+        return  dao.getRefillReminderList(time,left);
+    }
+
 }

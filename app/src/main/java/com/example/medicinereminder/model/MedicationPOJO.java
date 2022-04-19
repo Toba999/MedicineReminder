@@ -16,10 +16,17 @@ import java.util.Map;
 
 @Entity(tableName = "medications")
 public class MedicationPOJO implements Serializable {
+
     @NonNull
 
     @PrimaryKey
+    @NonNull
     private String id;
+
+    @NonNull
+    private String email;
+
+
 
     @NotNull
     private String medicationName;
@@ -115,10 +122,15 @@ public class MedicationPOJO implements Serializable {
     public void setLeftNumberReminder(int leftNumberReminder) {
         this.leftNumberReminder = leftNumberReminder;
     }
+    @NonNull
+    public String getEmail() {
+        return email;
+    }
 
-//    public boolean isActive() {
-//        return isActive;
-//    }
+    public void setEmail(@NonNull String email) {
+        this.email = email;
+    }
+
 
     public Map<String, Boolean> getDateTimeSimpleTaken() {
         return dateTimeSimpleTaken;

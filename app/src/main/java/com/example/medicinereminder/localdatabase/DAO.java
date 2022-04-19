@@ -15,6 +15,7 @@ import java.util.List;
 
 import io.reactivex.Single;
 
+
 @Dao
 public interface DAO {
     @Query("Select * from medications")
@@ -44,9 +45,9 @@ public interface DAO {
     LiveData<List<MedicationPOJO>> getMedicationDay(long data);
 
     // get observable DB
-//    @Query("SELECT * FROM Medications WHERE (:data Between startDate AND endDate) AND isActive=1 ")
-//    Single<List<MedicationPOJO>> getMedicationDayWorkManger(long data);
+    @Query("SELECT * FROM Medications WHERE (:data Between startDate AND endDate) AND isActive=1 ")
+    Single<List<MedicationPOJO>> getMedicationDayWorkManger(long data);
 
-//    @Query("SELECT * FROM Medications WHERE (:time Between startDate AND endDate) AND fillReminder=1 AND isActive=1")
-//    Single<List<MedicationPOJO>> getRefillReminderList(long time);
+    @Query("SELECT * FROM Medications WHERE (:time Between startDate AND endDate) AND :left<=leftNumberReminder AND isActive=1")
+    Single<List<MedicationPOJO>> getRefillReminderList(long time,int left);
 }
