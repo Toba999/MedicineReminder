@@ -77,17 +77,22 @@ public class FirebaseNetwork implements NetworkInterface{
             myDelegate.onFailure("User did not sign in");
     }
 
-    @Override
-    public void registerWithEmailAndPass(Activity myActivity, String email, String password, String name) {
+
+    public void registerWithEmailAndPass( Activity myActivity,String email, String password, String name) {
         myAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(myActivity, task -> {
-                    if(task.isSuccessful()){
-                        UserDTO user = new UserDTO(name, email);
-                        addRegisterInDB(user);
-                    }
-                    else {
-                        String errorMessage = handleFireBaseException(task);
-                        myDelegate.onFailure(errorMessage);
+                .addOnCompleteListener( myActivity,new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            UserDTO user = new UserDTO(name, email);
+                            myDelegate.onSuccess();
+                            addRegisterInDB(user);
+                        }
+                        else {
+                            String errorMessage = handleFireBaseException(task);
+                            myDelegate.onFailure(errorMessage,task);
+                        }
+
                     }
                 });
     }

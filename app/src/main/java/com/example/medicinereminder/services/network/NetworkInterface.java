@@ -17,7 +17,7 @@ public interface NetworkInterface {
 
     void isSignedIn();
 
-    void registerWithEmailAndPass(Activity activity, String email, String password, String name);
+    void registerWithEmailAndPass( Activity activity,String email, String password, String name);
 
     void signInWithEmailAndPass(Activity activity, String email, String password);
 
