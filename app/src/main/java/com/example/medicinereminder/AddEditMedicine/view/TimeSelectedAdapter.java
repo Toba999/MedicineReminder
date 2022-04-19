@@ -11,21 +11,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicinereminder.databinding.AddEditTimeCellBinding;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TimeSelectedAdapter extends RecyclerView.Adapter<TimeSelectedAdapter.ViewHolder> {
     private int dosePerDay = 0;
     private Context context;
     private Map<String, Boolean> timeMap;
-
+    private List<String> timeAbs=new ArrayList<>();
     public Map<String, Boolean> getTimeMap() {
         return timeMap;
     }
+    public List<String> getTimeList() {
+        return timeAbs;
+    }
 
-    public void setTimeAndDose(){
-        timeMap = new HashMap<>();
+
+    public void setTimeAndDose(Map<String, Boolean> map){
+        timeMap = map;
     }
 
     public TimeSelectedAdapter(int n ,  Context context, Map<String,Boolean> map) {
@@ -66,6 +72,8 @@ public class TimeSelectedAdapter extends RecyclerView.Adapter<TimeSelectedAdapte
 
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    long hourAbs=hourOfDay*60*60000L;
+                    long minAbs=minute* 60000L;
 
                     if (!holder.result.isEmpty())
                         timeMap.remove(holder.result);
@@ -86,6 +94,7 @@ public class TimeSelectedAdapter extends RecyclerView.Adapter<TimeSelectedAdapte
                         }
                         holder.result = hourOfDay + ":" + minute + " " + format;
                         timeMap.put(holder.result, false);
+                        timeAbs.add((hourAbs+minAbs)+"");
                         holder.binding.etTimeSelcted.setText(holder.result);
                     }
                 }

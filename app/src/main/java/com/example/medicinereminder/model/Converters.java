@@ -1,4 +1,4 @@
-package com.example.medicinereminder.services.model;
+package com.example.medicinereminder.model;
 
 import androidx.room.TypeConverter;
 

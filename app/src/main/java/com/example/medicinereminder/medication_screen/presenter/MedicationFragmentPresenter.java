@@ -3,7 +3,7 @@ package com.example.medicinereminder.medication_screen.presenter;
 import android.content.Context;
 
 import com.example.medicinereminder.medication_screen.view.MedicationFragmentInterface;
-import com.example.medicinereminder.services.model.MedicationPOJO;
+import com.example.medicinereminder.model.MedicationPOJO;
 
 import java.util.ArrayList;
 import java.util.List;

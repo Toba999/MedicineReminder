@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.example.medicinereminder.signup.SignUpActivity;
+import com.example.medicinereminder.signup.view.SignUpActivity;
 
 public class NetworkValidation {
 

@@ -1,29 +1,36 @@
-package com.example.medicinereminder.services.model;
+package com.example.medicinereminder.model;
 
 import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.google.firebase.database.annotations.NotNull;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-@SuppressLint("ParcelCreator")
 @Entity(tableName = "medications")
-public class MedicationPOJO implements Parcelable {
-    @NotNull
+public class MedicationPOJO implements Serializable {
+
+
     @PrimaryKey
+    @NonNull
     private String id;
+
+    @NotNull
+    private String email;
+
+
 
     @NotNull
     private String medicationName;
     private int strength;
     private String strengthType;
-    private int weight;
     private String medicationType;
     private int imageID;
     private String instruction;
@@ -83,14 +90,6 @@ public class MedicationPOJO implements Parcelable {
         this.strengthType = strengthType;
     }
 
-    public int getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
-
     public int getImageID() {
         return imageID;
     }
@@ -122,10 +121,15 @@ public class MedicationPOJO implements Parcelable {
     public void setLeftNumberReminder(int leftNumberReminder) {
         this.leftNumberReminder = leftNumberReminder;
     }
-
-    public boolean isActive() {
-        return isActive;
+    @NonNull
+    public String getEmail() {
+        return email;
     }
+
+    public void setEmail(@NonNull String email) {
+        this.email = email;
+    }
+
 
     public Map<String, Boolean> getDateTimeSimpleTaken() {
         return dateTimeSimpleTaken;
@@ -229,15 +233,6 @@ public class MedicationPOJO implements Parcelable {
         isActive = active;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-
-    }
 }
 
 

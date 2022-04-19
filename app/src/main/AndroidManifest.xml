@@ -28,10 +28,7 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".signup.SignUpActivity"
-            android:exported="true" />
-        <activity
-            android:name=".login.LoginActivity"
+            android:name=".signup.view.SignUpActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,9 +37,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".login.view.LoginActivity"
+            android:exported="true" />
+        <activity
             android:name=".AddEditMedicine.view.AddEditMedActivity"
             android:exported="true"
             android:screenOrientation="portrait" >
+
         </activity>
         <activity
             android:name=".HomeScreen.view.Home_Screen"

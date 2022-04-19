@@ -1,6 +1,6 @@
 package com.example.medicinereminder.AddEditMedicine.presenter;
 
-import com.example.medicinereminder.services.model.MedicationPOJO;
+import com.example.medicinereminder.model.MedicationPOJO;
 
 public class AddMedicationPresenter implements AddMedicationPresenterInterface{
     @Override

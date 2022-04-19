@@ -46,5 +46,6 @@
     <string name="select_time">Select Time</string>
     <string name="time_selected">time selected</string>
     <string name="weight">Weight</string>
+    <string name="ConfirmPassword">ConfirmPassword</string>
 
 </resources>
