@@ -13,11 +13,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.medicinereminder.HomeScreen.HomeFragment;
 import com.example.medicinereminder.R;
 import com.example.medicinereminder.patient_screen.view.PatientActivity;
 import com.example.medicinereminder.tracker_screen.view.TrackerActivity;
-import com.example.medicinereminder.tracker_screen.view.TrackerAdapter;
 
 
 public class MoreFragment extends Fragment {

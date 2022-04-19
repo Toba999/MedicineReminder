@@ -1,7 +1,6 @@
 package com.example.medicinereminder.tracker_screen.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,10 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.medicinereminder.HomeScreen.HomeFragment;
 import com.example.medicinereminder.R;
-import com.example.medicinereminder.more_screen.view.MoreFragment;
-import com.example.medicinereminder.patient_screen.view.PatientAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

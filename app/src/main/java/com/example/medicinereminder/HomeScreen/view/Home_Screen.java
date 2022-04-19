@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.medicinereminder.HomeScreen.HomeFragment;
 import com.example.medicinereminder.more_screen.view.MoreFragment;
 import com.example.medicinereminder.R;
 import com.example.medicinereminder.medication_screen.view.MedicationsFragment;
