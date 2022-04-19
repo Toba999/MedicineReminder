@@ -27,8 +27,8 @@ public class SignUpPresenter implements SignupPresenterInterface, NetworkDelegat
        // this.context = context;
         this.view = view;
         this.myActivity = myActivity;
-        firebaseNetwork = FirebaseNetwork.getInstance(myActivity);
-        firebaseNetwork.setNetworkDelegate(this);
+        //firebaseNetwork = FirebaseNetwork.getInstance(myActivity);
+        //firebaseNetwork.setNetworkDelegate(this);
       //  repository = Repository.getInstance;
        // this.repository = repository;
       //  repository.setMyDelegation(this);
