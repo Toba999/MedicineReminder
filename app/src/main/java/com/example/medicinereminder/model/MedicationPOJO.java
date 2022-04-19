@@ -17,13 +17,12 @@ import java.util.Map;
 @Entity(tableName = "medications")
 public class MedicationPOJO implements Serializable {
 
-    @NonNull
 
     @PrimaryKey
     @NonNull
     private String id;
 
-    @NonNull
+    @NotNull
     private String email;
 
 
