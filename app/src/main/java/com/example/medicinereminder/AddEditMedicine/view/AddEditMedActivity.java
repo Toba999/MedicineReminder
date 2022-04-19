@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,9 +13,14 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.medicinereminder.AddEditMedicine.presenter.AddMedicationPresenter;
+import com.example.medicinereminder.AddEditMedicine.presenter.AddMedicationPresenterInterface;
+import com.example.medicinereminder.DisplayMedicine.DisplayMedActivity;
+import com.example.medicinereminder.HomeScreen.HomeFragment;
 import com.example.medicinereminder.databinding.ActivityAddEditMedBinding;
 import com.example.medicinereminder.localdatabase.LocalSource;
 import com.example.medicinereminder.model.MedicationPOJO;
+import com.example.medicinereminder.repository.Repository;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.text.DateFormat;
@@ -35,11 +41,6 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
 
     private ActivityAddEditMedBinding binding;
     private MedicationPOJO medication;
-
-
-   // private Repository repository;
-   // private ConcreteLocalClass localClass;
-   // private AddMedicationPresenterInterface presenterInterface;
 
     private boolean isFillReminder = false;
     private boolean chooseTimesFlag = false;
@@ -77,11 +78,6 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
     //dialog
     MaterialAlertDialogBuilder dialogBuilder;
 
-    public AddEditMedActivity() {
-        // Required empty public constructor
-    }
-
-
     ArrayAdapter<CharSequence> adapterMedType;
     ArrayAdapter<CharSequence> adapterEating;
     ArrayAdapter<CharSequence> adapterStrType;
@@ -94,19 +90,21 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
     String[] perWeekArr = {"Everyday", "every two days", "every three days", "every four days", "every five days" ,"once a week"};
     String[] perDayArr = {"once Daily", "twice Daily", "3 times a Day", "4 times a Day"};
 
+    AddMedicationPresenterInterface presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityAddEditMedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        //Todo : add repo ,local , remote and select screen type (add,edit)
-        if (false) {
-            //get Med pojo
-            isAdd = false;
+        presenter=new AddMedicationPresenter(this,this);
+        Intent intent=getIntent();
+        isAdd=intent.getBooleanExtra("isAdd",true);
+
+        if (!isAdd) {
+            //Todo get Med pojo
             handleEditScreen();
         } else {
             medication = new MedicationPOJO();
-            isAdd = true;
             handleAddScreen();
          }
         initRecycleView();
@@ -305,13 +303,12 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                 setArraysAndMapsResultToPOJO();
                 medication.setId(Calendar.getInstance().getTimeInMillis()+medicationName+endDate);
                 onClick(medication);
-                //Todo handle  work manager and navigation to home screen
+                //Todo handle  work manager
 
                 /*
                 setWorkTimer();
                 Navigation.findNavController(v).navigate(R.id.action_fragment_add_Medication_to_fragment_home);
                 */
-                Toast.makeText(this, "Successfully Added!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -325,9 +322,12 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                 .setPositiveButton("Yes", (dialog, i) -> {
                     dialog.dismiss();
                     if(isAdd){
-                        //navigate to home fragment
+                        Intent intent = new Intent(this, HomeFragment.class);
+                        startActivity(intent);
                     }else{
-                        //navigate to display activity
+                        //Todo pt med pojo extra
+                        Intent intent = new Intent(this, DisplayMedActivity.class);
+                        startActivity(intent);
                     }
                 })
                 .setNegativeButton("No", (dialog, i) -> {
@@ -345,11 +345,27 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
 
     @Override
     public void updateMedication(MedicationPOJO medication) {
+        presenter.updateToDatabase(medication);
 
     }
 
     @Override
     public void addMedication(MedicationPOJO medication) {
+        presenter.addToDatabase(medication);
+    }
+
+    @Override
+    public void onSuccess() {
+        //Todo navigation to home screen
+        Toast.makeText(this, "Successfully Added!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, HomeFragment.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onFailure() {
+        Toast.makeText(this, "Failed to Add", Toast.LENGTH_SHORT).show();
+
 
     }
 
