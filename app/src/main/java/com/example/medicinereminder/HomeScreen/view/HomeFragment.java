@@ -1,4 +1,5 @@
 package com.example.medicinereminder.HomeScreen;
+package com.example.medicinereminder.HomeScreen.view;
 
 import android.os.Bundle;
 import android.util.Log;
