@@ -88,19 +88,20 @@ public class FirebaseNetwork implements NetworkInterface{
     }
 
     @Override
-    public void registerWithEmailAndPass(Activity myActivity, String email, String password, String name) {
+    public void registerWithEmailAndPass( Activity myActivity,String email, String password, String name) {
         //why the password doesn't exist in the pojo class
         myAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(myActivity, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener( myActivity,new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             UserDTO user = new UserDTO(name, email);
-                            addRegisterInDB(user);
+                            myDelegate.onSuccess();
+                            //addRegisterInDB(user);
                         }
                         else {
                             String errorMessage = handleFireBaseException(task);
-                            myDelegate.onFailure(errorMessage);
+                            myDelegate.onFailure(errorMessage,task);
                         }
                     }
                 });
