@@ -29,7 +29,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityI
     public static String EMAIL;
 
     TextView txtLogin;
-    EditText editUserName,editEmail,editPassword;
+    EditText editUserName,editEmail,editPassword,editConfirmPassword;
     Button btnSignUp;
 
     SignupPresenterInterface presenter;
@@ -59,6 +59,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityI
         txtLogin = findViewById(R.id.txtLogin);
         editEmail = findViewById(R.id.editEmailSign);
         editPassword = findViewById(R.id.editPasworedSign);
+        editConfirmPassword =findViewById(R.id.editConfirmPassword);
         editUserName = findViewById(R.id.editUserNameSign);
         btnSignUp = findViewById(R.id.btnSignUp);
     }
@@ -67,6 +68,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityI
         String email = editEmail.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
         String name = editUserName.getText().toString();
+        String confirmPassword = editConfirmPassword.getText().toString();
 
         if (email.isEmpty()) {
             editEmail.setError("Email is required");
@@ -94,6 +96,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityI
         if (password.length() < 6) {
             editPassword.setError("Minimum length of password should be 6");
             editPassword.requestFocus();
+            return;
+        }
+        if(!confirmPassword.equals(password)){
+            editConfirmPassword.setError("this not match password");
             return;
         }
 

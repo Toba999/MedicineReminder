@@ -91,53 +91,30 @@
             app:layout_constraintVertical_bias="0"
             app:layout_constraintWidth_percent=".8" />
 
-        <TextView
+        <EditText
+            android:id="@+id/editConfirmPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text"
-            android:text="Gender"            android:minHeight="48dp"
+            android:drawableStart="@drawable/lock2"
+            android:hint="@string/ConfirmPassword"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:layout_marginTop="10dp"
             android:paddingStart="20dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias=".2"
+            app:layout_constraintHorizontal_bias=".5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias=".6"
-            app:layout_constraintWidth_percent=".2"/>
-
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias=".8"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias=".6"
-            app:layout_constraintWidth_percent=".8">
-
-            <RadioButton
-                android:id="@+id/radio_one"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="male"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <RadioButton
-                android:id="@+id/radio_two"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="femal"
-                tools:ignore="TouchTargetSizeCheck" />
+            app:layout_constraintWidth_percent=".8" />
 
 
-        </RadioGroup>
+
+
 
 
         <Button
