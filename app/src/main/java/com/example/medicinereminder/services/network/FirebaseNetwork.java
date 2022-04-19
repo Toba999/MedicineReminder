@@ -1,6 +1,7 @@
 package com.example.medicinereminder.services.network;
 
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -33,11 +34,10 @@ import java.util.Calendar;
 import java.util.List;
 
 public class FirebaseNetwork implements NetworkInterface{
-    Activity _activity;
+    //Activity _activity;
     public static FirebaseAuth myAuth;
     private static FirebaseNetwork myFireBase;
-    private static FirebaseNetwork trackerFireBase;
-    private static FirebaseAuth trackerAuth;
+
 
     private NetworkDelegate myDelegate;
     private boolean exist = false;
@@ -47,27 +47,17 @@ public class FirebaseNetwork implements NetworkInterface{
     private static String userName="";
 
 
-    private FirebaseNetwork(Activity myActivity) {
-        _activity = myActivity;
-    }
-
-    private FirebaseNetwork() {
+    private FirebaseNetwork(NetworkDelegate networkDelegate) {
+        myDelegate = networkDelegate;
 
     }
 
-    public static FirebaseNetwork getInstance() {
-        if (trackerFireBase == null) {
-            trackerAuth = FirebaseAuth.getInstance();
-            trackerFireBase = new FirebaseNetwork();
-        }
-        return myFireBase;
-    }
 
 
-    public static FirebaseNetwork getInstance(Activity myActivity) {
+    public static FirebaseNetwork getInstance(NetworkDelegate networkDelegate) {
         if (myFireBase == null) {
             myAuth = FirebaseAuth.getInstance();
-            myFireBase = new FirebaseNetwork(myActivity);
+            myFireBase = new FirebaseNetwork(networkDelegate);
         }
         return myFireBase;
     }
@@ -89,19 +79,15 @@ public class FirebaseNetwork implements NetworkInterface{
 
     @Override
     public void registerWithEmailAndPass(Activity myActivity, String email, String password, String name) {
-        //why the password doesn't exist in the pojo class
         myAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(myActivity, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            UserDTO user = new UserDTO(name, email);
-                            addRegisterInDB(user);
-                        }
-                        else {
-                            String errorMessage = handleFireBaseException(task);
-                            myDelegate.onFailure(errorMessage);
-                        }
+                .addOnCompleteListener(myActivity, task -> {
+                    if(task.isSuccessful()){
+                        UserDTO user = new UserDTO(name, email);
+                        addRegisterInDB(user);
+                    }
+                    else {
+                        String errorMessage = handleFireBaseException(task);
+                        myDelegate.onFailure(errorMessage);
                     }
                 });
     }
@@ -109,15 +95,12 @@ public class FirebaseNetwork implements NetworkInterface{
     @Override
     public void signInWithEmailAndPass(Activity myActivity, String email, String password) {
         myAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(myActivity, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            myDelegate.onSuccess();
-                        } else {
-                            String errorMessage = handleFireBaseException(task);
-                            myDelegate.onFailure(errorMessage);
-                        }
+                .addOnCompleteListener(myActivity, task -> {
+                    if (task.isSuccessful()) {
+                        myDelegate.onSuccess();
+                    } else {
+                        String errorMessage = handleFireBaseException(task);
+                        myDelegate.onFailure(errorMessage);
                     }
                 });
     }
@@ -125,19 +108,16 @@ public class FirebaseNetwork implements NetworkInterface{
     @Override
     public void tryLoginGoogle(String email) {
         myAuth.fetchSignInMethodsForEmail(email)
-                .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-                        if (task.isSuccessful()) {
-                            if (!task.getResult().getSignInMethods().isEmpty()) {
-                                myDelegate.onSuccess(true);
-                            } else {
-                                myDelegate.onSuccess(false);
-
-                            }
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        if (!task.getResult().getSignInMethods().isEmpty()) {
+                            myDelegate.onSuccess(true);
                         } else {
-                            handleFireBaseException(task);
+                            myDelegate.onSuccess(false);
+
                         }
+                    } else {
+                        handleFireBaseException(task);
                     }
                 });
     }
@@ -145,30 +125,24 @@ public class FirebaseNetwork implements NetworkInterface{
     @Override
     public void signInUsingGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
-
         myAuth.signInWithCredential(credential)
-                .addOnCompleteListener(_activity, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            String userName = getCurrentUser().getDisplayName();
-                            String email = getCurrentUser().getEmail();
-                            UserDTO user = new UserDTO(userName, email);
-                            addUserInDB(user);
-                            myDelegate.onSuccess();
-                        } else {
-                            String errorMessage = handleFireBaseException(task);
-                            myDelegate.onFailure(errorMessage);
-                        }
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        String userName = getCurrentUser().getDisplayName();
+                        String email = getCurrentUser().getEmail();
+                        UserDTO user = new UserDTO(userName, email);
+                        addUserInDB(user);
+                        myDelegate.onSuccess();
+                    } else {
+                        String errorMessage = handleFireBaseException(task);
+                        myDelegate.onFailure(errorMessage);
                     }
                 });
     }
 
     @Override
     public FirebaseUser getCurrentUser() {
-        // check if null or not
         if (myAuth == null) {
-            // check
             myAuth = FirebaseAuth.getInstance();
         }
         return myAuth.getCurrentUser();
@@ -177,7 +151,6 @@ public class FirebaseNetwork implements NetworkInterface{
     @Override
     public void addUserInDB(UserDTO user) {
         String uid = user.getEmail().split("\\.")[0];
-
         Query query = FirebaseDatabase.getInstance().getReference().child("users");
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -194,17 +167,14 @@ public class FirebaseNetwork implements NetworkInterface{
                 if (flag) {
                     FirebaseDatabase.getInstance().getReference("users")
                             .child(uid)
-                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                myDelegate.onSuccessReturn(user.getUsername());
-                            } else {
-                                String errorMessage = handleFireBaseException(task);
-                                myDelegate.onFailure(errorMessage);
-                            }
-                        }
-                    });
+                            .setValue(user).addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    myDelegate.onSuccessReturn(user.getUsername());
+                                } else {
+                                    String errorMessage = handleFireBaseException(task);
+                                    myDelegate.onFailure(errorMessage);
+                                }
+                            });
                 } else {
                     myDelegate.onSuccess();
                 }
@@ -220,19 +190,16 @@ public class FirebaseNetwork implements NetworkInterface{
         Log.i("TAG", "getUserFromRealDB: ");
         String uid = email.split("\\.")[0];
         Query query = FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("name");
-        query.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()) {
-                    if(task.getResult().getValue() != null){
-                        userName= task.getResult().getValue().toString();
-                    }
-                    myDelegate.onSuccessReturn(userName);
-                } else {
-                    myDelegate.onFailure(task.getException().getMessage());
-                    Log.i("TAG", "problem in getting name: " + task.getException().getMessage());
-
+        query.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                if(task.getResult().getValue() != null){
+                    userName= task.getResult().getValue().toString();
                 }
+                myDelegate.onSuccessReturn(userName);
+            } else {
+                myDelegate.onFailure(task.getException().getMessage());
+                Log.i("TAG", "problem in getting name: " + task.getException().getMessage());
+
             }
         });
     }
@@ -248,9 +215,8 @@ public class FirebaseNetwork implements NetworkInterface{
     @Override
     public void loadHelpRequest(String email) {
         List<RequestDTO> requestPojos = new ArrayList<>();
-        Query query = FirebaseDatabase.getInstance().getReference().child("users").child(email).child("request");
-        //why here didn't use the uid
-
+        String emailId = email.split("\\.")[0];
+        Query query = FirebaseDatabase.getInstance().getReference().child("users").child(emailId).child("request");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -278,21 +244,22 @@ public class FirebaseNetwork implements NetworkInterface{
         });
     }
 
+    // TODO check confusing ids
     @Override
     public void onAccept(TrackerDTO trackerDTO, PatientDTO patientDTO) {
         String[] uid = trackerDTO.getPatientEmail().split("\\.");
         String[] myId = patientDTO.getEmail().split(("\\."));
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(uid[0]);
-        databaseReference.child("tracker").child(myId[0]).setValue(trackerDTO);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(myId[0]);
+        databaseReference.child("tracker").child(uid[0]).setValue(trackerDTO);
 
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child(myId[0]);
         reference.child("request").child(uid[0]).child("acceptance").setValue(1);
 
 
-        DatabaseReference patientReference = FirebaseDatabase.getInstance().getReference().child("users").child(myId[0]);
-        patientReference.child("patient").child(uid[0]).setValue(patientDTO);
+        DatabaseReference patientReference = FirebaseDatabase.getInstance().getReference().child("users").child(uid[0]);
+        patientReference.child("patient").child(myId[0]).setValue(patientDTO);
     }
 
     @Override
@@ -305,8 +272,8 @@ public class FirebaseNetwork implements NetworkInterface{
     @Override
     public void loadPatients(String email) {
         List<PatientDTO> patients = new ArrayList<>();
-        Query query = FirebaseDatabase.getInstance().getReference("users").child(email).child("patient");
-
+        String emailId = email.split("\\.")[0];
+        Query query = FirebaseDatabase.getInstance().getReference("users").child(emailId).child("patient");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -337,7 +304,8 @@ public class FirebaseNetwork implements NetworkInterface{
     @Override
     public void loadTrackers(String email) {
         List<TrackerDTO> trackers = new ArrayList<>();
-        Query query = FirebaseDatabase.getInstance().getReference().child("users").child(email).child("tracker");
+        String emailId = email.split("\\.")[0];
+        Query query = FirebaseDatabase.getInstance().getReference().child("users").child(emailId).child("tracker");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -357,6 +325,7 @@ public class FirebaseNetwork implements NetworkInterface{
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
@@ -367,14 +336,13 @@ public class FirebaseNetwork implements NetworkInterface{
         String trackerEmail = email.split("\\.")[0];
         Log.i("AAA", "loadPatientMedicationList: " + email);
         List<MedicationPOJO> medicationPOJOS = new ArrayList<>();
-        DatabaseReference mDatabase;
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         Query query = mDatabase.child("users").child(trackerEmail).child("medications");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    Log.i("AAA", "Eexits: ");
+                    Log.i("AAA", "Exists: ");
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         MedicationPOJO medicationPOJO = dataSnapshot.getValue(MedicationPOJO.class);
                         if (timeNow <= medicationPOJO.getEndDate()
@@ -383,7 +351,7 @@ public class FirebaseNetwork implements NetworkInterface{
                         }
                     }
                 } else {
-                    Log.i("AAA", "NotEexits: ");
+                    Log.i("AAA", "NotExists: ");
 
                 }
                 // check if contain or not
@@ -400,7 +368,8 @@ public class FirebaseNetwork implements NetworkInterface{
 
     @Override
     public void addMedicationListViewNetwork(List<MedicationPOJO> medicationPOJOS, String email) {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(email);
+        String emailId = email.split("\\.")[0];
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(emailId);
         for (MedicationPOJO meds : medicationPOJOS) {
             String key = String.valueOf(meds.getId());
             databaseReference.child("medications").child(key).setValue(meds);
@@ -408,7 +377,7 @@ public class FirebaseNetwork implements NetworkInterface{
     }
 
     @Override
-    public void UserExistance(String email) {
+    public void UserExistence(String email) {
         String trackerEmail = email.split("\\.")[0];
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -437,13 +406,13 @@ public class FirebaseNetwork implements NetworkInterface{
         String trackerKey = takerEmail.split("\\.")[0];
 
 
-        DatabaseReference deletTakerRefrenec = FirebaseDatabase.getInstance().getReference().child("users").child(patientKey);
-        deletTakerRefrenec.child("tracker").child(trackerKey).removeValue();
+        DatabaseReference deleteTakerReference = FirebaseDatabase.getInstance().getReference().child("users").child(patientKey);
+        deleteTakerReference.child("tracker").child(trackerKey).removeValue();
 
-        DatabaseReference deletePatientRefrenec = FirebaseDatabase.getInstance().getReference().child("users").child(trackerKey);
-        deletePatientRefrenec.child("patient").child(patientKey).removeValue();
+        DatabaseReference deletePatientReference = FirebaseDatabase.getInstance().getReference().child("users").child(trackerKey);
+        deletePatientReference.child("patient").child(patientKey).removeValue();
 
-        deletePatientRefrenec.child("request").child(patientKey).removeValue();
+        deletePatientReference.child("request").child(patientKey).removeValue();
     }
 
     @Override
@@ -456,7 +425,8 @@ public class FirebaseNetwork implements NetworkInterface{
     @Override
     public void updateMedicationToRoomFromFirebase(String email) {
         updatedMedicationList = new ArrayList<>();
-        Query query = FirebaseDatabase.getInstance().getReference().child("users").child(email).child("medications");
+        String emailId = email.split("\\.")[0];
+        Query query = FirebaseDatabase.getInstance().getReference().child("users").child(emailId).child("medications");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -473,15 +443,23 @@ public class FirebaseNetwork implements NetworkInterface{
         });
     }
 
+
+
     @Override
-    public void updatePatientMedicationList(String email, MedicationPOJO medicationPOJO) {
+    public void updatePatientMedication(String email, MedicationPOJO medicationPOJO) {
         String emailId = email.split("\\.")[0];
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users");
         databaseReference.child(emailId)
                 .child("medications").child(String.valueOf(medicationPOJO.getId()))
-                .setValue(medicationPOJO);
-        // may be check if failed
+                .setValue(medicationPOJO).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                myDelegate.onSuccess();
+            } else {
+                String errorMessage = handleFireBaseException(task);
+                myDelegate.onFailure(errorMessage);
+            }
+        });
     }
 
     private String handleFireBaseException(Task task) {
@@ -506,16 +484,13 @@ public class FirebaseNetwork implements NetworkInterface{
 
         FirebaseDatabase.getInstance().getReference("users")
                 .child(uid)
-                .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    myDelegate.onSuccess();
-                } else {
-                    String errorMessage = handleFireBaseException(task);
-                    myDelegate.onFailure(errorMessage);
-                }
-            }
-        });
+                .setValue(user).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        myDelegate.onSuccess();
+                    } else {
+                        String errorMessage = handleFireBaseException(task);
+                        myDelegate.onFailure(errorMessage);
+                    }
+                });
     }
 }

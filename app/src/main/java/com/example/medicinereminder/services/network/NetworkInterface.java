@@ -42,14 +42,20 @@ public interface NetworkInterface {
     void loadPatients(String email);
 
     void loadTrackers(String email);
+
     void loadPatientMedicationList(String email);
 
-    abstract void addMedicationListViewNetwork(List<MedicationPOJO> medicationPOJOS, String email);
-    void UserExistance(String email);
+    void addMedicationListViewNetwork(List<MedicationPOJO> medicationPOJOS, String email);
+
+    void UserExistence(String email);
+
     void deleteTracker(String takerEmail,String patientEmail);
 
     void deleteInPatientMedicationList(String email, String medicationID);
+
     void updateMedicationToRoomFromFirebase(String email);
 
-    void updatePatientMedicationList(String email,MedicationPOJO medicationPOJO);
+    void updatePatientMedication(String email, MedicationPOJO medicationPOJO);
+
+
 }

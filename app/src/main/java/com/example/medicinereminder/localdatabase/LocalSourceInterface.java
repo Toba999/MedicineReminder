@@ -23,6 +23,6 @@ public interface LocalSourceInterface {
 
     LiveData<List<MedicationPOJO>> getMedicationDay(long time);
 
-   // Single<List<MedicationPOJO>> getMedicationDayWorkManger(long time);
-  //  Single<List<MedicationPOJO>> getRefillReminderList(long time);
+    Single<List<MedicationPOJO>> getMedicationDayWorkManger(long time);
+    Single<List<MedicationPOJO>> getRefillReminderList(long time,int left);
 }
