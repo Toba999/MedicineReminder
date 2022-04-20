@@ -40,7 +40,7 @@ public class Converters {
     @TypeConverter
     public Map<String, Boolean> fromStringToHashMap(String timeAndDoseString) {
         if (timeAndDoseString == null) {
-            return  Collections.<String, Boolean>emptyMap();
+            return  Collections.emptyMap();
         } else {
             Type list = new TypeToken<Map<String, Boolean>>() {
             }.getType();

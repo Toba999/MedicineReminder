@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 import com.google.firebase.database.annotations.NotNull;
 
@@ -49,9 +50,16 @@ public class MedicationPOJO implements Serializable {
     private String takeTimePerDay;
     private String takeTimePerWeek;
 
+    @TypeConverters(Converters.class)
     private Map<String, Boolean> TimeSimpleTaken;
+
+    @TypeConverters(Converters.class)
     private Map<String, Boolean> dateTimeSimpleTaken;
+
+    @TypeConverters(Converters.class)
     private Map<String, Boolean> dateTimeAbsTaken;
+
+    @TypeConverters(Converters.class)
     private List<String> dateTimeAbs;
 
     public Map<String, Boolean> getTimeSimpleTaken() {
