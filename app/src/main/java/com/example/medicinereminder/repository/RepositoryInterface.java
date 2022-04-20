@@ -8,6 +8,7 @@ import com.example.medicinereminder.model.MedicationPOJO;
 import com.example.medicinereminder.model.PatientDTO;
 import com.example.medicinereminder.model.RequestDTO;
 import com.example.medicinereminder.model.TrackerDTO;
+import com.example.medicinereminder.services.network.NetworkDelegate;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
@@ -57,7 +58,7 @@ public interface RepositoryInterface {
     void loadPatients(String email);
 
     void loadTakers(String email);
-
+    void setRemoteDelegate(NetworkDelegate delegate);
     //add med to fireBase
     void addMedicationListViaNetwork(List<MedicationPOJO> medicationPOJOS, String email);
 

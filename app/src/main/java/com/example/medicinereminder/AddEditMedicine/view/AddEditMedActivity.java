@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -89,7 +90,9 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
     String[] strTypeArr = {"mg", "mEq", "mL", "mg/g", "mg/cm","mcg","IU","g","%"};
     String[] perWeekArr = {"Everyday", "every two days", "every three days", "every four days", "every five days" ,"once a week"};
     String[] perDayArr = {"once Daily", "twice Daily", "3 times a Day", "4 times a Day"};
-
+    SharedPreferences preferences;
+    public static final String SHARED_PER = "SHAREDfILE";
+    public static final String USER_EMAIL = "USER_EMAIL";
     AddMedicationPresenterInterface presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +102,10 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
         presenter=new AddMedicationPresenter(this,this);
         Intent intent=getIntent();
         isAdd=intent.getBooleanExtra("isAdd",true);
+
+         preferences = getSharedPreferences(SHARED_PER, MODE_PRIVATE);
+         email=preferences.getString(USER_EMAIL,"null");
+         Log.i("AddScreen",email);
 
         if (!isAdd) {
             //Todo get Med pojo
@@ -131,6 +138,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
 
                 try {
                     medicationType=adapterView.getItemAtPosition(i).toString();
+
 
                 }catch (Exception e)
                 {
@@ -271,6 +279,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                 setArraysAndMapsResultToPOJO();
                 onClick(medication);
                 //Todo handle sending the object to display activity and work manager and navigate
+
                 /*
                 setWorkTimer();
                 Bundle bundle = new Bundle();
@@ -315,6 +324,8 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
 
     }
 
+
+
     private void lunchExitDialog() {
         dialogBuilder = new MaterialAlertDialogBuilder(this);
         dialogBuilder.setTitle("Do you want to cancel ?")
@@ -345,21 +356,20 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
 
     @Override
     public void updateMedication(MedicationPOJO medication) {
-        presenter.updateToDatabase(medication);
+        presenter.updateToDatabase(medication,email);
 
     }
 
     @Override
     public void addMedication(MedicationPOJO medication) {
-        presenter.addToDatabase(medication);
+        presenter.addToDatabase(medication,email);
     }
 
     @Override
     public void onSuccess() {
         //Todo navigation to home screen
+        Log.i("add activity","here****************");
         Toast.makeText(this, "Successfully Added!", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, HomeFragment.class);
-        startActivity(intent);
     }
 
     @Override
@@ -396,6 +406,8 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
             medication.setMedicineSize(Integer.parseInt(medicineSize));
 
         medication.setMedicationReason(reason);
+        medication.setEmail(email);
+        medication.setActive(true);
     }
 
     private void setSpinnerResultToPOJO() {
@@ -460,7 +472,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
         DatePickerDialog.OnDateSetListener myDateListener = (view, year1, month1, day1) -> {
             if (view.isShown()) {
                 month1 = month1 + 1;
-                String date = day1 + "/" + month1 + "/" + year1;
+                String date = day1 + "-" + month1 + "-" + year1;
                 if (s.equals("start")) {
                     startDate = getDateMillis(date);
                 } else {
@@ -481,7 +493,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
 
     private Long getDateMillis(String date) {
         long milliseconds = -1;
-        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+        SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         try {
             Date d = f.parse(date);
             milliseconds = d.getTime();
@@ -493,7 +505,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
 
     private String getDateString(Long date) {
         Date d = new Date(date);
-        DateFormat f = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+        DateFormat f = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         return f.format(d);
     }
 
@@ -554,21 +566,6 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
         binding.etEditMedSize.setText(medication.getMedicineSize()+"");
         binding.etRefillReminder.setText(medication.getLeftNumberReminder()+"");
     }
-/*
-    private void logText() {
-        Log.i("model***",
-                binding.etEditMedName.getEditableText().toString().trim()+
-                        binding.tvSelectedStartDate.getText().toString().trim()+
-                        binding.tvSelectedEndDate.getText().toString().trim()+
-                        binding.etEditStrengthDose.getEditableText().toString()+
-                        binding.etEditLeft.getEditableText().toString()+
-                        binding.etRefillReminder.getEditableText().toString()+
-                        binding.etEditReason.getEditableText().toString()
-        );
-    }
-
- */
-
     //Todo set worker notification
 /*
     private void setWorkTimer() {

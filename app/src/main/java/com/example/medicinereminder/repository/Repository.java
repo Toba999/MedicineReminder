@@ -195,6 +195,11 @@ public class Repository implements RepositoryInterface{
         myRemote.loadTrackers(email);
     }
 
+    @Override
+    public void setRemoteDelegate(NetworkDelegate delegate) {
+        myRemote.setNetworkDelegate(delegate);
+    }
+
     //add med to firebase
     @Override
     public void addMedicationListViaNetwork(List<MedicationPOJO> medicationPOJOS, String email) {

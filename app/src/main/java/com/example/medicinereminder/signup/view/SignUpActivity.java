@@ -107,15 +107,14 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityI
 
         presenter.registerWithEmailAndPass(SignUpActivity.this,email,password,name);
         progressBar.setVisibility(View.VISIBLE);
-        initShared();
+        initShared(email);
     }
 
-    private void initShared() {
+    private void initShared(String myEmail) {
         Context context = this;
         sharedPref = context.getSharedPreferences(SHARED_PER, Context.MODE_PRIVATE);
         editor = sharedPref.edit();
-        editor.putString(USER_EMAIL, email);
-        editor.putString(USER_NAME, name);
+        editor.putString(USER_EMAIL, myEmail);
         editor.apply();
     }
 

@@ -33,7 +33,6 @@ public class MedicationPOJO implements Serializable {
     private int strength;
     private String strengthType;
     private String medicationType;
-    private int imageID;
     private String instruction;
 
 
@@ -98,13 +97,6 @@ public class MedicationPOJO implements Serializable {
         this.strengthType = strengthType;
     }
 
-    public int getImageID() {
-        return imageID;
-    }
-
-    public void setImageID(int imageID) {
-        this.imageID = imageID;
-    }
 
     public String getInstruction() {
         return instruction;
