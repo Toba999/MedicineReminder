@@ -443,6 +443,10 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
         Log.i("map", Arrays.toString(timeSelectedAdapter.getTimeMap().entrySet().toArray()));
         Log.i("map", String.valueOf(timeAbs));
         //Todo finalize arrays to pojo
+        medication.setDateTimeAbsTaken(dateTimeAbsTaken);
+        medication.setDateTimeSimpleTaken(dateTimeSimpleTaken);
+        medication.setTimeSimpleTaken(timeSimpleTaken);
+        medication.setDateTimeAbs(timeAbs);
 
     }
 
