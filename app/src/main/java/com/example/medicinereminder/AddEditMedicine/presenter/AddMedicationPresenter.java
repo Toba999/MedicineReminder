@@ -56,12 +56,10 @@ public class AddMedicationPresenter implements AddMedicationPresenterInterface, 
     public void onFailure(Task<AuthResult> task) {
 
     }
-
     @Override
     public void onFailure(String errorMessage) {
         view.onFailure();
     }
-
 
 
 
