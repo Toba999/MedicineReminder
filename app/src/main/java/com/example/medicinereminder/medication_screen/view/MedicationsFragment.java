@@ -1,5 +1,6 @@
 package com.example.medicinereminder.medication_screen.view;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.medicinereminder.R;
 import com.example.medicinereminder.medication_screen.presenter.MedicationFragmentPresenter;
@@ -17,6 +20,11 @@ import com.example.medicinereminder.medication_screen.presenter.MedicationFragme
 public class MedicationsFragment extends Fragment implements MedicationFragmentInterface{
 
     MedicationFragmentPresenterInterface medicationPresenter;
+    ProgressDialog progressDialog;
+    boolean active, inActive;
+    RecyclerView recyclerView;
+    TextView noMed;
+    View view;
 
     public MedicationsFragment() {
         // Required empty public constructor
@@ -25,7 +33,7 @@ public class MedicationsFragment extends Fragment implements MedicationFragmentI
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        medicationPresenter = new MedicationFragmentPresenter(this.getContext(), this);
+        medicationPresenter = new MedicationFragmentPresenter(this.getContext(), this, this);
     }
 
     @Override
@@ -33,18 +41,26 @@ public class MedicationsFragment extends Fragment implements MedicationFragmentI
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_medications, container, false);
-        initRecyclerView(view);
+        showProgressDialod();
+        noMed = (TextView) view.findViewById(R.id.medicationsNoMedYet);
+        recyclerView = view.findViewById(R.id.medicationRecyclerView);
+        this.view = view;
         return view;
     }
+    public void showProgressDialod(){
+        progressDialog = new ProgressDialog(this.getContext());
+        progressDialog.setCancelable(false); // set cancelable to false
+        progressDialog.setMessage("Please Wait"); // set message
+        progressDialog.show();
+    }
 
-    private void initRecyclerView(View view){
-        RecyclerView recyclerView = view.findViewById(R.id.medicationRecyclerView);
+    private void initRecyclerView(View view, boolean active, boolean inActive){
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        MedicationMainAdapter medicationMainAdapter = new MedicationMainAdapter(this.getContext(), medicationPresenter.getActiveInactive(), this);
+        MedicationMainAdapter medicationMainAdapter = new MedicationMainAdapter(this.getContext(), this);
         recyclerView.setAdapter(medicationMainAdapter);
     }
 
@@ -56,10 +72,19 @@ public class MedicationsFragment extends Fragment implements MedicationFragmentI
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
         MedicationInsideAdapter medicationInsideAdapter;
-        if(position == 0)
-            medicationInsideAdapter = new MedicationInsideAdapter(this.getContext(), medicationPresenter.getActiveMedicines());
-        else
-            medicationInsideAdapter = new MedicationInsideAdapter(this.getContext(), medicationPresenter.getInactiveMedicines());
+        medicationInsideAdapter = new MedicationInsideAdapter(this.getContext(), medicationPresenter.getMedicines(position));
         recyclerView.setAdapter(medicationInsideAdapter);
+    }
+
+    @Override
+    public void showMeds(boolean active, boolean inActive) {
+        progressDialog.dismiss();
+        if(active == true || inActive == true)
+            initRecyclerView(view, active, inActive);
+        else{
+            noMed.setVisibility(0);
+            recyclerView.setVisibility(4);
+        }
+            //make text no Medicines
     }
 }

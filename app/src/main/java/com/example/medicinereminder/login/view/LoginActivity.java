@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -68,6 +69,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
     private void userLogin() {
         String email = editEmail.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
+        initShared(email);
 
         if (email.isEmpty()) {
             editEmail.setError("Email is required");
@@ -92,20 +94,22 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
             editPassword.requestFocus();
             return;
         }
-        initShared();
         prsenter.signInWithEmailAndPass(LoginActivity.this,email,password);
         progressBar.setVisibility(View.VISIBLE);
 
 
     }
 
-    private void initShared() {
-        Context context = this;
-        sharedPref = context.getSharedPreferences(SHARED_PER, Context.MODE_PRIVATE);
+    private void initShared(String myEmail) {
+        sharedPref = getSharedPreferences(SHARED_PER, Context.MODE_PRIVATE);
         editor = sharedPref.edit();
+
         editor.putString(USER_EMAIL, email);
         editor.putBoolean("isLogin",true);
+      // editor.putString(USER_EMAIL, myEmail);
+      //  editor.apply();
         editor.commit();
+
     }
 
     @Override

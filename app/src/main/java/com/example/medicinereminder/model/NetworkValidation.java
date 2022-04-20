@@ -24,7 +24,6 @@ public class NetworkValidation {
         email = sharedPref.getString(SignUpActivity.EMAIL, "null");
         return email;
     }
-    // 23mal singleton ??
 
 }
 
