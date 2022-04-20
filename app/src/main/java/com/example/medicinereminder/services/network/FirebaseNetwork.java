@@ -460,9 +460,12 @@ public class FirebaseNetwork implements NetworkInterface{
                 .setValue(medicationPOJO).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 myDelegate.onSuccess();
+                Log.i("add med remote","success");
             } else {
                 String errorMessage = handleFireBaseException(task);
                 myDelegate.onFailure(errorMessage);
+                Log.i("add med remote","failed");
+
             }
         });
     }
@@ -492,7 +495,6 @@ public class FirebaseNetwork implements NetworkInterface{
                     if (task.isSuccessful()) {
                         Log.i("real time","added to database");
                     } else {
-                        String errorMessage = handleFireBaseException(task);
                         Log.i("real time","failed to add database");
 
                     }
