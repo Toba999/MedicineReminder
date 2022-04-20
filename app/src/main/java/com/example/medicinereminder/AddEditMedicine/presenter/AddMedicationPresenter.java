@@ -1,6 +1,7 @@
 package com.example.medicinereminder.AddEditMedicine.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.medicinereminder.AddEditMedicine.view.AddAndEditMedicationInterface;
 import com.example.medicinereminder.model.MedicationPOJO;
@@ -25,22 +26,23 @@ public class AddMedicationPresenter implements AddMedicationPresenterInterface, 
         this.repository = Repository.getInstance(this,context);
         this.view = view;
         this.context = context;
+        this.repository.setRemoteDelegate(this);
     }
 
     @Override
-    public void updateToDatabase(MedicationPOJO medication) {
+    public void updateToDatabase(MedicationPOJO medication,String email) {
         repository.updateMedications(medication);
-        checkUpdateToFirebase(medication);
+        checkUpdateToFirebase(medication,email);
     }
 
     @Override
-    public void addToDatabase(MedicationPOJO medication) {
+    public void addToDatabase(MedicationPOJO medication,String email) {
         repository.insertMedication(medication);
-        checkUpdateToFirebase(medication);
+        checkUpdateToFirebase(medication,email);
     }
 
-    private void checkUpdateToFirebase(MedicationPOJO medication){
-        String email = NetworkValidation.checkShared(context);
+    private void checkUpdateToFirebase(MedicationPOJO medication,String email){
+        Log.i("add presenter",email);
         if(!email.equals("null")){
             repository.updatePatientMedicationList(email,medication);
         }
@@ -49,6 +51,12 @@ public class AddMedicationPresenter implements AddMedicationPresenterInterface, 
     @Override
     public void onSuccess() {
         view.onSuccess();
+        Log.i("add presenter","here****************");
+
+    }
+
+    @Override
+    public void onFailure(Task<AuthResult> task) {
 
     }
     @Override
@@ -57,10 +65,6 @@ public class AddMedicationPresenter implements AddMedicationPresenterInterface, 
     }
 
 
-    @Override
-    public void onFailure(String errorMessage, Task<AuthResult> task) {
-
-    }
 
     @Override
     public void onSuccessReturn(String userName) {

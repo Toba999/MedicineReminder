@@ -1,17 +1,20 @@
 package com.example.medicinereminder.HomeScreen.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.medicinereminder.AddEditMedicine.view.AddEditMedActivity;
 import com.example.medicinereminder.HomeScreen.view.MedicineOfDayRecyleAdapter;
 import com.example.medicinereminder.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -49,7 +52,9 @@ public class HomeFragment extends Fragment {
         addMedicineBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("floating_Btn Test","did Clicked");
+                Intent intent = new Intent(getActivity(), AddEditMedActivity.class);
+                intent.putExtra("isAdd",true);
+                startActivity(intent);
             }
         });
     }

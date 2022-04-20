@@ -19,12 +19,10 @@ import java.util.List;
 public class MedicationMainAdapter extends RecyclerView.Adapter<MedicationMainAdapter.MedicationMainViewHolder> {
 
     private Context context;
-    List<String> activeInActive;
     MedicationFragmentInterface medicationFragmentInterface;
 
-    public MedicationMainAdapter(Context context, List<String> activeInActive, MedicationFragmentInterface medicationFragmentInterface) {
+    public MedicationMainAdapter(Context context, MedicationFragmentInterface medicationFragmentInterface) {
         this.context = context;
-        this.activeInActive = activeInActive;
         this.medicationFragmentInterface = medicationFragmentInterface;
     }
 
@@ -36,12 +34,15 @@ public class MedicationMainAdapter extends RecyclerView.Adapter<MedicationMainAd
 
     @Override
     public int getItemCount() {
-        return activeInActive.size();
+        return 2;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MedicationMainViewHolder holder, int position) {
-        holder.activeInActiveTextView.setText(activeInActive.get(position).toString());
+        if (position == 0)
+            holder.activeInActiveTextView.setText("Active Meds");
+        else
+            holder.activeInActiveTextView.setText("inActive Meds");
         medicationFragmentInterface.setInsideRecyclerView(holder, position);
     }
 

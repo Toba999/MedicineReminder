@@ -90,7 +90,7 @@ public class FirebaseNetwork implements NetworkInterface{
                         }
                         else {
                             String errorMessage = handleFireBaseException(task);
-                            myDelegate.onFailure(task);
+                            myDelegate.onFailure(errorMessage);
                         }
 
                     }
@@ -460,9 +460,12 @@ public class FirebaseNetwork implements NetworkInterface{
                 .setValue(medicationPOJO).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 myDelegate.onSuccess();
+                Log.i("add med remote","success");
             } else {
                 String errorMessage = handleFireBaseException(task);
                 myDelegate.onFailure(errorMessage);
+                Log.i("add med remote","failed");
+
             }
         });
     }
@@ -486,15 +489,14 @@ public class FirebaseNetwork implements NetworkInterface{
 
     private void addRegisterInDB(UserDTO user) {
         String uid = user.getEmail().split("\\.")[0];
-
         FirebaseDatabase.getInstance().getReference("users")
                 .child(uid)
                 .setValue(user).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        myDelegate.onSuccess();
+                        Log.i("real time","added to database");
                     } else {
-                        String errorMessage = handleFireBaseException(task);
-                        myDelegate.onFailure(errorMessage);
+                        Log.i("real time","failed to add database");
+
                     }
                 });
     }
