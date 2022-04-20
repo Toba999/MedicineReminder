@@ -490,11 +490,9 @@ public class FirebaseNetwork implements NetworkInterface{
                 .child(uid)
                 .setValue(user).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        myDelegate.onSuccess();
                         Log.i("real time","added to database");
                     } else {
                         String errorMessage = handleFireBaseException(task);
-                        myDelegate.onFailure(errorMessage);
                         Log.i("real time","failed to add database");
 
                     }
