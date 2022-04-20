@@ -12,23 +12,40 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.medicinereminder.HomeScreen.view.Home_Screen;
 import com.example.medicinereminder.R;
+import com.example.medicinereminder.login.presenter.LoginPresenter;
+import com.example.medicinereminder.login.presenter.LoginPresenterInterface;
 import com.example.medicinereminder.signup.view.SignUpActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginActivityInterface {
     TextView txtSign;
     EditText editEmail,editPassword;
     Button btnLogin;
     FloatingActionButton btnLoginWithGoogle;
+    LoginPresenterInterface prsenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        prsenter = new LoginPresenter(LoginActivity.this,this);
         initUI();
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                userLogin();
+            }
+        });
+        btnLoginWithGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // prsenter.signInUsingGoogle();
+            }
+        });
         txtSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         editEmail = findViewById(R.id.editEmailLogin);
         editPassword = findViewById(R.id.editPasworedLogin);
         btnLogin = findViewById(R.id.btnLogin);
-        btnLogin = findViewById(R.id.btnSignWithGoogle);
+        btnLoginWithGoogle = findViewById(R.id.btnLoginWithGoogle);
         txtSign = findViewById(R.id.txtSign);
 
     }
@@ -72,6 +89,8 @@ public class LoginActivity extends AppCompatActivity {
             editPassword.requestFocus();
             return;
         }
+
+        prsenter.signInWithEmailAndPass(LoginActivity.this,email,password);
 
 
 
@@ -109,6 +128,19 @@ public class LoginActivity extends AppCompatActivity {
 //
 //            }
 //        });
+
+    }
+
+    @Override
+    public void setSuccessfulResponse() {
+        startActivity(new Intent(getApplicationContext(), Home_Screen.class));
+
+    }
+
+    @Override
+    public void setFailureResponse(String errorMassage) {
+        Toast.makeText(getApplicationContext(), "Error ! invalid user or password" , Toast.LENGTH_SHORT).show();
+
 
     }
 }

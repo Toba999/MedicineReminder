@@ -105,35 +105,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityI
 
 
         presenter.registerWithEmailAndPass(SignUpActivity.this,email,password,name);
-        // progressBar.setVisibility(View.VISIBLE);
 
-//        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//                // progressBar.setVisibility(View.GONE);
-//                if (task.isSuccessful()) {
-//                    //Toast.makeText(getApplicationContext(), "You are  registered scussfully", Toast.LENGTH_SHORT).show();
-//                    FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-//                    DatabaseReference reference = rootNode.getReference("User");
-//                    String name = "tasnem";
-//                    String email = txtEmail.getText().toString();
-//                    String pass = txtPassword.getText().toString();
-//                    User user = new User(name,email,pass);
-//                    reference.child(name).setValue(user);
-//                    finish();
-//                    startActivity(new Intent(SignUpActivity.this, MainActivity.class));
-//                } else {
-//
-//                    if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-//                        Toast.makeText(getApplicationContext(), "You are already registered", Toast.LENGTH_SHORT).show();
-//
-//                    } else {
-//                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                }
-//            }
-//        });
 
     }
 
@@ -144,7 +116,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityI
     }
 
     @Override
-    public void setFailureResponse(String errormessge, Task<AuthResult> task) {
+    public void setFailureResponse( Task<AuthResult> task) {
         if (task.getException() instanceof FirebaseAuthUserCollisionException) {
             Toast.makeText(getApplicationContext(), "You are already registered", Toast.LENGTH_SHORT).show();
 

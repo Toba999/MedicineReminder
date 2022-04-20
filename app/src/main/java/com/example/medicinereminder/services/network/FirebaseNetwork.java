@@ -90,7 +90,7 @@ public class FirebaseNetwork implements NetworkInterface{
                         }
                         else {
                             String errorMessage = handleFireBaseException(task);
-                            myDelegate.onFailure(errorMessage,task);
+                            myDelegate.onFailure(task);
                         }
 
                     }
