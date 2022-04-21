@@ -41,7 +41,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
     private boolean isAdd = true;
 
     private ActivityAddEditMedBinding binding;
-    private MedicationPOJO medication;
+    private MedicationPOJO medication = new MedicationPOJO();
 
     private boolean isFillReminder = false;
     private boolean chooseTimesFlag = false;
@@ -109,13 +109,13 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
 
         if (!isAdd) {
             //Todo get Med pojo
+
             handleEditScreen();
         } else {
             medication = new MedicationPOJO();
             handleAddScreen();
          }
-        initRecycleView();
-        handleSpinners();
+
 
     }
 
@@ -258,8 +258,9 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
     }
 
     private void handleEditScreen() {
+        medication = (MedicationPOJO) getIntent().getSerializableExtra("med");
         binding.tvTitle.setText("Edit");
-        setSpinnerResult();
+        //setSpinnerResult(medication);
         setEditText();
         binding.btnDoneAddEdit.setOnClickListener(v -> {
             getEditableText();
@@ -321,6 +322,8 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
 
             }
         });
+        initRecycleView();
+        handleSpinners();
 
     }
 
@@ -344,6 +347,8 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                 .setNegativeButton("No", (dialog, i) -> {
                     dialog.dismiss();
                 }).show();
+        initRecycleView();
+        handleSpinners();
     }
 
     @Override
@@ -527,7 +532,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
         timeSelectedAdapter.notifyDataSetChanged();
     }
 
-    private void setSpinnerResult() {
+    private void setSpinnerResult(MedicationPOJO medication) {
         if (!medication.getMedicationType().isEmpty()) {
             binding.spEditMedType.setSelection(((ArrayAdapter) binding.spEditMedType.getAdapter())
                     .getPosition(medication.getMedicationType()));
@@ -557,10 +562,11 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
     private void setEditText() {
         binding.etEditMedName.setText(medication.getMedicationName());
         binding.tvSelectedStartDate.setText(getDateString(medication.getStartDate()));
+
         startDate = medication.getStartDate();
         binding.tvSelectedEndDate.setText(getDateString(medication.getEndDate()));
         endDate = medication.getEndDate();
-        binding.etEditStrengthDose.setText(medication.getStrength());
+        binding.etEditStrengthDose.setText(String.valueOf(medication.getStrength()));
         binding.etEditReason.setText(medication.getMedicationReason().isEmpty() ? "" : medication.getMedicationReason());
         binding.etEditLeft.setText(medication.getLeftNumber()+"");
         binding.etEditMedSize.setText(medication.getMedicineSize()+"");

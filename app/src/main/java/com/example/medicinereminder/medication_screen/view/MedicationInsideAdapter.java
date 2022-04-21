@@ -16,6 +16,8 @@ import com.example.medicinereminder.DisplayMedicine.DisplayMedActivity;
 import com.example.medicinereminder.R;
 import com.example.medicinereminder.model.MedicationPOJO;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsideAdapter.MedicationInsideViewHolder> {
@@ -43,8 +45,20 @@ public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsi
         setImage(holder, imgName);
         holder.medNotificationSwitch.setChecked(medicineStores.get(position).getIsActive());
         holder.view.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), DisplayMedActivity.class);
-            v.getContext().startActivity(intent);
+            if(medicineStores.get(position).getIsActive() != false){
+                Intent intent = new Intent(v.getContext(), DisplayMedActivity.class);
+                intent.putExtra("med", (Serializable) medicineStores.get(position));
+                v.getContext().startActivity(intent);
+            }
+        });
+        holder.medNotificationSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                if(medicineStores.get(position).getEndDate() > LocalDateTime.now().getLong()){
+//                    medicineStores.get(position).setActive(!medicineStores.get(position).getIsActive());
+//
+//                }
+            }
         });
     }
 
