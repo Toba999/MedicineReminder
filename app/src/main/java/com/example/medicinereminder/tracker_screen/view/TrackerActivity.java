@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,15 +51,17 @@ public class TrackerActivity extends AppCompatActivity implements TrakerActivity
             public void onClick(View view) {
                 trakerEmail = editTrakerEmail.getText().toString();
                 SharedPreferences sharedPref = getSharedPreferences(LoginActivity.SHARED_PER, Context.MODE_PRIVATE);
-                senderEmail = sharedPref.getString(LoginActivity.USER_EMAIL,"null");
-                if(presenter.UserExistence(trakerEmail)){
-               // presenter.UserExistence(trakerEmail);
-                    RequestDTO request = new RequestDTO("tasnem",trakerEmail,senderEmail,0);
-                presenter.sendRequest(request);
-                Toast.makeText(getApplicationContext(), "the request send", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), "the request send", Toast.LENGTH_SHORT).show();
 
-                }
+                senderEmail = presenter.currentUser().getEmail();//sharedPref.getString(LoginActivity.USER_EMAIL,"null");
+                Log.i("email",senderEmail);
+               // if(presenter.UserExistence(trakerEmail)){
+                  presenter.UserExistence(trakerEmail);
+                  //  RequestDTO request = new RequestDTO("tasnem",trakerEmail,senderEmail,0);
+               // presenter.sendRequest(request);
+               // Toast.makeText(getApplicationContext(), "the request send", Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getApplicationContext(), "the request send", Toast.LENGTH_SHORT).show();
+
+              //  }
 
             }
         });
@@ -78,17 +81,17 @@ public class TrackerActivity extends AppCompatActivity implements TrakerActivity
         recyclerView.setAdapter(trackerAdapter);
     }
 
-   // @Override
-//    public void isUserExiste(boolean respons) {
-//        if(respons){
-//            RequestDTO request = new RequestDTO("tasnem",trakerEmail,senderEmail,0);
-//            presenter.sendRequest(request);
-//            Toast.makeText(getApplicationContext(), "the request send", Toast.LENGTH_SHORT).show();
-//
-//        }else{
-//            Toast.makeText(getApplicationContext(), "the request cant send", Toast.LENGTH_SHORT).show();
-//
-//        }
-//
-//    }
+    @Override
+    public void setUserExiste(boolean respons) {
+        if(respons){
+            RequestDTO request = new RequestDTO("tasnem",trakerEmail,senderEmail,0);
+            presenter.sendRequest(request);
+            Toast.makeText(getApplicationContext(), "the request send", Toast.LENGTH_SHORT).show();
+
+        }else{
+            Toast.makeText(getApplicationContext(), "the request cant send", Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
 }
