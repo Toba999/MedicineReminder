@@ -2,18 +2,15 @@ package com.example.medicinereminder.signup.presenter;
 
 import android.app.Activity;
 import android.content.Context;
-
 import com.example.medicinereminder.model.MedicationPOJO;
 import com.example.medicinereminder.model.PatientDTO;
 import com.example.medicinereminder.model.RequestDTO;
 import com.example.medicinereminder.model.TrackerDTO;
 import com.example.medicinereminder.repository.Repository;
-import com.example.medicinereminder.services.network.FirebaseNetwork;
 import com.example.medicinereminder.services.network.NetworkDelegate;
 import com.example.medicinereminder.signup.view.SignUpActivityInterface;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-
 import java.util.List;
 
 public class SignUpPresenter implements SignupPresenterInterface, NetworkDelegate {

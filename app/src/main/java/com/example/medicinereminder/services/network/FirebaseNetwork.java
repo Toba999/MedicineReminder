@@ -392,7 +392,10 @@ public class FirebaseNetwork implements NetworkInterface{
                     String email = dataSnapshot.child("email").getValue().toString();
                     String key = email.split("\\.")[0];
                     if (key.equals(trackerEmail)) {
+
                         exist = true;
+                        //myDelegate.isUserExist(exist);
+
                         break;
                     }
                 }
@@ -403,6 +406,7 @@ public class FirebaseNetwork implements NetworkInterface{
             }
         });
 
+       // return exist;
     }
 
     @Override

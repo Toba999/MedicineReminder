@@ -48,5 +48,6 @@
     <string name="weight">Weight</string>
     <string name="ConfirmPassword">ConfirmPassword</string>
     <string name="medications">Medications</string>
+    <string name="Request">Request</string>
 
 </resources>

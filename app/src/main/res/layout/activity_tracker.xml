@@ -45,6 +45,33 @@
         </RelativeLayout>
     </FrameLayout>
 
+    <EditText
+        android:id="@+id/editeTrakerEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+
+        android:hint="Enter Traker Email"
+        android:minHeight="48dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fl_header_image" />
+
+    <Button
+        android:id="@+id/btn_Add_Traker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_background"
+
+        android:text="@string/Request"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editeTrakerEmail"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,6 +79,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="20dp"
         android:id="@+id/trackersRecyclerView"
-        app:layout_constraintTop_toBottomOf="@+id/fl_header_image" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_Add_Traker" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

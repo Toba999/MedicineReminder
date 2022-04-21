@@ -41,7 +41,7 @@ public class Repository implements RepositoryInterface{
     public static Repository getInstance(NetworkDelegate myDelegation, Context context) {
         if (repo == null) {
             repo = new Repository(myDelegation, context);
-        }
+       }
         return repo;
     }
 

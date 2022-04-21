@@ -1,8 +1,6 @@
 package com.example.medicinereminder.login.view;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,17 +13,12 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.medicinereminder.HomeScreen.view.Home_Screen;
 import com.example.medicinereminder.R;
 import com.example.medicinereminder.login.presenter.LoginPresenter;
 import com.example.medicinereminder.login.presenter.LoginPresenterInterface;
 import com.example.medicinereminder.signup.view.SignUpActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.AuthResult;
-
 public class LoginActivity extends AppCompatActivity implements LoginActivityInterface {
     public static final String SHARED_PER = "SHAREDfILE";
     public static final String USER_EMAIL = "USER_EMAIL";
@@ -44,6 +37,15 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        sharedPref = getSharedPreferences(SHARED_PER, Context.MODE_PRIVATE);
+       // sharedPref.edit().remove(USER_EMAIL).commit();
+        //sharedPref.edit().remove("isLogin").commit();
+
+       if(sharedPref.getBoolean("isLogin",false)){
+           startActivity(new Intent(getApplicationContext(), Home_Screen.class));
+           finish();
+       }
+
         prsenter = new LoginPresenter(LoginActivity.this,this);
         initUI();
         btnLogin.setOnClickListener(view -> userLogin());
@@ -104,15 +106,24 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
     private void initShared(String myEmail) {
         sharedPref = getSharedPreferences(SHARED_PER, Context.MODE_PRIVATE);
         editor = sharedPref.edit();
-        editor.putString(USER_EMAIL, myEmail);
-        editor.apply();
-        Log.i("login",myEmail);
+
+       // editor.putString(USER_EMAIL, email);
+
+        editor.putBoolean("isLogin",true);
+       editor.putString(USER_EMAIL, myEmail);
+
+      //  editor.apply();
+      editor.commit();
+
     }
 
     @Override
     public void setSuccessfulResponse() {
+
         startActivity(new Intent(getApplicationContext(), Home_Screen.class));
         progressBar.setVisibility(View.INVISIBLE);
+        finish();
+
 
     }
 
