@@ -141,8 +141,8 @@ public class Repository implements RepositoryInterface{
 
 
     @Override
-    public void UserExistence(String email) {
-        myRemote.UserExistence(email);
+    public boolean UserExistence(String email) {
+       return myRemote.UserExistence(email);
     }
 
     @Override
