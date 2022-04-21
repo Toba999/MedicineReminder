@@ -33,7 +33,6 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
         _repo = Repository.getInstance(this, context);
         getActiveMedicines(lifecycleOwner);
         getInactiveMedicines(lifecycleOwner);
-
     }
 
     public void getActiveMedicines(LifecycleOwner lifecycleOwner){

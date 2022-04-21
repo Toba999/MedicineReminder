@@ -33,12 +33,12 @@ public class MedicationPOJO implements Serializable {
     private int strength;
     private String strengthType;
     private String medicationType;
-    private String instruction;
+    private String instruction; // before/after/during eating
 
 
-    private int leftNumber;
-    private int leftNumberReminder;
-    private int medicineSize;
+    private int leftNumber; // remaining number
+    private int leftNumberReminder; // number to refill
+    private int medicineSize; // bottle size
     private boolean isActive;
     private String medicationReason;
 
@@ -46,14 +46,14 @@ public class MedicationPOJO implements Serializable {
     private Long startDate;
     @NotNull
     private Long endDate;
-    private String takeTimePerDay;
-    private String takeTimePerWeek;
+    private String takeTimePerDay; // how many times in day---doses
+    private String takeTimePerWeek; //how many times in weak
 
     @TypeConverters(Converters.class)
-    private Map<String, Boolean> TimeSimpleTaken;
+    private Map<String, Boolean> TimeSimpleTaken; // time  4.30 PM , taken or not
 
     @TypeConverters(Converters.class)
-    private Map<String, Boolean> dateTimeSimpleTaken;
+    private Map<String, Boolean> dateTimeSimpleTaken; // date + time , taken or not
 
     @TypeConverters(Converters.class)
     private Map<String, Boolean> dateTimeAbsTaken;
