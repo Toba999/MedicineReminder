@@ -2,6 +2,8 @@ package com.example.medicinereminder.login.presenter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
+
 import com.example.medicinereminder.login.view.LoginActivityInterface;
 import com.example.medicinereminder.model.MedicationPOJO;
 import com.example.medicinereminder.model.PatientDTO;
@@ -17,6 +19,7 @@ public class LoginPresenter implements NetworkDelegate ,LoginPresenterInterface{
     private Context context;
     private LoginActivityInterface view;
     private Repository repository;
+
     public LoginPresenter(Context context, LoginActivityInterface view) {
         this.context = context;
         this.view = view;
@@ -76,7 +79,7 @@ public class LoginPresenter implements NetworkDelegate ,LoginPresenterInterface{
 
     @Override
     public void isUserExist(boolean existance) {
-
+        Log.i("presenter","login presenter user exist");
     }
 
     @Override

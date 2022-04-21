@@ -9,20 +9,23 @@ import com.example.medicinereminder.model.TrackerDTO;
 import com.example.medicinereminder.repository.Repository;
 import com.example.medicinereminder.services.network.NetworkDelegate;
 import com.example.medicinereminder.tracker_screen.view.TrackerActivity;
+import com.example.medicinereminder.tracker_screen.view.TrakerActivityInterface;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
 public class TrakerPresenter implements TrakerPresenterInterface, NetworkDelegate {
 
     private Context context;
-    private TrackerActivity view;
+    private TrakerActivityInterface view;
     private Repository repository;
-    public TrakerPresenter(Context context, TrackerActivity view) {
+    public TrakerPresenter(Context context, TrakerActivityInterface view) {
         this.context = context;
         this.view = view;
         repository = Repository.getInstance(this,context);
+        repository.setRemoteDelegate(this);
 
     }
 
@@ -68,7 +71,7 @@ public class TrakerPresenter implements TrakerPresenterInterface, NetworkDelegat
 
     @Override
     public void isUserExist(boolean existance) {
-      //  view.isUserExiste(existance);
+       view.setUserExiste(existance);
     }
 
     @Override
@@ -82,12 +85,17 @@ public class TrakerPresenter implements TrakerPresenterInterface, NetworkDelegat
     }
 
     @Override
-    public boolean UserExistence(String email) {
-      return    repository.UserExistence(email);
+    public void UserExistence(String email) {
+          repository.UserExistence(email);
     }
 
     @Override
     public void sendRequest(RequestDTO request) {
         repository.sendRequest(request);
+    }
+
+    @Override
+    public FirebaseUser currentUser() {
+      return   repository.getCurrentUser();
     }
 }

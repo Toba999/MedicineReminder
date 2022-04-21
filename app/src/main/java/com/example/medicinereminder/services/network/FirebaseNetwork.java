@@ -382,7 +382,7 @@ public class FirebaseNetwork implements NetworkInterface{
     }
 
     @Override
-    public boolean UserExistence(String email) {
+    public void UserExistence(String email) {
         String trackerEmail = email.split("\\.")[0];
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -392,8 +392,11 @@ public class FirebaseNetwork implements NetworkInterface{
                     String email = dataSnapshot.child("email").getValue().toString();
                     String key = email.split("\\.")[0];
                     if (key.equals(trackerEmail)) {
+
                         exist = true;
-                      //  break;
+                        //myDelegate.isUserExist(exist);
+
+                        break;
                     }
                 }
                 myDelegate.isUserExist(exist);
@@ -403,7 +406,7 @@ public class FirebaseNetwork implements NetworkInterface{
             }
         });
 
-        return exist;
+       // return exist;
     }
 
     @Override

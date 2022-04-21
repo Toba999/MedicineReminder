@@ -70,7 +70,7 @@ public interface RepositoryInterface {
     //remove med from fireBase
     void deleteInPatientMedicationList(String email, String medicationID);
 
-    boolean UserExistence(String email);
+    void UserExistence(String email);
     // get medication Patient List
 
     void loadMedicationListOFPatient(String email);

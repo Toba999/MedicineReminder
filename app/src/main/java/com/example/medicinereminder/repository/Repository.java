@@ -41,7 +41,7 @@ public class Repository implements RepositoryInterface{
     public static Repository getInstance(NetworkDelegate myDelegation, Context context) {
         if (repo == null) {
             repo = new Repository(myDelegation, context);
-        }
+       }
         return repo;
     }
 
@@ -141,8 +141,8 @@ public class Repository implements RepositoryInterface{
 
 
     @Override
-    public boolean UserExistence(String email) {
-       return myRemote.UserExistence(email);
+    public void UserExistence(String email) {
+        myRemote.UserExistence(email);
     }
 
     @Override

@@ -47,7 +47,7 @@ public interface NetworkInterface {
 
     void addMedicationListViewNetwork(List<MedicationPOJO> medicationPOJOS, String email);
 
-    boolean UserExistence(String email);
+    void UserExistence(String email);
 
     void deleteTracker(String takerEmail,String patientEmail);
 
