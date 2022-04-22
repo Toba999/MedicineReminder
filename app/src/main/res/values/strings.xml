@@ -49,5 +49,8 @@
     <string name="ConfirmPassword">ConfirmPassword</string>
     <string name="medications">Medications</string>
     <string name="Request">Request</string>
+    <string name="Requests">   Requests</string>
+    <string name="Confirm">Confirm</string>
+    <string name="Delete">Delete</string>
 
 </resources>
