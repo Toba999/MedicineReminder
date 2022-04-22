@@ -47,11 +47,10 @@
             android:name=".AddEditMedicine.view.AddEditMedActivity"
             android:exported="true"
 
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".HomeScreen.view.Home_Screen"
-            android:exported="true"></activity>
-
+            android:exported="true"
             android:screenOrientation="portrait" >
         </activity>
      
@@ -60,7 +59,7 @@
         <activity
             android:name=".splash.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".requests.view.RequestsActivity"
             android:exported="true"/>
