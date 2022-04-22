@@ -1,6 +1,7 @@
 package com.example.medicinereminder.medication_screen.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
@@ -64,6 +65,17 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
             return _inActiveMedicines;
     }
 
+    @Override
+    public void deleteMedToDatabase(MedicationPOJO medication) {
+        _repo.deleteMedication(medication);
+        _medicationFragmentInterface.refreshRecyclerView();
+    }
+
+    @Override
+    public void updateMedToDatabase(MedicationPOJO medication) {
+        _repo.updateMedications(medication);
+        _medicationFragmentInterface.refreshRecyclerView();
+    }
 
     @Override
     public void onSuccess() {
