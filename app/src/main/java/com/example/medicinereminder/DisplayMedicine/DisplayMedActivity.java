@@ -77,7 +77,7 @@ public class DisplayMedActivity extends AppCompatActivity {
     }
 
     public void setDataToViews(){
-        setImage(medicationPOJO.getMedicationType().toString());
+        setImage(medicationPOJO.getMedicationType());
         medBottleAmountTextView.setText(String.valueOf(medicationPOJO.getMedicineSize()));
         medRemainingAmountTextView.setText(String.valueOf(medicationPOJO.getLeftNumber()));
         medTimePerWeekTextView.setText(medicationPOJO.getTakeTimePerWeek());
@@ -92,7 +92,8 @@ public class DisplayMedActivity extends AppCompatActivity {
         dateText = df2.format(date);
         medEndDateTextView.setText(dateText); //
         medStrengthTextView.setText(String.valueOf(medicationPOJO.getStrength()));
-        medDoseAmountTextView.setText(String.valueOf(medicationPOJO.getTakeTimePerDay()));
+        medDoseAmountTextView.setText(String.valueOf(medicationPOJO.getDoseNum()));
+        medStartTimeTextView.setText(medicationPOJO.getTimeSimpleTaken().keySet().toArray()[0].toString()); //Time simple taken[0]
     }
     public void setImage(String imgName){
         if(imgName.equals("drops"))

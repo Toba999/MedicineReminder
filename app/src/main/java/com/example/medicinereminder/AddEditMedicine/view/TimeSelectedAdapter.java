@@ -43,7 +43,9 @@ public class TimeSelectedAdapter extends RecyclerView.Adapter<TimeSelectedAdapte
             timeMap = map;
     }
     public void setDosePerDay(int n) {
-        timeMap.clear();
+        if(AddEditMedActivity.isAdd){
+            timeMap.clear();
+        }
         dosePerDay = n;
     }
 
@@ -59,6 +61,7 @@ public class TimeSelectedAdapter extends RecyclerView.Adapter<TimeSelectedAdapte
         if(timeMap.isEmpty()) {
             holder.binding.etTimeSelcted.setText("Choose Time");
         }else{
+
             holder.result= (String) timeMap.keySet().toArray()[position];
             holder.binding.etTimeSelcted.setText(holder.result);
         }
