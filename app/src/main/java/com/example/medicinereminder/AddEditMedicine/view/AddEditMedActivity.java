@@ -1,9 +1,12 @@
 package com.example.medicinereminder.AddEditMedicine.view;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,12 +21,15 @@ import com.example.medicinereminder.AddEditMedicine.presenter.AddMedicationPrese
 import com.example.medicinereminder.AddEditMedicine.presenter.AddMedicationPresenterInterface;
 import com.example.medicinereminder.DisplayMedicine.DisplayMedActivity;
 import com.example.medicinereminder.HomeScreen.HomeFragment;
+import com.example.medicinereminder.HomeScreen.view.Home_Screen;
 import com.example.medicinereminder.databinding.ActivityAddEditMedBinding;
 import com.example.medicinereminder.localdatabase.LocalSource;
 import com.example.medicinereminder.model.MedicationPOJO;
+import com.example.medicinereminder.model.TimeUtility;
 import com.example.medicinereminder.repository.Repository;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -106,10 +112,8 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
          preferences = getSharedPreferences(SHARED_PER, MODE_PRIVATE);
          email=preferences.getString(USER_EMAIL,"null");
          Log.i("AddScreen",email);
-
+        handleSpinners();
         if (!isAdd) {
-            //Todo get Med pojo
-
             handleEditScreen();
         } else {
             medication = new MedicationPOJO();
@@ -260,7 +264,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
     private void handleEditScreen() {
         medication = (MedicationPOJO) getIntent().getSerializableExtra("med");
         binding.tvTitle.setText("Edit");
-        //setSpinnerResult(medication);
+        setSpinnerResult(medication);
         setEditText();
         binding.btnDoneAddEdit.setOnClickListener(v -> {
             getEditableText();
@@ -279,18 +283,16 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                 setSpinnerResultToPOJO();
                 setArraysAndMapsResultToPOJO();
                 onClick(medication);
+
                 //Todo handle sending the object to display activity and work manager and navigate
+                //setWorkTimer();
 
-                /*
-                setWorkTimer();
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(DisplayMedicationDrug.displayTag, medication);
-                Navigation.findNavController(v).navigate(R.id.action_fragment_add_Medication_to_displayMedicationDrug, bundle);
-                */
-                Toast.makeText(this, "Successfully Updated!", Toast.LENGTH_SHORT).show();
-
+                Intent intent = new Intent(AddEditMedActivity.this,DisplayMedActivity.class);
+                intent.putExtra("med", (Serializable) medication);
+                startActivity(intent);
             }
         });
+        initRecycleView(medication);
     }
 
     private void handleAddScreen() {
@@ -313,16 +315,14 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                 setArraysAndMapsResultToPOJO();
                 medication.setId(Calendar.getInstance().getTimeInMillis()+medicationName+endDate);
                 onClick(medication);
+                startActivity(new Intent(AddEditMedActivity.this, Home_Screen.class));
                 //Todo handle  work manager
+                //setWorkTimer();
 
-                /*
-                setWorkTimer();
-                Navigation.findNavController(v).navigate(R.id.action_fragment_add_Medication_to_fragment_home);
-                */
 
             }
         });
-        initRecycleView();
+        initRecycleView(medication);
         handleSpinners();
 
     }
@@ -330,25 +330,23 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
 
 
     private void lunchExitDialog() {
-        dialogBuilder = new MaterialAlertDialogBuilder(this);
-        dialogBuilder.setTitle("Do you want to cancel ?")
-                .setMessage("Your changes will not be save!")
-                .setPositiveButton("Yes", (dialog, i) -> {
-                    dialog.dismiss();
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("Are you sure you want to go back no changes will be saved");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
+                (dialog, which) -> {
                     if(isAdd){
-                        Intent intent = new Intent(this, HomeFragment.class);
-                        startActivity(intent);
+                        startActivity(new Intent(AddEditMedActivity.this, Home_Screen.class));
                     }else{
-                        //Todo pt med pojo extra
-                        Intent intent = new Intent(this, DisplayMedActivity.class);
-                        startActivity(intent);
+                        startActivity(new Intent(AddEditMedActivity.this,DisplayMedActivity.class));
                     }
-                })
-                .setNegativeButton("No", (dialog, i) -> {
                     dialog.dismiss();
-                }).show();
-        initRecycleView();
-        handleSpinners();
+
+                });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
+                (dialog, which) -> dialog.dismiss());
+        alertDialog.show();
+
     }
 
     @Override
@@ -372,21 +370,22 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
 
     @Override
     public void onSuccess() {
-        //Todo navigation to home screen
-        Log.i("add activity","here****************");
-        Toast.makeText(this, "Successfully Added!", Toast.LENGTH_SHORT).show();
+        if(isAdd){
+            Toast.makeText(this, "Successfully Added!", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "Successfully Updated!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
     public void onFailure() {
         Toast.makeText(this, "Failed to Add", Toast.LENGTH_SHORT).show();
-
-
     }
 
 
     private void getEditableText() {
         medicationName = binding.etEditMedName.getEditableText().toString().trim();
+        dosePerDay = binding.etEditNumDose.getEditableText().toString().trim();
         start_date = binding.tvSelectedStartDate.getText().toString().trim();
         end_date = binding.tvSelectedEndDate.getText().toString().trim();
         strength = binding.etEditStrengthDose.getEditableText().toString();
@@ -409,6 +408,8 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
             medication.setEndDate(endDate);
         if (!medicineSize.isEmpty())
             medication.setMedicineSize(Integer.parseInt(medicineSize));
+        if (!dosePerDay.isEmpty())
+            medication.setDoseNum(dosePerDay);
 
         medication.setMedicationReason(reason);
         medication.setEmail(email);
@@ -418,7 +419,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
     private void setSpinnerResultToPOJO() {
         medication.setMedicationType(medicationType);
         medication.setStrengthType(strengthType);
-        medication.setTakeTimePerDay(dosePerDay);
+        medication.setTakeTimePerDay(takeTimePerDay);
         medication.setInstruction(instruction);
         medication.setTakeTimePerWeek(takeTimePerWeek);
     }
@@ -451,15 +452,11 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                 day=1;
         }
         for (long i= startDate;i<=endDate;i+=(day*24*60*60000L)){
-            dateTimeSimpleTaken.put(getDateString(i),false);
+            dateTimeSimpleTaken.put(TimeUtility.getDateString(i),false);
             for (int j=0;j<timeAbs.size();j++)
             dateTimeAbsTaken.put((i+timeAbs.get(j))+"",false);
         }
-        Log.i("map", Arrays.toString(dateTimeSimpleTaken.entrySet().toArray()));
-        Log.i("map", Arrays.toString(dateTimeAbsTaken.entrySet().toArray()));
-        Log.i("map", Arrays.toString(timeSelectedAdapter.getTimeMap().entrySet().toArray()));
-        Log.i("map", String.valueOf(timeAbs));
-        //Todo finalize arrays to pojo
+
         medication.setDateTimeAbsTaken(dateTimeAbsTaken);
         medication.setDateTimeSimpleTaken(dateTimeSimpleTaken);
         medication.setTimeSimpleTaken(timeSimpleTaken);
@@ -479,9 +476,9 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                 month1 = month1 + 1;
                 String date = day1 + "-" + month1 + "-" + year1;
                 if (s.equals("start")) {
-                    startDate = getDateMillis(date);
+                    startDate = TimeUtility.getDateMillis(date);
                 } else {
-                    endDate = getDateMillis(date);
+                    endDate = TimeUtility.getDateMillis(date);
                 }
                 v.setText(date);
             }
@@ -496,35 +493,23 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
         datePickerDialog.show();
     }
 
-    private Long getDateMillis(String date) {
-        long milliseconds = -1;
-        SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
-        try {
-            Date d = f.parse(date);
-            milliseconds = d.getTime();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return milliseconds;
-    }
 
-    private String getDateString(Long date) {
-        Date d = new Date(date);
-        DateFormat f = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
-        return f.format(d);
-    }
-
-    private void initRecycleView() {
+    private void initRecycleView(MedicationPOJO medication) {
         int n = 0;
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         if (medication.getTimeSimpleTaken() != null && medication.getTimeSimpleTaken().size() != 0) {
             n = medication.getDateTimeAbs().size();
+            Log.i("toooba",medication.getTimeSimpleTaken().toString());
+            timeSelectedAdapter = new TimeSelectedAdapter(n, this, medication.getTimeSimpleTaken());
             timeSelectedAdapter.setTimeAndDose(medication.getTimeSimpleTaken());
+        }else{
+            timeSelectedAdapter = new TimeSelectedAdapter(n, this, medication.getTimeSimpleTaken());
+
         }
-        timeSelectedAdapter = new TimeSelectedAdapter(n, this, medication.getTimeSimpleTaken());
         binding.recycleChooseTime.setLayoutManager(layoutManager);
         binding.recycleChooseTime.setAdapter(timeSelectedAdapter);
+
     }
 
     private void setDosePerTime(int n) {
@@ -534,37 +519,33 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
 
     private void setSpinnerResult(MedicationPOJO medication) {
         if (!medication.getMedicationType().isEmpty()) {
-            binding.spEditMedType.setSelection(((ArrayAdapter) binding.spEditMedType.getAdapter())
-                    .getPosition(medication.getMedicationType()));
+            binding.spEditMedType.setSelection(adapterMedType.getPosition(medication.getMedicationType()));
         }
 
         if (!medication.getStrengthType().isEmpty()) {
-            binding.spEditStrengthType.setSelection(((ArrayAdapter) binding.spEditStrengthType.getAdapter())
-                    .getPosition(medication.getStrengthType()));
+            binding.spEditStrengthType.setSelection(adapterStrType.getPosition(medication.getStrengthType()));
         }
 
         if (!medication.getTakeTimePerDay().isEmpty()) {
-            binding.spOccurrDay.setSelection(((ArrayAdapter) binding.spOccurrDay.getAdapter())
-                    .getPosition(medication.getTakeTimePerDay()));
+            binding.spOccurrDay.setSelection(adapterPerDay.getPosition(medication.getTakeTimePerDay()));
         }
 
         if (!medication.getInstruction().isEmpty()) {
-            binding.spEditMedEating.setSelection(((ArrayAdapter) binding.spEditMedEating.getAdapter())
-                    .getPosition(medication.getInstruction()));
+            binding.spEditMedEating.setSelection(adapterEating.getPosition(medication.getInstruction()));
         }
 
         if (!medication.getTakeTimePerWeek().isEmpty()) {
-            binding.spOccurrWeek.setSelection(((ArrayAdapter) binding.spOccurrWeek.getAdapter())
-                    .getPosition(medication.getTakeTimePerWeek()));
+            binding.spOccurrWeek.setSelection(adapterPerWeek.getPosition(medication.getTakeTimePerWeek()));
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void setEditText() {
         binding.etEditMedName.setText(medication.getMedicationName());
-        binding.tvSelectedStartDate.setText(getDateString(medication.getStartDate()));
-
+        binding.etEditNumDose.setText(medication.getDoseNum());
+        binding.tvSelectedStartDate.setText(TimeUtility.getDateString(medication.getStartDate()));
         startDate = medication.getStartDate();
-        binding.tvSelectedEndDate.setText(getDateString(medication.getEndDate()));
+        binding.tvSelectedEndDate.setText(TimeUtility.getDateString(medication.getEndDate()));
         endDate = medication.getEndDate();
         binding.etEditStrengthDose.setText(String.valueOf(medication.getStrength()));
         binding.etEditReason.setText(medication.getMedicationReason().isEmpty() ? "" : medication.getMedicationReason());
@@ -585,7 +566,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                 .build();
 
         WorkManager.getInstance(this.getContext()).enqueueUniquePeriodicWork("Counter", ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
-//        WorkManager.getInstance(this.getContext()).enqueue(periodicWorkRequest);
+
     }
 
 */

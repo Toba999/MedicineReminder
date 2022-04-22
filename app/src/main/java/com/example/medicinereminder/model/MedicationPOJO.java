@@ -30,6 +30,18 @@ public class MedicationPOJO implements Serializable {
 
     @NotNull
     private String medicationName;
+
+    public String getDoseNum() {
+        return doseNum;
+    }
+
+    public void setDoseNum(String doseNum) {
+        this.doseNum = doseNum;
+    }
+
+    @NotNull
+    private String doseNum;
+
     private int strength;
     private String strengthType;
     private String medicationType;
