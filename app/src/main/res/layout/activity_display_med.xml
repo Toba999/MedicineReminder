@@ -91,8 +91,8 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="361dp"
-                android:layout_height="435dp"
+                android:layout_width="353dp"
+                android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
@@ -269,20 +269,6 @@
                     app:layout_constraintStart_toEndOf="@+id/textView9"
                     app:layout_constraintTop_toTopOf="@+id/textView9" />
 
-                <Button
-                    android:id="@+id/btnAddDose"
-                    android:layout_width="138dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="36dp"
-                    android:background="@drawable/btn_background"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:text="@string/add_dose"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/displayTimePerDay" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -294,17 +280,6 @@
                     android:textSize="@dimen/et_SecTextSize"
                     app:layout_constraintStart_toStartOf="@+id/textView6"
                     app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-                <Button
-                    android:id="@+id/btnRefill"
-                    android:layout_width="138dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/btn_background"
-                    android:text="@string/refill"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/btnAddDose" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

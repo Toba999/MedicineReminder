@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/activity_display_med.xml" value="0.324585635359116" />
+        <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/activity_display_med.xml" value="0.2" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/drawable/action_bar.xml" value="0.1962962962962963" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/drawable/btn_background.xml" value="0.1962962962962963" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/drawable/round_corners_bar.xml" value="0.1962962962962963" />
@@ -110,13 +110,10 @@
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/medication_row.xml" value="0.15260416666666668" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/medicine_cell.xml" value="0.18614130434782608" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/patient_row.xml" value="0.20416666666666666" />
-
-
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/xml/network_security_config.xml" value="0.17844202898550723" />
         <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
         <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/activity_tracker.xml" value="0.25" />
-
         <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/fragment_home.xml" value="0.14945652173913043" />
         <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/patient_row.xml" value="0.15896739130434784" />
         <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/tracker_row.xml" value="0.15896739130434784" />
