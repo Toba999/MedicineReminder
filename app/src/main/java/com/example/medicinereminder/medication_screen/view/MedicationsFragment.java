@@ -82,8 +82,8 @@ public class MedicationsFragment extends Fragment implements MedicationFragmentI
         if(active == true || inActive == true)
             initRecyclerView(view, active, inActive);
         else{
-            noMed.setVisibility(0);
-            recyclerView.setVisibility(4);
+            noMed.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.INVISIBLE);
         }
             //make text no Medicines
     }

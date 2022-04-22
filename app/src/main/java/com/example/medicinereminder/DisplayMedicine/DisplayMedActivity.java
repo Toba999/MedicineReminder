@@ -77,7 +77,7 @@ public class DisplayMedActivity extends AppCompatActivity {
     }
 
     public void setDataToViews(){
-        setImage(medicationPOJO.getMedicationType().toString());
+        setImage(medicationPOJO.getMedicationType());
         medBottleAmountTextView.setText(String.valueOf(medicationPOJO.getMedicineSize()));
         medRemainingAmountTextView.setText(String.valueOf(medicationPOJO.getLeftNumber()));
         medTimePerWeekTextView.setText(medicationPOJO.getTakeTimePerWeek());
