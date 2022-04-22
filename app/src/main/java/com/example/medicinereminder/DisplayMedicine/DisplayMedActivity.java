@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,8 +31,8 @@ public class DisplayMedActivity extends AppCompatActivity {
     TextView medTimePerDayTextView;
     TextView medTimePerWeekTextView;
     ImageView medImageView;
-    ImageView backIcon;
-    ImageView editIcon;
+    ImageButton backIcon;
+    ImageButton editIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

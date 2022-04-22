@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.medicinereminder.R;
 import com.example.medicinereminder.medication_screen.presenter.MedicationFragmentPresenter;
 import com.example.medicinereminder.medication_screen.presenter.MedicationFragmentPresenterInterface;
+import com.example.medicinereminder.model.MedicationPOJO;
 
 public class MedicationsFragment extends Fragment implements MedicationFragmentInterface{
 
@@ -25,6 +26,8 @@ public class MedicationsFragment extends Fragment implements MedicationFragmentI
     RecyclerView recyclerView;
     TextView noMed;
     View view;
+
+    MedicationMainAdapter medicationMainAdapter;
 
     public MedicationsFragment() {
         // Required empty public constructor
@@ -60,7 +63,7 @@ public class MedicationsFragment extends Fragment implements MedicationFragmentI
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        MedicationMainAdapter medicationMainAdapter = new MedicationMainAdapter(this.getContext(), this);
+        medicationMainAdapter = new MedicationMainAdapter(this.getContext(), this);
         recyclerView.setAdapter(medicationMainAdapter);
     }
 
@@ -72,7 +75,7 @@ public class MedicationsFragment extends Fragment implements MedicationFragmentI
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
         MedicationInsideAdapter medicationInsideAdapter;
-        medicationInsideAdapter = new MedicationInsideAdapter(this.getContext(), medicationPresenter.getMedicines(position));
+        medicationInsideAdapter = new MedicationInsideAdapter(this.getContext(), medicationPresenter.getMedicines(position), this);
         recyclerView.setAdapter(medicationInsideAdapter);
     }
 
@@ -86,5 +89,20 @@ public class MedicationsFragment extends Fragment implements MedicationFragmentI
             recyclerView.setVisibility(View.INVISIBLE);
         }
             //make text no Medicines
+    }
+
+    @Override
+    public void updateMedToDatabase(MedicationPOJO medication) {
+        medicationPresenter.updateMedToDatabase(medication);
+    }
+
+    @Override
+    public void deleteMedToDatabase(MedicationPOJO medication) {
+        medicationPresenter.deleteMedToDatabase(medication);
+    }
+
+    @Override
+    public void refreshRecyclerView() {
+        medicationMainAdapter.notifyDataSetChanged();
     }
 }
