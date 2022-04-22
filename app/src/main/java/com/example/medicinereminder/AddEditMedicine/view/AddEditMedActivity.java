@@ -44,7 +44,7 @@ import java.util.Map;
 
 public class AddEditMedActivity extends AppCompatActivity implements onClickAddMedication, AddAndEditMedicationInterface {
     //select Add or Edit Screen
-    private boolean isAdd = true;
+    public static boolean isAdd = true;
 
     private ActivityAddEditMedBinding binding;
     private MedicationPOJO medication = new MedicationPOJO();
