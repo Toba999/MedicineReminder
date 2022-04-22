@@ -45,7 +45,7 @@ public interface NetworkInterface {
 
     void loadPatientMedicationList(String email);
 
-    void addMedicationListViewNetwork(List<MedicationPOJO> medicationPOJOS, String email);
+    void addMedicationListFromRoomToFirebase(List<MedicationPOJO> medicationPOJOS, String email);
 
     void UserExistence(String email);
 

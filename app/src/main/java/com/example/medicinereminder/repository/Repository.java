@@ -202,9 +202,9 @@ public class Repository implements RepositoryInterface{
 
     //add med to firebase
     @Override
-    public void addMedicationListViaNetwork(List<MedicationPOJO> medicationPOJOS, String email) {
+    public void addMedicationListFromRoomToFirebase(List<MedicationPOJO> medicationPOJOS, String email) {
    // try one
-        myRemote.addMedicationListViewNetwork(medicationPOJOS, email);
+        myRemote.addMedicationListFromRoomToFirebase(medicationPOJOS, email);
     }
 
     @Override
