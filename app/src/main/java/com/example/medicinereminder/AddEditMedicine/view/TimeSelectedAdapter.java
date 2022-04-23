@@ -47,9 +47,10 @@ public class TimeSelectedAdapter extends RecyclerView.Adapter<TimeSelectedAdapte
             timeMap.clear();
             dosePerDay = n;
         }else{
-            if (n!=dosePerDay){
-                dosePerDay=n;
+            if (n != timeMap.size()) {
+                timeMap.clear();
             }
+            dosePerDay=n;
         }
     }
 
