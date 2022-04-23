@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface MedicationFragmentPresenterInterface {
     public List<MedicationPOJO> getMedicines(int position);
+    public void deleteMedToDatabase(MedicationPOJO medication);
+    public void updateMedToDatabase(MedicationPOJO medication);
 }

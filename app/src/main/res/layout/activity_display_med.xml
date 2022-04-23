@@ -12,7 +12,7 @@
         android:id="@+id/fl_header_image"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@drawable/action_bar"
+        android:background="@drawable/second_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -20,12 +20,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/iv_dis_back"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
+                android:backgroundTint="@android:color/transparent"
                 android:layout_gravity="start"
                 android:layout_marginLeft="30dp"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
@@ -35,7 +36,6 @@
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerVertical="true"
                 android:gravity="center"
                 android:paddingStart="@dimen/toolbar_title_paddingStart"
                 android:paddingEnd="0dp"
@@ -44,15 +44,15 @@
                 android:textSize="@dimen/toolbar_title_text_size"
                 android:textStyle="bold" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/iv_edit_med"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="end"
                 android:layout_marginRight="30dp"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:backgroundTint="@android:color/transparent"
                 android:src="@drawable/ic_vector_edit_swipe" />
         </RelativeLayout>
     </FrameLayout>
@@ -91,8 +91,8 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="361dp"
-                android:layout_height="435dp"
+                android:layout_width="353dp"
+                android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
@@ -269,20 +269,6 @@
                     app:layout_constraintStart_toEndOf="@+id/textView9"
                     app:layout_constraintTop_toTopOf="@+id/textView9" />
 
-                <Button
-                    android:id="@+id/btnAddDose"
-                    android:layout_width="138dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="36dp"
-                    android:background="@drawable/btn_background"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:text="@string/add_dose"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/displayTimePerDay" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -294,17 +280,6 @@
                     android:textSize="@dimen/et_SecTextSize"
                     app:layout_constraintStart_toStartOf="@+id/textView6"
                     app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-                <Button
-                    android:id="@+id/btnRefill"
-                    android:layout_width="138dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/btn_background"
-                    android:text="@string/refill"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/btnAddDose" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,8 +31,8 @@ public class DisplayMedActivity extends AppCompatActivity {
     TextView medTimePerDayTextView;
     TextView medTimePerWeekTextView;
     ImageView medImageView;
-    ImageView backIcon;
-    ImageView editIcon;
+    ImageButton backIcon;
+    ImageButton editIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +93,8 @@ public class DisplayMedActivity extends AppCompatActivity {
         dateText = df2.format(date);
         medEndDateTextView.setText(dateText); //
         medStrengthTextView.setText(String.valueOf(medicationPOJO.getStrength()));
-        medDoseAmountTextView.setText(String.valueOf(medicationPOJO.getTakeTimePerDay()));
+        medDoseAmountTextView.setText(String.valueOf(medicationPOJO.getDoseNum()));
+        medStartTimeTextView.setText(medicationPOJO.getTimeSimpleTaken().keySet().toArray()[0].toString()); //Time simple taken[0]
     }
     public void setImage(String imgName){
         if(imgName.equals("drops"))
