@@ -45,8 +45,13 @@ public class TimeSelectedAdapter extends RecyclerView.Adapter<TimeSelectedAdapte
     public void setDosePerDay(int n) {
         if(AddEditMedActivity.isAdd){
             timeMap.clear();
+            dosePerDay = n;
+        }else{
+            if (n != timeMap.size()) {
+                timeMap.clear();
+            }
+            dosePerDay=n;
         }
-        dosePerDay = n;
     }
 
     @NonNull
