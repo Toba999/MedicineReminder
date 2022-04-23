@@ -37,7 +37,7 @@ public class MedicationPOJO implements Serializable {
 
 
     private int leftNumber;
-    private int leftNumberReminder;
+    private int leftNumberReminder; // refill reminder
     private int medicineSize;
     private boolean isActive;
     private String medicationReason;

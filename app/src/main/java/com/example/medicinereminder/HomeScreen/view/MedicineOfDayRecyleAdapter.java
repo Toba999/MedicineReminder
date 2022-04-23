@@ -7,10 +7,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicinereminder.R;
+import com.example.medicinereminder.model.MedicationPOJO;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,10 +21,13 @@ import java.util.List;
 public class MedicineOfDayRecyleAdapter extends RecyclerView.Adapter<MedicineOfDayRecyleAdapter.MedViewHolder> {
 
     Context context;
-    List<String> dummData ;
+    List<MedicationPOJO> mediData;
+    List<MedicationPOJO> morningMed;
+    List<MedicationPOJO> afternoonMed;
+    List<MedicationPOJO> eveningMed;
     public MedicineOfDayRecyleAdapter(Context context) {
         this.context = context;
-        dummData = new ArrayList<>(Arrays.asList("Pandola","plapla","plapla2"));
+        mediData = new ArrayList<>();
     }
 
     @NonNull
@@ -33,21 +38,26 @@ public class MedicineOfDayRecyleAdapter extends RecyclerView.Adapter<MedicineOfD
 
     @Override
     public int getItemCount() {
-        //for now :
-        return 7;
+        // Three interval : Morning , Afternoon, Evening
+        return 3;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MedViewHolder holder, int position) {
 
-        if(position != 0){
-            holder.dayTxt.setText("Tomorrow");
+        if(position == 0){
+            holder.dayTxt.setText("Morning");
+            setInnerRecycleView(holder.medsRecyleView,morningMed,"Morning");
         }
-        else{
-            holder.dayTxt.setText("Today");
+        else if(position == 1){
+                holder.dayTxt.setText("Afternoon");
+                setInnerRecycleView(holder.medsRecyleView,afternoonMed,"Afternoon");
+        }
+        else {
+            holder.dayTxt.setText("Evening");
+            setInnerRecycleView(holder.medsRecyleView,eveningMed,"Evening");
+        }
 
-        }
-        setInnerRecycleView(holder.medsRecyleView,dummData);
 
     }
 
@@ -62,10 +72,16 @@ public class MedicineOfDayRecyleAdapter extends RecyclerView.Adapter<MedicineOfD
         }
     }
 
-    void setInnerRecycleView(RecyclerView recyclerView, List<String> data)
+    void setInnerRecycleView(RecyclerView recyclerView, List<MedicationPOJO> data,String interval)
     {
-        MedicinesRecyleViewAdapter medicinesRecyleViewAdapter = new MedicinesRecyleViewAdapter(context,data);
+        MedicinesRecyleViewAdapter medicinesRecyleViewAdapter = new MedicinesRecyleViewAdapter(context,data,interval);
         recyclerView.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
         recyclerView.setAdapter(medicinesRecyleViewAdapter);
+    }
+    public void getData(List<MedicationPOJO> morningMed,List<MedicationPOJO> afternoonMed,List<MedicationPOJO> eveningMed)
+    {
+           this.morningMed   = morningMed;
+           this.afternoonMed = afternoonMed;
+           this.eveningMed   = eveningMed;
     }
 }
