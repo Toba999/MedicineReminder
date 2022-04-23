@@ -1,6 +1,7 @@
 package com.example.medicinereminder.medication_screen.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
@@ -33,26 +34,19 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
         _repo = Repository.getInstance(this, context);
         getActiveMedicines(lifecycleOwner);
         getInactiveMedicines(lifecycleOwner);
-
     }
 
     public void getActiveMedicines(LifecycleOwner lifecycleOwner){
-        _repo.getActiveMedications(Calendar.getInstance().getTimeInMillis()).observe(lifecycleOwner, new Observer<List<MedicationPOJO>>() {
-            @Override
-            public void onChanged(List<MedicationPOJO> medicationPOJOS) {
-                _activeMedicines = medicationPOJOS;
-                ifGetAll();
-            }
+        _repo.getActiveMedications(Calendar.getInstance().getTimeInMillis()).observe(lifecycleOwner, medicationPOJOS -> {
+            _activeMedicines = medicationPOJOS;
+            ifGetAll();
         });
     }
 
     public void getInactiveMedicines(LifecycleOwner lifecycleOwner){
-        _repo.getInactiveMedications(Calendar.getInstance().getTimeInMillis()).observe(lifecycleOwner, new Observer<List<MedicationPOJO>>() {
-            @Override
-            public void onChanged(List<MedicationPOJO> medicationPOJOS) {
-                _inActiveMedicines = medicationPOJOS;
-                ifGetAll();
-            }
+        _repo.getInactiveMedications(Calendar.getInstance().getTimeInMillis()).observe(lifecycleOwner, medicationPOJOS -> {
+            _inActiveMedicines = medicationPOJOS;
+            ifGetAll();
         });
     }
 
@@ -71,6 +65,17 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
             return _inActiveMedicines;
     }
 
+    @Override
+    public void deleteMedToDatabase(MedicationPOJO medication) {
+        _repo.deleteMedication(medication);
+        _medicationFragmentInterface.refreshRecyclerView();
+    }
+
+    @Override
+    public void updateMedToDatabase(MedicationPOJO medication) {
+        _repo.updateMedications(medication);
+        _medicationFragmentInterface.refreshRecyclerView();
+    }
 
     @Override
     public void onSuccess() {

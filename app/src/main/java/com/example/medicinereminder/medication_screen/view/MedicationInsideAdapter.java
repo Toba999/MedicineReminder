@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -14,18 +15,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicinereminder.DisplayMedicine.DisplayMedActivity;
 import com.example.medicinereminder.R;
+import com.example.medicinereminder.medication_screen.presenter.MedicationFragmentPresenterInterface;
 import com.example.medicinereminder.model.MedicationPOJO;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsideAdapter.MedicationInsideViewHolder> {
 
     List<MedicationPOJO> medicineStores;
     Context context;
+    MedicationFragmentInterface medicationFragment;
 
-    public MedicationInsideAdapter(Context context, List<MedicationPOJO> medicineStores) {
+    public MedicationInsideAdapter(Context context, List<MedicationPOJO> medicineStores,
+                                   MedicationFragmentInterface medicationFragment) {
         this.medicineStores = medicineStores;
         this.context = context;
+        this.medicationFragment = medicationFragment;
     }
 
     @NonNull
@@ -42,9 +49,29 @@ public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsi
         String imgName = medicineStores.get(position).getMedicationType();
         setImage(holder, imgName);
         holder.medNotificationSwitch.setChecked(medicineStores.get(position).getIsActive());
+
         holder.view.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), DisplayMedActivity.class);
-            v.getContext().startActivity(intent);
+            if(medicineStores.get(position).getIsActive() != false){
+                Intent intent = new Intent(v.getContext(), DisplayMedActivity.class);
+                intent.putExtra("med", (Serializable) medicineStores.get(position));
+                v.getContext().startActivity(intent);
+            }
+        });
+        holder.medNotificationSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MedicationPOJO medication = medicineStores.get(position);
+                boolean isActive = medication.getIsActive();
+                medication.setActive(!isActive);
+                medicationFragment.updateMedToDatabase(medication);
+
+            }
+        });
+        holder.deleteMedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                medicationFragment.deleteMedToDatabase(medicineStores.get(position));
+            }
         });
     }
 
@@ -74,6 +101,7 @@ public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsi
         TextView medNameTextView;
         TextView medOccuranceTextView;
         Switch medNotificationSwitch;
+        ImageButton deleteMedBtn;
         View view;
 
         public MedicationInsideViewHolder(@NonNull View view) {
@@ -83,6 +111,7 @@ public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsi
             medNameTextView = view.findViewById(R.id.medicationNameTextView);
             medOccuranceTextView = view.findViewById(R.id.medicationoccuranceTextView);
             medNotificationSwitch = view.findViewById(R.id.medicationSwitchNotification);
+            deleteMedBtn = view.findViewById(R.id.med_row_delete);
         }
     }
 }

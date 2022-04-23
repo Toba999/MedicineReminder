@@ -60,7 +60,7 @@ public interface RepositoryInterface {
     void loadTakers(String email);
     void setRemoteDelegate(NetworkDelegate delegate);
     //add med to fireBase
-    void addMedicationListViaNetwork(List<MedicationPOJO> medicationPOJOS, String email);
+    void addMedicationListFromRoomToFirebase(List<MedicationPOJO> medicationPOJOS, String email);
 
 
     Single<List<MedicationPOJO>> getMedicationDayWorkManger(long time);

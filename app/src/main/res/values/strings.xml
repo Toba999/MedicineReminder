@@ -48,5 +48,15 @@
     <string name="weight">Weight</string>
     <string name="ConfirmPassword">ConfirmPassword</string>
     <string name="medications">Medications</string>
+    <string name="Request">Request</string>
+    <string name="Requests">   Requests</string>
+    <string name="Confirm">Confirm</string>
+    <string name="Delete">Delete</string>
+    <string name="imgmednotification">imgMedNotification</string>
+    <string name="skip">Skip</string>
+    <string name="take">Take</string>
+    <string name="snooze">Snooze</string>
+    <string name="refill">Refill</string>
+    <string name="refill_your_medicine">Refill your Medicine</string>
 
 </resources>

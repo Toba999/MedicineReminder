@@ -4,29 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="@color/ScreenColor"
+    android:fitsSystemWindows="true"
     tools:context=".DisplayMedicine.DisplayMedActivity">
 
     <FrameLayout
         android:id="@+id/fl_header_image"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@drawable/action_bar"
+        android:background="@drawable/second_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/iv_dis_back"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@android:color/transparent"
                 android:layout_gravity="start"
                 android:layout_marginLeft="30dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_white_color_back_24dp" />
 
@@ -34,7 +36,6 @@
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerVertical="true"
                 android:gravity="center"
                 android:paddingStart="@dimen/toolbar_title_paddingStart"
                 android:paddingEnd="0dp"
@@ -43,16 +44,16 @@
                 android:textSize="@dimen/toolbar_title_text_size"
                 android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/iv_edit_med"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginRight="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="end"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_vector_edit_swipe" />
+            <ImageButton
+                android:id="@+id/iv_edit_med"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="end"
+                android:layout_marginRight="30dp"
+                android:backgroundTint="@android:color/transparent"
+                android:src="@drawable/ic_vector_edit_swipe" />
         </RelativeLayout>
     </FrameLayout>
 
@@ -73,9 +74,8 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginStart="156dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginEnd="156dp"
+                android:foregroundGravity="center"
                 android:elevation="12dp"
                 app:cardCornerRadius="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -83,7 +83,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/displayIV"
+                    android:id="@+id/displayImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -92,7 +92,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="353dp"
-                android:layout_height="478dp"
+                android:layout_height="350dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
@@ -101,89 +101,73 @@
                 android:elevation="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvDisDose">
+                app:layout_constraintTop_toBottomOf="@+id/displayMedStrength">
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="100dp"
-                    android:layout_marginTop="34dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/remaining_amount"
                     android:textColor="@color/colorSecondaryText"
                     android:textSize="@dimen/et_SecTextSize"
-                    app:layout_constraintStart_toEndOf="@+id/textView3"
-                    app:layout_constraintTop_toBottomOf="@+id/btnRefill" />
+                    app:layout_constraintStart_toStartOf="@+id/textView8"
+                    app:layout_constraintTop_toBottomOf="@+id/displayBottleAmount" />
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/doseAmount"
                     android:textColor="@color/colorSecondaryText"
                     android:textSize="@dimen/et_SecTextSize"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView2"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="34dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/alarm_starts_at"
                     android:textColor="@color/colorSecondaryText"
                     android:textSize="@dimen/et_SecTextSize"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDisDoseAmo" />
+                    app:layout_constraintStart_toStartOf="@+id/textView7"
+                    app:layout_constraintTop_toBottomOf="@+id/displayEndDate" />
 
                 <TextView
-                    android:id="@+id/tvDisAlaStart"
+                    android:id="@+id/displayStartTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="10dp"
                     android:text="8:00 pm"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/et_textSize"
-                    app:layout_constraintStart_toStartOf="@+id/textView4"
-                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                    app:layout_constraintStart_toEndOf="@+id/textView4"
+                    app:layout_constraintTop_toTopOf="@+id/textView4" />
 
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="84dp"
-                    android:layout_marginTop="34dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/alarm_type"
                     android:textColor="@color/colorSecondaryText"
                     android:textSize="@dimen/et_SecTextSize"
-                    app:layout_constraintStart_toEndOf="@+id/textView4"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDisRemAmo" />
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="19dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/start_date"
                     android:textColor="@color/colorSecondaryText"
                     android:textSize="@dimen/et_SecTextSize"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDisAlaStart" />
-
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="112dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/end_date"
-                    android:textColor="@color/colorSecondaryText"
-                    android:textSize="@dimen/et_SecTextSize"
-                    app:layout_constraintStart_toEndOf="@+id/textView6"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDisAlaType" />
+                    app:layout_constraintStart_toStartOf="@+id/textView3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
                 <TextView
                     android:id="@+id/textView8"
@@ -201,149 +185,128 @@
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="22dp"
+                    android:layout_marginTop="20dp"
                     android:text="@string/how_to_use"
                     android:textColor="@color/colorSecondaryText"
                     android:textSize="@dimen/et_SecTextSize"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvDisStartDate" />
-
-                <TextView
-                    android:id="@+id/tvDisRemAmo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="12"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="@dimen/et_textSize"
-                    app:layout_constraintStart_toStartOf="@+id/textView2"
-                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-                <TextView
-                    android:id="@+id/tvDisDoseAmo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="@dimen/et_textSize"
-                    app:layout_constraintBottom_toBottomOf="@+id/tvDisRemAmo"
-                    app:layout_constraintStart_toStartOf="@+id/textView3" />
-
-                <TextView
-                    android:id="@+id/tvDisAlaType"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="once"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="@dimen/et_textSize"
                     app:layout_constraintStart_toStartOf="@+id/textView5"
                     app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
                 <TextView
-                    android:id="@+id/tvDisStartDate"
+                    android:id="@+id/displayRemainAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="10dp"
+                    android:text="12"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize"
+                    app:layout_constraintStart_toEndOf="@+id/textView2"
+                    app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+                <TextView
+                    android:id="@+id/displayDoseAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="2"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize"
+                    app:layout_constraintStart_toEndOf="@+id/textView3"
+                    app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+                <TextView
+                    android:id="@+id/displayTimePerWeek"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="once"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize"
+                    app:layout_constraintStart_toEndOf="@+id/textView5"
+                    app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+                <TextView
+                    android:id="@+id/displayStartDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:text="12/2/2021"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/et_textSize"
-                    app:layout_constraintStart_toStartOf="@+id/textView6"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                    app:layout_constraintStart_toEndOf="@+id/textView6"
+                    app:layout_constraintTop_toTopOf="@+id/textView6" />
 
                 <TextView
-                    android:id="@+id/tvDisEndDate"
+                    android:id="@+id/displayEndDate"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="10dp"
                     android:text="30/3/2021"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/et_textSize"
-                    app:layout_constraintStart_toStartOf="@+id/textView7"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                    app:layout_constraintStart_toEndOf="@+id/textView7"
+                    app:layout_constraintTop_toTopOf="@+id/textView7" />
 
                 <TextView
-                    android:id="@+id/tvDisBotSizee"
+                    android:id="@+id/displayBottleAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="10dp"
                     android:text="50"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/et_textSize"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                    app:layout_constraintStart_toEndOf="@+id/textView8"
+                    app:layout_constraintTop_toTopOf="@+id/textView8" />
 
                 <TextView
-                    android:id="@+id/tvDisNotes"
+                    android:id="@+id/displayTimePerDay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="10dp"
                     android:text="After dinner"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/et_textSize"
-                    app:layout_constraintStart_toStartOf="@+id/textView9"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
+                    app:layout_constraintStart_toEndOf="@+id/textView9"
+                    app:layout_constraintTop_toTopOf="@+id/textView9" />
 
-                <Button
-                    android:id="@+id/btnRefill"
-                    android:layout_width="84dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="114dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/btn_background"
-                    android:text="@string/refill"
-                    android:textColor="@color/white"
-                    app:layout_constraintStart_toEndOf="@+id/textView8"
-                    app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/btnAddDose"
+                <TextView
+                    android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="119dp"
-                    android:layout_marginEnd="119dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/btn_background"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:text="@string/add_dose"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    android:layout_marginTop="20dp"
+                    android:text="@string/end_date"
+                    android:textColor="@color/colorSecondaryText"
+                    android:textSize="@dimen/et_SecTextSize"
+                    app:layout_constraintStart_toStartOf="@+id/textView6"
+                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/tvDisMedName"
-                android:layout_width="wrap_content"
+                android:id="@+id/displayMedName"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="171dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="172dp"
+                android:gravity="center"
                 android:text="Antinal"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="@dimen/et_textSize"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
             <TextView
-                android:id="@+id/tvDisDose"
-                android:layout_width="wrap_content"
+                android:id="@+id/displayMedStrength"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="180dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="180dp"
+                android:gravity="center"
                 android:text="500 mg"
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="@dimen/et_textSize"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvDisMedName" />
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/displayMedName"
+                app:layout_constraintStart_toStartOf="@+id/displayMedName"
+                tools:layout_editor_absoluteY="186dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

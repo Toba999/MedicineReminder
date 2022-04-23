@@ -1,8 +1,5 @@
 package com.example.medicinereminder.model;
 
-import android.annotation.SuppressLint;
-import android.os.Parcel;
-import android.os.Parcelable;
 
 import java.io.Serializable;
 

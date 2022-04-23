@@ -38,6 +38,9 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         sharedPref = getSharedPreferences(SHARED_PER, Context.MODE_PRIVATE);
+       // sharedPref.edit().remove(USER_EMAIL).commit();
+        //sharedPref.edit().remove("isLogin").commit();
+
        if(sharedPref.getBoolean("isLogin",false)){
            startActivity(new Intent(getApplicationContext(), Home_Screen.class));
            finish();
@@ -104,11 +107,13 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
         sharedPref = getSharedPreferences(SHARED_PER, Context.MODE_PRIVATE);
         editor = sharedPref.edit();
 
-        editor.putString(USER_EMAIL, email);
+       // editor.putString(USER_EMAIL, email);
+
         editor.putBoolean("isLogin",true);
-      // editor.putString(USER_EMAIL, myEmail);
+       editor.putString(USER_EMAIL, myEmail);
+
       //  editor.apply();
-        editor.commit();
+      editor.commit();
 
     }
 
