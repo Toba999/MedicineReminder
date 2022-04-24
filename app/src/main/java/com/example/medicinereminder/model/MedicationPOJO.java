@@ -48,6 +48,7 @@ public class MedicationPOJO implements Serializable {
     private String instruction; // before/after/during eating
 
 
+
     private int leftNumber; // remaining number
     private int leftNumberReminder; // number to refill
     private int medicineSize; // bottle size

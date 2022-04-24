@@ -21,6 +21,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:weightSum="3"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
@@ -33,7 +34,7 @@
                 app:srcCompat="@drawable/drug" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
@@ -45,12 +46,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
                     android:fontFamily="@font/roboto_bold"
+                    android:text="TextView"
                     android:textColor="@color/black"
+                    android:textDirection="ltr"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textDirection="ltr"
                     tools:text="Panadol" />
 
                 <TextView
@@ -58,10 +59,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="14sp"
                     android:text="150mg, 1 capsule"
-                    android:textDirection="ltr"
                     android:textColor="@color/mainColor"
+                    android:textDirection="ltr"
+                    android:textSize="14sp"
                     tools:text="150mg, 1 capsule" />
 
                 <TextView
@@ -69,13 +70,43 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textDirection="ltr"
                     android:text="After Breakfast"
-                    android:textSize="14sp"
                     android:textColor="@color/mainColor"
+                    android:textDirection="ltr"
+                    android:textSize="14sp"
                     tools:text="After Breakfast" />
 
             </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3">
+
+                <ImageView
+                    android:id="@+id/check_icon"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@mipmap/chech_icon_foreground" />
+
+                <TextView
+                    android:id="@+id/time_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="@color/mainColor"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="15:00 Am" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
 
