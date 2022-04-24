@@ -25,6 +25,7 @@ import com.example.medicinereminder.AddEditMedicine.presenter.AddMedicationPrese
 import com.example.medicinereminder.AddEditMedicine.presenter.AddMedicationPresenterInterface;
 import com.example.medicinereminder.DisplayMedicine.DisplayMedActivity;
 import com.example.medicinereminder.HomeScreen.view.HomeFragment;
+import com.example.medicinereminder.HomeScreen.view.Home_Screen;
 import com.example.medicinereminder.databinding.ActivityAddEditMedBinding;
 import com.example.medicinereminder.localdatabase.LocalSource;
 import com.example.medicinereminder.model.MedicationPOJO;
@@ -320,7 +321,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                 setArraysAndMapsResultToPOJO();
                 medication.setId(Calendar.getInstance().getTimeInMillis()+medicationName+endDate);
                 onClick(medication);
-                startActivity(new Intent(AddEditMedActivity.this, Home_Screen.class));
+                startActivity(new Intent(AddEditMedActivity.this,Home_Screen.class));
                 //Todo handle  work manager
                 setWorkTimer();
             }
