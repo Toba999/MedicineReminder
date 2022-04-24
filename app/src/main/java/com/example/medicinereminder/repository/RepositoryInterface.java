@@ -83,5 +83,7 @@ public interface RepositoryInterface {
 
     void updatePatientMedicationList(String email,MedicationPOJO medicationPOJO);
 
+    void updateTakenMedicine(MedicationPOJO medicine);
+
 
 }

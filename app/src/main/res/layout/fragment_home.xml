@@ -43,6 +43,7 @@
         android:id="@+id/outter_recyleview"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +60,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/no_drug_img"
+        android:layout_width="265dp"
+        android:layout_height="390dp"
+        android:visibility="gone"
+        android:src="@drawable/no_antibiotics"
+        app:layout_constraintBottom_toBottomOf="@+id/outter_recyleview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/outter_recyleview" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

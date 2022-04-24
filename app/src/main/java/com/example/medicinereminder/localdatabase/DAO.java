@@ -50,4 +50,8 @@ public interface DAO {
 
     @Query("SELECT * FROM Medications WHERE (:time Between startDate AND endDate) AND :left<=leftNumberReminder AND isActive=1")
     Single<List<MedicationPOJO>> getRefillReminderList(long time,int left);
+
+    @Update
+    void updateTakenMedince(MedicationPOJO medicine);
+
 }

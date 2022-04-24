@@ -100,4 +100,16 @@ public class LocalSource implements LocalSourceInterface{
         return  dao.getRefillReminderList(time,left);
     }
 
+    @Override
+    public void updateTakenMedicines(MedicationPOJO medicine) {
+        new Thread()
+        {
+            @Override
+            public void run() {
+                super.run();
+                dao.updateTakenMedince(medicine);
+            }
+        }.start();
+    }
+
 }

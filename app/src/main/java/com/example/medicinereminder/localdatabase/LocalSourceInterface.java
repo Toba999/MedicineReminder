@@ -25,4 +25,6 @@ public interface LocalSourceInterface {
 
     Single<List<MedicationPOJO>> getMedicationDayWorkManger(long time);
     Single<List<MedicationPOJO>> getRefillReminderList(long time,int left);
+
+    void updateTakenMedicines(MedicationPOJO medicine);
 }

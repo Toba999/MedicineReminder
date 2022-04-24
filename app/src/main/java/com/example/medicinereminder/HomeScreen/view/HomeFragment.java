@@ -1,12 +1,18 @@
 package com.example.medicinereminder.HomeScreen.view;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -47,6 +53,7 @@ public class HomeFragment extends Fragment implements HomeFragmentInterface,Home
     RecyclerView recyclerView;
     FloatingActionButton addMedicineBtn;
     String currentData;
+    ImageView noDrugImg;
     MedicineOfDayRecyleAdapter medicineOfDayRecyleAdapter;
     public HomeFragment() {
         // Required empty public constructor
@@ -75,6 +82,7 @@ public class HomeFragment extends Fragment implements HomeFragmentInterface,Home
 
     void initView(View view){
         addMedicineBtn = view.findViewById(R.id.addMedicine);
+        noDrugImg = view.findViewById(R.id.no_drug_img);
         addMedicineBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,8 +93,9 @@ public class HomeFragment extends Fragment implements HomeFragmentInterface,Home
         });
     }
 
+
     void initRecycleView(View view) {
-        medicineOfDayRecyleAdapter = new MedicineOfDayRecyleAdapter(getContext());
+        medicineOfDayRecyleAdapter = new MedicineOfDayRecyleAdapter(getContext(),this);
         recyclerView = view.findViewById(R.id.outter_recyleview);
         recyclerView.setAdapter(medicineOfDayRecyleAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -125,7 +134,15 @@ public class HomeFragment extends Fragment implements HomeFragmentInterface,Home
     }
     public void updateUI(List<MedicationPOJO> morning,List<MedicationPOJO> afternoon,List<MedicationPOJO> evening)
     {
+        medicineOfDayRecyleAdapter.setDateToday(currentData);
         medicineOfDayRecyleAdapter.getData(morning,afternoon,evening);
+        if(morning.size() == 0 && afternoon.size() == 0 && evening.size() == 0)
+        {
+            noDrugImg.setVisibility(View.VISIBLE);
+        }
+        else{
+            noDrugImg.setVisibility(View.GONE);
+        }
         medicineOfDayRecyleAdapter.notifyDataSetChanged();
     }
 
@@ -141,5 +158,49 @@ public class HomeFragment extends Fragment implements HomeFragmentInterface,Home
         });
     }
 
+
+    @Override
+    public void updateMedStatus(MedicationPOJO medicine, String time,String interval,String date) {
+        presenter.updateMedStatus(medicine,time,interval,date);
+    }
+
+    @Override
+    public void showMedicineDialog(MedicationPOJO medicine, String timeStr, String interval) {
+        Dialog medicineDialog = new Dialog(getContext());
+        medicineDialog.setContentView(R.layout.medicine_dialog);
+        medicineDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        medicineDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        Button takeMedBtn,cancelBtn;
+
+        takeMedBtn = medicineDialog.findViewById(R.id.take_Btn_Dia);
+        cancelBtn = medicineDialog.findViewById(R.id.cancel_Btn_Dia);
+        TextView mediName = medicineDialog.findViewById(R.id.medicine_name);
+        mediName.setText(medicine.getMedicationName());
+        TextView dos = medicineDialog.findViewById(R.id.medicine_dos);
+        dos.setText(medicine.getStrength()+medicine.getStrengthType()+","+medicine.getDoseNum()+" Capsule");
+        TextView AfBeEating = medicineDialog.findViewById(R.id.medicine_note);
+        AfBeEating.setText(medicine.getInstruction());
+        TextView mediReason = medicineDialog.findViewById(R.id.medicine_reason);
+        mediReason.setText(medicine.getMedicationReason());
+        TextView time = medicineDialog.findViewById(R.id.medicine_time_Dia);
+        time.setText(timeStr);
+
+        takeMedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.updateMedStatus(medicine,timeStr,interval,currentData);
+                medicineDialog.dismiss();
+            }
+        });
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                medicineDialog.dismiss();
+            }
+        });
+        medicineDialog.show();
+    }
 
 }

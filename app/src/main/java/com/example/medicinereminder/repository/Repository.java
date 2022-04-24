@@ -224,5 +224,10 @@ public class Repository implements RepositoryInterface{
         myRemote.updatePatientMedication(email, medicationPOJO);
     }
 
+    @Override
+    public void updateTakenMedicine(MedicationPOJO medicine) {
+        localSource.updateTakenMedicines(medicine);
+    }
+
 
 }

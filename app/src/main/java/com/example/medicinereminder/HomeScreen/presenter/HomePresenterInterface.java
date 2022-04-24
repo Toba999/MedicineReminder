@@ -13,4 +13,5 @@ public interface HomePresenterInterface {
      List<MedicationPOJO> getMorningMed();
      List<MedicationPOJO> getAfternoonMed();
      List<MedicationPOJO> getEveningMed();
+     void updateMedStatus(MedicationPOJO med,String timeStr,String interval,String date);
 }
