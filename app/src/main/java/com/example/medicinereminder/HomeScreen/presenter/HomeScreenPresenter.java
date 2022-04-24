@@ -109,6 +109,63 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
         return eveningMed;
     }
 
+    @Override
+    public void updateMedStatus(MedicationPOJO med,String time,String interval,String date) {
+        switch (interval)
+        {
+            case "Morning":
+                for(MedicationPOJO medicine : morningMed)
+                {
+                    if(med == medicine) {
+                        med.getTimeSimpleTaken().put(time,true);
+                        Long absTime = simpleTimeToAbs(time);
+                        med.getDateTimeAbsTaken().put(absTime.toString(),true);
+                        med.getDateTimeSimpleTaken().put(date,true);
+                        //TODO: update date abs
+                    }
+                }
+                break;
+            case "Afternoon":
+                for(MedicationPOJO medicine : afternoonMed)
+                {
+                    if(med == medicine) {
+                        med.getTimeSimpleTaken().put(time,true);
+                        Long absTime = simpleTimeToAbs(time);
+                        med.getDateTimeAbsTaken().put(absTime.toString(),true);
+                        med.getDateTimeSimpleTaken().put(date,true);
+                        //TODO: update date abs
+                    }
+                }
+                break;
+            case "Evening":
+                for(MedicationPOJO medicine : eveningMed)
+                {
+                    if(med == medicine) {
+                        med.getTimeSimpleTaken().put(time,true);
+                        Long absTime = simpleTimeToAbs(time);
+                        med.getDateTimeAbsTaken().put(absTime.toString(),true);
+                        med.getDateTimeSimpleTaken().put(date,true);
+                        //TODO: update date abs
+                    }
+                }
+                break;
+        }
+        repo.updateTakenMedicine(med);
+    }
+    private Long simpleTimeToAbs(String time) {
+        String[] times = time.split(":");
+        String part1 = times[0]; // 004
+        String[] part2 = times[1].split(" ");
+        Long hours = Long.parseLong(part1);
+        Long mins = Long.parseLong(part2[0]);
+        Long res = hours * 60 + mins;
+        if (part2[1].equals("PM")) {
+            res += (12 * 60);
+        }
+        return res;
+
+    }
+
     private Boolean isInEvening(String dateStr)
     {
 
@@ -138,6 +195,7 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
         }
         return false;
     }
+
 
     private Boolean isInMorning(String dateStr)
     {
