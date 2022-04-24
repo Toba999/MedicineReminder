@@ -8,5 +8,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public interface HomeFragmentViewInterface {
+    void updateMedStatus(MedicationPOJO medicine, String time, String interval, String date);
 
+    void showMedicineDialog(MedicationPOJO medicine, String timeStr, String interval);
 }

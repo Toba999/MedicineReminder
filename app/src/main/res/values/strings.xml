@@ -19,7 +19,6 @@
     <string name="end_date">End Date :</string>
     <string name="bottle_size">Bottle Size :</string>
     <string name="how_to_use">How to use :</string>
-    <string name="refill">Refill</string>
     <string name="add_dose">Add Dose</string>
     <string name="edit">Edit</string>
     <string name="et_medicine_name">Medicine Name</string>
@@ -59,6 +58,9 @@
     <string name="channel_name">MedicalReminder</string>
     <string name="channel_description">MedicalDescription</string>
     <string name="refill_your_medicine">Refill your Medicine</string>
+    <string name="take_medicine_dialog">Take</string>
+    <string name="cancel_med_dialog">Cancel</string>
     <string name="_1">1</string>
+    <string name="refill">Refill</string>
 
 </resources>

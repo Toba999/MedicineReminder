@@ -1,13 +1,21 @@
 package com.example.medicinereminder.HomeScreen.view;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.Layout;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicinereminder.R;
@@ -26,11 +34,16 @@ public class MedicinesRecyleViewAdapter extends RecyclerView.Adapter<MedicinesRe
     List<MedicationPOJO> morningMed;
     List<MedicationPOJO> afternoonMed;
     List<MedicationPOJO> eveningMed;
+    HomeFragmentViewInterface view;
+    String dateToday;
     String interval;
-     MedicinesRecyleViewAdapter(Context context, List<MedicationPOJO> medicines,String interval) {
+    Boolean isTaken = false;
+     MedicinesRecyleViewAdapter(Context context, List<MedicationPOJO> medicines,String interval,HomeFragmentViewInterface view,String dateToday) {
         this.context = context;
         this.medicines = medicines;
         this.interval = interval;
+        this.view = view;
+        this.dateToday = dateToday;
     }
 
     @NonNull
@@ -41,13 +54,30 @@ public class MedicinesRecyleViewAdapter extends RecyclerView.Adapter<MedicinesRe
 
     @Override
     public void onBindViewHolder(@NonNull MedicinesRecyleViewAdapter.MedicinesViewHolder holder, int position) {
-
+        isTaken = false;
         holder.medName.setText(medicines.get(position).getMedicationName());
         holder.dosTxt.setText(medicines.get(position).getStrength()+""+medicines.get(position).getStrengthType());
         holder.noteTxt.setText(medicines.get(position).getInstruction());
-
         String finalTime = isAmorPm(medicines.get(position).getTimeSimpleTaken(),interval);
         holder.timeTxt.setText(finalTime);
+        if(medicines.get(position).getTimeSimpleTaken().get(finalTime) == true && medicines.get(position).getDateTimeSimpleTaken().get(dateToday) == true)
+        {
+            holder.checkImg.setImageResource(R.mipmap.chech_icon_foreground);
+            isTaken = true;
+        }
+        if(!isTaken)
+        {
+            setActionOnMedicineCell(holder.layout,medicines.get(position),finalTime,interval);
+        }
+    }
+    public void setActionOnMedicineCell(ConstraintLayout layout,MedicationPOJO med,String time,String interval)
+    {
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMedicineDialog(med,time,interval);
+            }
+        });
     }
 
     @Override
@@ -62,11 +92,13 @@ public class MedicinesRecyleViewAdapter extends RecyclerView.Adapter<MedicinesRe
 
     public static class MedicinesViewHolder extends RecyclerView.ViewHolder{
 
+        ConstraintLayout layout;
         TextView medName;
         TextView dosTxt;
         TextView noteTxt;
         TextView timeTxt;
         ImageView checkImg;
+
         public MedicinesViewHolder(@NonNull View itemView) {
             super(itemView);
             medName = itemView.findViewById(R.id.H_medicine_name_txt);
@@ -74,34 +106,31 @@ public class MedicinesRecyleViewAdapter extends RecyclerView.Adapter<MedicinesRe
             noteTxt = itemView.findViewById(R.id.H_note_txt);
             timeTxt = itemView.findViewById(R.id.time_txt);
             checkImg = itemView.findViewById(R.id.check_icon);
+            layout = itemView.findViewById(R.id.medicine_cell_id);
         }
     }
     public String isAmorPm(Map<String,Boolean> data,String interval)
     {
 
-        loop:for(Map.Entry<String,Boolean> time : data.entrySet()) {
+        for(Map.Entry<String,Boolean> time : data.entrySet()) {
             Long timeAbs = simpleTimeToAbs(time.getKey());
             switch (interval) {
                 case "Morning":
                     if (timeAbs >= 0 && timeAbs <= 720) {
                         return time.getKey();
-//                        break loop;
                     }
                     break;
                 case "Afternoon":
                     if (timeAbs > 720 && timeAbs < 960) {
                         return time.getKey();
-//                        break loop;
                     }
                     break;
                 case "Evening":
                     if (timeAbs >= 960 && timeAbs <= 1439) {
                         return time.getKey();
-//                        break loop;
                     }
                     break;
                 default:
-//                    return "";
                     break ;
             }
         }
@@ -121,6 +150,15 @@ public class MedicinesRecyleViewAdapter extends RecyclerView.Adapter<MedicinesRe
         }
         return res;
 
+    }
+
+
+    void openMedicineDialog(MedicationPOJO medicine,String timeStr,String interval){
+        view.showMedicineDialog(medicine,timeStr,interval);
+    }
+    private HomeFragmentViewInterface getView()
+    {
+        return view;
     }
 
 }

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/refill_reminder_dialog.xml" value="0.10091743119266056" />
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/drawable/action_bar.xml" value="0.25833333333333336" />
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/drawable/second_bar.xml" value="0.25833333333333336" />
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/activity_display_med.xml" value="0.2" />
@@ -31,9 +32,12 @@
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/fragment_more.xml" value="0.2" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medication_inactive_active_row.xml" value="0.23052536231884058" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medication_row.xml" value="0.264" />
-        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medicine_cell.xml" value="0.8" />
+        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medicine_cell.xml" value="0.536" />
+        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medicine_dialog.xml" value="0.264" />
+        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medicine_row.xml" value="0.24592391304347827" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/medicines_section_cell.xml" value="0.4" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/patient_row.xml" value="0.2259963768115942" />
+        <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/refill_reminder_dialog.xml" value="0.4" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/layout/tracker_row.xml" value="0.2259963768115942" />
         <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/drawable/action_bar.xml" value="0.1359375" />
         <entry key="..\:/ITI_Courses/AndroidCourse/Projects/MedicineReminder/app/src/main/res/layout/activity_main.xml" value="0.2421875" />
