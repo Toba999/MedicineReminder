@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/patientMedicationRowImageView"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/pills" />
+
+
+            <TextView
+                android:id="@+id/patientMedicationNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Panadol"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/patientMedicationRowImageView"
+                app:layout_constraintTop_toTopOf="@+id/patientMedicationRowImageView" />
+
+            <TextView
+                android:id="@+id/patientMedicationStartTimeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="30.25"
+                android:textColor="@color/barColor"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/patientMedicationNameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/patientMedicationNameTextView" />
+
+            <ImageView
+                android:id="@+id/patientMedicationIsTaken"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+                app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+                android:src="@mipmap/correct_icon"
+                android:scaleType="centerInside"/>
+            <TextView
+                android:id="@+id/patientMedicationStartDateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="25/90/2022"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+                app:layout_constraintTop_toBottomOf="@+id/patientMedicationIsTaken" />
+
+            <TextView
+                android:id="@+id/patientMedicationEndDateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="30/90/2022"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/patientMedicationStartDateTextView"
+                app:layout_constraintTop_toBottomOf="@+id/patientMedicationStartDateTextView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

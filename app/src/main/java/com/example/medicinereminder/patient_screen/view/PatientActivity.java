@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.medicinereminder.R;
@@ -16,12 +17,12 @@ import java.util.List;
 
 public class PatientActivity extends AppCompatActivity {
 
-    ImageView imageView;
+    ImageButton imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient);
-        imageView = findViewById(R.id.patientsBackBtn);
+        imageView = findViewById(R.id.iv_patients_back);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
