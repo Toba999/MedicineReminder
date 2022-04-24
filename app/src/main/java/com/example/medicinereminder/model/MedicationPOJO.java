@@ -66,13 +66,13 @@ public class MedicationPOJO implements Serializable {
     private Map<String, Boolean> TimeSimpleTaken; // time  4.30 PM , taken or not
 
     @TypeConverters(Converters.class)
-    private Map<String, Boolean> dateTimeSimpleTaken; // date + time , taken or not
+    private Map<String, Boolean> dateTimeSimpleTaken; // date  , taken or not
 
     @TypeConverters(Converters.class)
-    private Map<String, Boolean> dateTimeAbsTaken;
+    private Map<String, Boolean> dateTimeAbsTaken; //date+time absolute , taken or not
 
     @TypeConverters(Converters.class)
-    private List<String> dateTimeAbs;
+    private List<String> dateTimeAbs;//time absolute
 
     public Map<String, Boolean> getTimeSimpleTaken() {
         return TimeSimpleTaken;

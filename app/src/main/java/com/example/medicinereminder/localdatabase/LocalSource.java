@@ -99,5 +99,9 @@ public class LocalSource implements LocalSourceInterface{
     public Single<List<MedicationPOJO>> getRefillReminderList(long time,int left) {
         return  dao.getRefillReminderList(time,left);
     }
+    @Override
+    public Single<List<MedicationPOJO>> getRefillReminderListLive(long time) {
+        return  dao.getRefillReminderListLive(time);
+    }
 
 }
