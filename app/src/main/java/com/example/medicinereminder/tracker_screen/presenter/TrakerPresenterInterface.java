@@ -7,4 +7,5 @@ public interface TrakerPresenterInterface {
     void UserExistence(String email);
     void sendRequest(RequestDTO request);
     FirebaseUser currentUser();
+    void getUserFromRealDB(String email);
 }

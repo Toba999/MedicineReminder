@@ -1,46 +1,59 @@
-package com.example.medicinereminder.login.presenter;
+package com.example.medicinereminder.requests.presenter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
-
-import com.example.medicinereminder.login.view.LoginActivityInterface;
 import com.example.medicinereminder.model.MedicationPOJO;
 import com.example.medicinereminder.model.PatientDTO;
 import com.example.medicinereminder.model.RequestDTO;
 import com.example.medicinereminder.model.TrackerDTO;
 import com.example.medicinereminder.repository.Repository;
+import com.example.medicinereminder.requests.view.RequestsActivityInterface;
 import com.example.medicinereminder.services.network.NetworkDelegate;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseUser;
 import java.util.List;
 
-public class LoginPresenter implements NetworkDelegate ,LoginPresenterInterface{
+public class RequestsPresenter implements RequestsPresenterInterface, NetworkDelegate {
+
     private Context context;
-    private LoginActivityInterface view;
+    private RequestsActivityInterface view;
     private Repository repository;
 
-    public LoginPresenter(Context context, LoginActivityInterface view) {
+    public RequestsPresenter(Context context, RequestsActivityInterface view) {
         this.context = context;
         this.view = view;
         repository = Repository.getInstance(this,context);
-
-    }
-
-    @Override
-    public void signInWithEmailAndPass(Activity activity, String email, String password) {
-        repository.signInWithEmailAndPass(activity,email,password);
         repository.setRemoteDelegate(this);
+
+    }
+    @Override
+    public void loadRequests(String email) {
+        repository.loadHelpRequest(email);
     }
 
     @Override
-    public void signInUsingGoogle(String idToken) {
-        repository.signInUsingGoogle(idToken);
+    public FirebaseUser currentUser() {
+        return   repository.getCurrentUser();
+    }
+
+    @Override
+    public void onAccept(TrackerDTO trackerDTO, PatientDTO patientDTO) {
+        repository.onAccept(trackerDTO,patientDTO);
+    }
+
+    @Override
+    public void getUserFromRealDB(String email) {
+        repository.getUserName(email);
+    }
+
+    @Override
+    public void onReject(String key, String email) {
+        repository.onReject(key,email);
     }
 
     @Override
     public void onSuccess() {
-        view.setSuccessfulResponse();
+
     }
 
     @Override
@@ -50,17 +63,17 @@ public class LoginPresenter implements NetworkDelegate ,LoginPresenterInterface{
 
     @Override
     public void onFailure(String errorMessage) {
-        view.setFailureResponse(errorMessage);
+
     }
 
     @Override
     public void onSuccessReturn(String userName) {
-
+        view.setonSuccessReturn(userName);
     }
 
     @Override
     public void onSuccessRequest(List<RequestDTO> requestDTOS) {
-
+        view.setonSuccessRequest(requestDTOS);
     }
 
     @Override
@@ -80,7 +93,7 @@ public class LoginPresenter implements NetworkDelegate ,LoginPresenterInterface{
 
     @Override
     public void isUserExist(boolean existance) {
-        Log.i("presenter","login presenter user exist");
+
     }
 
     @Override
@@ -92,6 +105,4 @@ public class LoginPresenter implements NetworkDelegate ,LoginPresenterInterface{
     public void onSuccessReturnMedicationList(List<MedicationPOJO> medicationPOJOList) {
 
     }
-
-
 }

@@ -16,7 +16,7 @@ public class TrackerDTO implements Serializable {
     public TrackerDTO() {
     }
 
-    public TrackerDTO(String patientEmail, String name, String email, int img, String requestID) {
+    public TrackerDTO(String patientEmail,  String email,String name, int img, String requestID) {
         this.patientEmail = patientEmail;
         this.name = name;
         this.email = email;
