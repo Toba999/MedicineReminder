@@ -67,6 +67,9 @@ public interface RepositoryInterface {
 
     Single<List<MedicationPOJO>> getRefillReminderList(long time,int left);
 
+    Single<List<MedicationPOJO>> getRefillReminderListLive(long time);
+
+
     //remove med from fireBase
     void deleteInPatientMedicationList(String email, String medicationID);
 

@@ -98,6 +98,11 @@ public class Repository implements RepositoryInterface{
         return localSource.getRefillReminderList(time,left);
     }
 
+    @Override
+    public Single<List<MedicationPOJO>> getRefillReminderListLive(long time) {
+        return localSource.getRefillReminderListLive(time);
+    }
+
     // for firebase
     @Override
     public void isSignedIn() {

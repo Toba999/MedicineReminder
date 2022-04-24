@@ -55,9 +55,11 @@
     <string name="skip">Skip</string>
     <string name="take">Take</string>
     <string name="snooze">Snooze</string>
-    <string name="refill">Refill</string>
+    <string name="channel_name">MedicalReminder</string>
+    <string name="channel_description">MedicalDescription</string>
     <string name="refill_your_medicine">Refill your Medicine</string>
     <string name="take_medicine_dialog">Take</string>
     <string name="cancel_med_dialog">Cancel</string>
+    <string name="_1">1</string>
 
 </resources>
