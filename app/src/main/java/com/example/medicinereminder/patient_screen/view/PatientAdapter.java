@@ -1,6 +1,7 @@
 package com.example.medicinereminder.patient_screen.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicinereminder.R;
+import com.example.medicinereminder.medication_for_patient.view.MedicationForPatient;
 
 import java.util.List;
 
@@ -36,7 +38,9 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientV
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(view.getContext(), MedicationForPatient.class);
+                intent.putExtra("patientEmail", holder.emailTextView.getText().toString());
+                view.getContext().startActivity(intent);
             }
         });
     }

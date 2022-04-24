@@ -1,11 +1,8 @@
 package com.example.medicinereminder.services.network;
 
 import android.app.Activity;
-import android.content.Context;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
-
 import com.example.medicinereminder.model.PatientDTO;
 import com.example.medicinereminder.model.RequestDTO;
 import com.example.medicinereminder.model.TrackerDTO;
@@ -21,14 +18,12 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -194,7 +189,7 @@ public class FirebaseNetwork implements NetworkInterface{
     public void getUserFromRealDB(String email) {
         Log.i("TAG", "getUserFromRealDB: ");
         String uid = email.split("\\.")[0];
-        Query query = FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("name");
+        Query query = FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("username");
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 if(task.getResult().getValue() != null){
@@ -252,19 +247,19 @@ public class FirebaseNetwork implements NetworkInterface{
     // TODO check confusing ids
     @Override
     public void onAccept(TrackerDTO trackerDTO, PatientDTO patientDTO) {
-        String[] uid = trackerDTO.getPatientEmail().split("\\.");
-        String[] myId = patientDTO.getEmail().split(("\\."));
+        String[] uid = trackerDTO.getPatientEmail().split("\\.");//patient
+        String[] myId = patientDTO.gettrakerEmail().split(("\\."));//traker
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(myId[0]);
-        databaseReference.child("tracker").child(uid[0]).setValue(trackerDTO);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(uid[0]);
+        databaseReference.child("tracker").child(myId[0]).setValue(trackerDTO);
 
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child(myId[0]);
         reference.child("request").child(uid[0]).child("acceptance").setValue(1);
 
 
-        DatabaseReference patientReference = FirebaseDatabase.getInstance().getReference().child("users").child(uid[0]);
-        patientReference.child("patient").child(myId[0]).setValue(patientDTO);
+        DatabaseReference patientReference = FirebaseDatabase.getInstance().getReference().child("users").child(myId[0]);
+        patientReference.child("patient").child(uid[0]).setValue(patientDTO);
     }
 
     @Override
@@ -394,8 +389,6 @@ public class FirebaseNetwork implements NetworkInterface{
                     if (key.equals(trackerEmail)) {
 
                         exist = true;
-                        //myDelegate.isUserExist(exist);
-
                         break;
                     }
                 }
@@ -406,7 +399,6 @@ public class FirebaseNetwork implements NetworkInterface{
             }
         });
 
-       // return exist;
     }
 
     @Override
