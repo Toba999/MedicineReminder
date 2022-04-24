@@ -3,8 +3,8 @@ package com.example.medicinereminder.model;
 public class PatientDTO {
 
     private String email;
-    private String patientEmail;
     private String name;
+    private String trakerEmail;
     private int img;
     private int ID;
 
@@ -24,9 +24,9 @@ public class PatientDTO {
         this.ID = ID;
     }
 
-    public PatientDTO(String email, String patientEmail, String name, int img) {
+    public PatientDTO( String trakerEmail,String email, String name, int img) {
         this.email = email;
-        this.patientEmail = patientEmail;
+        this.trakerEmail = trakerEmail;
         this.name = name;
         this.img = img;
     }
@@ -34,9 +34,9 @@ public class PatientDTO {
     public PatientDTO() {
     }
 
-    public PatientDTO(String email, String patientEmail, String password, String name) {
+    public PatientDTO(String trakerEmail,String email,  String password, String name) {
         this.email = email;
-        this.patientEmail = patientEmail;
+        this.trakerEmail = trakerEmail;
         this.name = name;
     }
 
@@ -48,12 +48,12 @@ public class PatientDTO {
         this.email = email;
     }
 
-    public String getPatientEmail() {
-        return patientEmail;
+    public String gettrakerEmail() {
+        return trakerEmail;
     }
 
-    public void setPatientEmail(String patientEmail) {
-        this.patientEmail = patientEmail;
+    public void settrakerEmail(String trakerEmail) {
+        this.trakerEmail = trakerEmail;
     }
 
 

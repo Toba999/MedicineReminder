@@ -1,6 +1,7 @@
 package com.example.medicinereminder.tracker_screen.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.medicinereminder.model.MedicationPOJO;
 import com.example.medicinereminder.model.PatientDTO;
@@ -8,12 +9,10 @@ import com.example.medicinereminder.model.RequestDTO;
 import com.example.medicinereminder.model.TrackerDTO;
 import com.example.medicinereminder.repository.Repository;
 import com.example.medicinereminder.services.network.NetworkDelegate;
-import com.example.medicinereminder.tracker_screen.view.TrackerActivity;
 import com.example.medicinereminder.tracker_screen.view.TrakerActivityInterface;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
-
 import java.util.List;
 
 public class TrakerPresenter implements TrakerPresenterInterface, NetworkDelegate {
@@ -46,7 +45,7 @@ public class TrakerPresenter implements TrakerPresenterInterface, NetworkDelegat
 
     @Override
     public void onSuccessReturn(String userName) {
-
+        view.setonSuccessReturn(userName);
     }
 
     @Override
@@ -97,5 +96,10 @@ public class TrakerPresenter implements TrakerPresenterInterface, NetworkDelegat
     @Override
     public FirebaseUser currentUser() {
       return   repository.getCurrentUser();
+    }
+
+    @Override
+    public void getUserFromRealDB(String email) {
+        repository.getUserName(email);
     }
 }

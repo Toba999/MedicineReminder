@@ -5,11 +5,11 @@ import java.io.Serializable;
 
 public class RequestDTO implements Serializable {
 
-    private String name;
-    private  String email;
-    private String myEmail;
+    private String name; //patient
+    private  String email;//traker
+    private String myEmail;//patient
     private int acceptance;
-    private String requestID;
+    private String requestID;//patient
 
 
     public RequestDTO() {
