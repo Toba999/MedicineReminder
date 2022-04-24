@@ -6,8 +6,11 @@
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/drawable/action_bar.xml" value="0.25833333333333336" />
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/drawable/second_bar.xml" value="0.25833333333333336" />
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/activity_display_med.xml" value="0.2" />
+        <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/activity_medication_for_patient.xml" value="0.1875" />
+        <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/activity_patient.xml" value="0.2421875" />
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/fragment_medications.xml" value="0.2421875" />
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/medication_row.xml" value="0.2421875" />
+        <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/patient_medication_row.xml" value="0.18854166666666666" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/drawable/action_bar.xml" value="0.1962962962962963" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/drawable/btn_background.xml" value="0.1962962962962963" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/drawable/round_corners_bar.xml" value="0.1962962962962963" />

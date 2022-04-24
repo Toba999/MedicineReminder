@@ -18,60 +18,74 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicineReminder"
         android:usesCleartextTraffic="true">
+      
         <service
             android:name=".workManager.medReminderManager.MedReminderService"
             android:enabled="true"
             android:exported="true" />
+      
+        <activity
+            android:name=".medication_for_patient.view.MedicationForPatient"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+      
         <activity
             android:name=".patient_screen.view.PatientActivity"
             android:exported="true"
             android:screenOrientation="portrait"/>
+      
         <activity
             android:name=".tracker_screen.view.TrackerActivity"
             android:exported="true"
             android:screenOrientation="portrait"/>
+      
         <activity
             android:name=".addtaker.AddTakerActivity"
             android:exported="true"
             android:screenOrientation="portrait"/>
+
         <activity
             android:name=".DisplayMedicine.DisplayMedActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
+      
         <activity
             android:name=".signup.view.SignUpActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
+      
         <activity
             android:name=".login.view.LoginActivity"
             android:screenOrientation="portrait"
             android:exported="true">
+          
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
+          
         </activity>
+      
         <activity
             android:name=".AddEditMedicine.view.AddEditMedActivity"
             android:exported="true"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+
+
         <activity
             android:name=".HomeScreen.view.Home_Screen"
             android:exported="true"
-            android:screenOrientation="portrait" >
-        </activity>
-     
-
-
+            android:screenOrientation="portrait"></activity>
+      
         <activity
             android:name=".splash.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
+        
         <activity android:name=".requests.view.RequestsActivity"
             android:exported="true"
             android:screenOrientation="portrait"/>
+
 
         <meta-data
             android:name="preloaded_fonts"

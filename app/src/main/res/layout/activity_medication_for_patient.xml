@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".patient_screen.view.PatientActivity">
+    tools:context=".medication_for_patient.view.MedicationForPatient">
 
     <FrameLayout
         android:id="@+id/fl_header_image"
@@ -18,7 +18,7 @@
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/iv_patients_back"
+                android:id="@+id/iv_patientMed_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -36,7 +36,7 @@
                 android:gravity="center"
                 android:paddingStart="@dimen/toolbar_title_paddingStart"
                 android:paddingEnd="0dp"
-                android:text="Patients"
+                android:text="Patient's Meds"
                 android:textColor="@color/white"
                 android:textSize="@dimen/toolbar_title_text_size"
                 android:textStyle="bold" />
@@ -44,14 +44,11 @@
         </RelativeLayout>
 
     </FrameLayout>
-
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/patient_medication_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="20dp"
-        android:id="@+id/patientsRecyclerView"
-        app:layout_constraintTop_toBottomOf="@+id/fl_header_image" />
 
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fl_header_image"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
