@@ -342,7 +342,9 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                     if(isAdd){
                         startActivity(new Intent(AddEditMedActivity.this, Home_Screen.class));
                     }else{
-                        startActivity(new Intent(AddEditMedActivity.this,DisplayMedActivity.class));
+                        Intent intent = new Intent(AddEditMedActivity.this,DisplayMedActivity.class);
+                        intent.putExtra("med", (Serializable) medication);
+                        startActivity(intent);
                     }
                     dialog.dismiss();
 

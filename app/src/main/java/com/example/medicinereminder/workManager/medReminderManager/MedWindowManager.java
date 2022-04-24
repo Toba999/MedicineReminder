@@ -20,6 +20,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
+import com.example.medicinereminder.model.TimeUtility;
 import com.example.medicinereminder.services.network.NetworkDelegate;
 import com.example.medicinereminder.workManager.MyPeriodicManager;
 import com.google.gson.Gson;
@@ -78,9 +79,10 @@ public class MedWindowManager {
 
     @SuppressLint("SetTextI18n")
     private void bindView() {
+        String time= TimeUtility.getTimeString(key);
         binding.dialMedName.setText(myMedicine.getMedicationName());
-        binding.txtTime.setText(key);
-        binding.txtMedTimeNotification.setText("Schedule for " + key + ", today");
+        binding.txtTime.setText(time);
+        binding.txtMedTimeNotification.setText("Schedule for " + time + ", today");
         description = "take " +myMedicine.getDoseNum() + " " + myMedicine.getMedicationType() + "(s), " +
                 myMedicine.getStrength() + myMedicine.getStrengthType() + myMedicine.getInstruction();
         binding.txtMedDoseNotification.setText(description);

@@ -1,5 +1,6 @@
 package com.example.medicinereminder.workManager;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 
@@ -17,6 +18,7 @@ import com.example.medicinereminder.model.TimeUtility;
 import com.example.medicinereminder.repository.Repository;
 import com.example.medicinereminder.services.network.NetworkDelegate;
 import com.example.medicinereminder.workManager.medReminderManager.MedOneTimeWorkManger;
+import com.example.medicinereminder.workManager.refillManager.RefillReminderWorkManager;
 import com.google.gson.Gson;
 
 import java.math.BigInteger;
@@ -116,7 +118,7 @@ public class MyPeriodicManager extends Worker {
                     Log.i("refill reminder", "onSuccess: "+medicationPOJO.getMedicationName()+medicationPOJO.getLeftNumberReminder());
                 }
                 medicationListForRefillReminder = medicationPOJOS;
-                //loopOnRefileMedicationList();
+                loopOnRefileMedicationList();
             }
 
             @Override
@@ -185,7 +187,7 @@ public class MyPeriodicManager extends Worker {
     }
 
 
-/*
+
     private void callOneTimeRefillReminder(MedicationPOJO medicationPOJO) {
 
         Data data = new Data.Builder()
@@ -194,7 +196,7 @@ public class MyPeriodicManager extends Worker {
                 .setRequiresBatteryNotLow(true)
                 .build();
         String tag = medicationPOJO.getMedicationName()+medicationPOJO.getId();
-        OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(RefileReminderWorkManagerForOneTime.class)
+        OneTimeWorkRequest oneTimeWorkRequest = new OneTimeWorkRequest.Builder(RefillReminderWorkManager.class)
                 .setInputData(data)
                 .setConstraints(constraints)
                 .setInitialDelay(10, TimeUnit.SECONDS)
@@ -207,12 +209,11 @@ public class MyPeriodicManager extends Worker {
         for (MedicationPOJO medicationPOJO : medicationListForRefillReminder) {
 
             if (medicationPOJO.getLeftNumber() <= medicationPOJO.getLeftNumberReminder()) {
-                Log.i("AAAA", "onSuccess: "+medicationPOJO.getMedicationName()+medicationPOJO.getLeftNumberReminder());
-
+                Log.i("loopOnRefill", "onSuccess: "+medicationPOJO.getMedicationName()+medicationPOJO.getLeftNumberReminder());
                 callOneTimeRefillReminder(medicationPOJO);
             }
         }
     }
-*/
+
 }
 
