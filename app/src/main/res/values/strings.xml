@@ -59,5 +59,6 @@
     <string name="channel_name">MedicalReminder</string>
     <string name="channel_description">MedicalDescription</string>
     <string name="refill_your_medicine">Refill your Medicine</string>
+    <string name="_1">1</string>
 
 </resources>
