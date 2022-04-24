@@ -3,6 +3,10 @@ package com.example.medicinereminder.AddEditMedicine.view;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.work.Constraints;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -20,13 +24,13 @@ import android.widget.Toast;
 import com.example.medicinereminder.AddEditMedicine.presenter.AddMedicationPresenter;
 import com.example.medicinereminder.AddEditMedicine.presenter.AddMedicationPresenterInterface;
 import com.example.medicinereminder.DisplayMedicine.DisplayMedActivity;
-import com.example.medicinereminder.HomeScreen.HomeFragment;
-import com.example.medicinereminder.HomeScreen.view.Home_Screen;
+import com.example.medicinereminder.HomeScreen.view.HomeFragment;
 import com.example.medicinereminder.databinding.ActivityAddEditMedBinding;
 import com.example.medicinereminder.localdatabase.LocalSource;
 import com.example.medicinereminder.model.MedicationPOJO;
 import com.example.medicinereminder.model.TimeUtility;
 import com.example.medicinereminder.repository.Repository;
+import com.example.medicinereminder.workManager.MyPeriodicManager;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.Serializable;
@@ -41,6 +45,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class AddEditMedActivity extends AppCompatActivity implements onClickAddMedication, AddAndEditMedicationInterface {
     //select Add or Edit Screen
@@ -285,7 +290,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                 onClick(medication);
 
                 //Todo handle sending the object to display activity and work manager and navigate
-                //setWorkTimer();
+                setWorkTimer();
 
                 Intent intent = new Intent(AddEditMedActivity.this,DisplayMedActivity.class);
                 intent.putExtra("med", (Serializable) medication);
@@ -317,9 +322,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
                 onClick(medication);
                 startActivity(new Intent(AddEditMedActivity.this, Home_Screen.class));
                 //Todo handle  work manager
-                //setWorkTimer();
-
-
+                setWorkTimer();
             }
         });
         initRecycleView(medication);
@@ -453,8 +456,10 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
         }
         for (long i= startDate;i<=endDate;i+=(day*24*60*60000L)){
             dateTimeSimpleTaken.put(TimeUtility.getDateString(i),false);
-            for (int j=0;j<timeAbs.size();j++)
-            dateTimeAbsTaken.put((i+timeAbs.get(j))+"",false);
+            for (int j=0;j<timeAbs.size();j++) {
+                Log.i("onTimeSet", startDate+" "+endDate+" "+i + Integer.parseInt(timeAbs.get(j)));
+                dateTimeAbsTaken.put((i + Integer.parseInt(timeAbs.get(j))) + "", false);
+            }
         }
 
         medication.setDateTimeAbsTaken(dateTimeAbsTaken);
@@ -553,23 +558,22 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
         binding.etEditMedSize.setText(medication.getMedicineSize()+"");
         binding.etRefillReminder.setText(medication.getLeftNumberReminder()+"");
     }
-    //Todo set worker notification
-/*
+
     private void setWorkTimer() {
         Constraints constraints = new Constraints.Builder()
                 .setRequiresBatteryNotLow(true)
                 .build();
 
-        PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(MyPeriodicWorkManger.class,
+        PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(MyPeriodicManager.class,
                 3, TimeUnit.HOURS)
                 .setConstraints(constraints)
                 .build();
 
-        WorkManager.getInstance(this.getContext()).enqueueUniquePeriodicWork("Counter", ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork("Counter", ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
 
     }
 
-*/
+
 
 
 }

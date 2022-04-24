@@ -2,6 +2,7 @@ package com.example.medicinereminder.AddEditMedicine.view;
 
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TimePicker;
@@ -45,8 +46,13 @@ public class TimeSelectedAdapter extends RecyclerView.Adapter<TimeSelectedAdapte
     public void setDosePerDay(int n) {
         if(AddEditMedActivity.isAdd){
             timeMap.clear();
+            dosePerDay = n;
+        }else{
+            if (n != timeMap.size()) {
+                timeMap.clear();
+            }
+            dosePerDay=n;
         }
-        dosePerDay = n;
     }
 
     @NonNull
@@ -77,6 +83,8 @@ public class TimeSelectedAdapter extends RecyclerView.Adapter<TimeSelectedAdapte
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     long hourAbs=hourOfDay*60*60000L;
                     long minAbs=minute* 60000L;
+                    Log.i("onTimeSet", hourAbs+" "+minAbs);
+
 
                     if (!holder.result.isEmpty())
                         timeMap.remove(holder.result);
