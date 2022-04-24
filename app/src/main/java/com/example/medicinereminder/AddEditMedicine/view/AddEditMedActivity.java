@@ -134,7 +134,7 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
     private void handleSpinners(){
 
         binding.ivAddBack.setOnClickListener(v -> lunchExitDialog());
-        binding.btnStartDate.setOnClickListener(v -> showDatePicker(binding.tvSelectedStartDate, "start"));
+        binding.btnStartDateEdit.setOnClickListener(v -> showDatePicker(binding.tvSelectedStartDate, "start"));
 
         binding.btnEndDate.setOnClickListener(v -> showDatePicker(binding.tvSelectedEndDate, "end"));
 
