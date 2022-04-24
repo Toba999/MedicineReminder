@@ -55,7 +55,7 @@ public class TrakerPresenter implements TrakerPresenterInterface, NetworkDelegat
 
     @Override
     public void onSuccessTracker(List<TrackerDTO> trackerDTOS) {
-
+        view.setonSuccessTracker(trackerDTOS);
     }
 
     @Override
@@ -101,5 +101,15 @@ public class TrakerPresenter implements TrakerPresenterInterface, NetworkDelegat
     @Override
     public void getUserFromRealDB(String email) {
         repository.getUserName(email);
+    }
+
+    @Override
+    public void loadTrackers(String email) {
+        repository.loadTakers(email);
+    }
+
+    @Override
+    public void deleteTracker(String takerEmail, String patientEmail) {
+        repository.deleteTaker(takerEmail,patientEmail);
     }
 }

@@ -315,7 +315,7 @@ public class FirebaseNetwork implements NetworkInterface{
                     TrackerDTO tracker = new TrackerDTO(dataSnapshot.child("patientEmail").getValue().toString()
                             , dataSnapshot.child("name").getValue().toString()
                             , dataSnapshot.child("email").getValue().toString()
-                            , (Integer.parseInt(dataSnapshot.child("img").getValue().toString()))
+                            , 1//(Integer.parseInt(dataSnapshot.child("img").getValue().toString()))
                             ,dataSnapshot.child("requestID").getValue().toString()
                     );
                     trackers.add(tracker);
