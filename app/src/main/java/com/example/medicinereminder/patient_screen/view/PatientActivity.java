@@ -11,18 +11,25 @@ import android.widget.ImageView;
 
 import com.example.medicinereminder.R;
 import com.example.medicinereminder.medication_screen.view.MedicationMainAdapter;
+import com.example.medicinereminder.model.PatientDTO;
+import com.example.medicinereminder.patient_screen.presenter.PatientPresenter;
+import com.example.medicinereminder.patient_screen.presenter.PatientPresenterInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PatientActivity extends AppCompatActivity {
+public class PatientActivity extends AppCompatActivity implements PatientActivityInterface {
 
     ImageButton imageView;
+    PatientPresenterInterface patientPresenter;
+    PatientAdapter patientAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient);
         imageView = findViewById(R.id.iv_patients_back);
+        patientPresenter = new PatientPresenter(this, this);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,6 +37,7 @@ public class PatientActivity extends AppCompatActivity {
             }
         });
         initRecyclerView();
+        patientPresenter.getPatients();
     }
 
     private void initRecyclerView(){
@@ -39,11 +47,12 @@ public class PatientActivity extends AppCompatActivity {
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        List<String> patients = new ArrayList<>();
-        patients.add(new String("thoraya@gmail.com"));
-        patients.add(new String("thoria743@gmail.com"));
-
-        PatientAdapter patientAdapter = new PatientAdapter(this, patients);
+        patientAdapter = new PatientAdapter(this);
         recyclerView.setAdapter(patientAdapter);
+    }
+
+    @Override
+    public void showPatient(List<PatientDTO> patients) {
+        patientAdapter.setPatients(patients);
     }
 }

@@ -280,11 +280,11 @@ public class FirebaseNetwork implements NetworkInterface{
                 patients.clear();
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    if (dataSnapshot.child("patientEmail").getValue() != null) {
-                        PatientDTO patient = new PatientDTO(dataSnapshot.child("email").getValue().toString()
-                                , dataSnapshot.child("patientEmail").getValue().toString()
+                    if (dataSnapshot.child("trakerEmail").getValue() != null) {
+                        PatientDTO patient = new PatientDTO(dataSnapshot.child("trakerEmail").getValue().toString()
+                                , dataSnapshot.child("email").getValue().toString()
                                 , dataSnapshot.child("name").getValue().toString()
-                                , Integer.parseInt(dataSnapshot.child("img").getValue().toString())
+                                , Integer.parseInt(dataSnapshot.child("profileImg").getValue().toString())
                                 //, Integer.parseInt(dataSnapshot.child("patientId").getValue())
                         );
                         patients.add(patient);
