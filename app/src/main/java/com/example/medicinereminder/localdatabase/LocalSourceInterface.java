@@ -12,7 +12,7 @@ import io.reactivex.Single;
 
 public interface LocalSourceInterface {
     LiveData<List<MedicationPOJO>> getAllMedication();
-
+    Single<List<MedicationPOJO>> getAllMedicationSync();
     void insertMedication(MedicationPOJO medication);
 
     void deleteMedication(MedicationPOJO medication);

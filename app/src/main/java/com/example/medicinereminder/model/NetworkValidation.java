@@ -16,12 +16,12 @@ public class NetworkValidation {
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
-        return netInfo.isConnectedOrConnecting();
+        return netInfo != null && netInfo.isConnected();
     }
 
     public static String checkShared(Context context) {
         sharedPref = context.getSharedPreferences(SignUpActivity.SHARED_PER, Context.MODE_PRIVATE);
-        email = sharedPref.getString(SignUpActivity.EMAIL, "null");
+        email = sharedPref.getString(SignUpActivity.USER_EMAIL, "null");
         return email;
     }
 

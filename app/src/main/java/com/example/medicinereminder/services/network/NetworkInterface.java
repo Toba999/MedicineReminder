@@ -57,6 +57,7 @@ public interface NetworkInterface {
     void updateMedicationToRoomFromFirebase(String email);
 
     void updatePatientMedication(String email, MedicationPOJO medicationPOJO);
+    void trakerExistence(String userEmail,String trakerEmail);
 
 
 }

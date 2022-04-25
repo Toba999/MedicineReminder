@@ -18,6 +18,8 @@ import io.reactivex.Single;
 public interface RepositoryInterface {
     LiveData<List<MedicationPOJO>> getAllMedication();
 
+    Single<List<MedicationPOJO>> getAllMedicationSync();
+
     void insertMedication(MedicationPOJO medication);
 
     void deleteMedication(MedicationPOJO medication);
@@ -89,5 +91,6 @@ public interface RepositoryInterface {
     void updateTakenMedicine(MedicationPOJO medicine);
 
     void deletePatient(String patientEmail, String trackerEmail);
+    void trakerExistence(String userEmail,String trakerEmail);
 
 }

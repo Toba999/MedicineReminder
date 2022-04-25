@@ -149,10 +149,17 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
 
         String[] timeWS = myTime.split(" ");
         String[] timeDet = timeWS[0].split(":");
+        int hours = Integer.parseInt(timeDet[0]);
+        if(timeWS[1].equals("PM"))
+        {
+            hours+=12;
+        }
+
+
         System.out.println(timeDet[0] + ":"+timeDet[1]);
         Calendar date = new GregorianCalendar();
         // reset hour, minutes, seconds and millis
-        date.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeDet[0]));
+        date.set(Calendar.HOUR_OF_DAY, hours);
         date.set(Calendar.MINUTE, Integer.parseInt(timeDet[1]));
         date.set(Calendar.SECOND, 0);
         date.set(Calendar.MILLISECOND, 0);

@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -22,9 +23,18 @@ import com.example.medicinereminder.HomeScreen.view.Home_Screen;
 import com.example.medicinereminder.R;
 import com.example.medicinereminder.login.presenter.LoginPresenter;
 import com.example.medicinereminder.login.presenter.LoginPresenterInterface;
+import com.example.medicinereminder.services.network.FirebaseNetwork;
 import com.example.medicinereminder.signup.view.SignUpActivity;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class LoginActivity extends AppCompatActivity implements LoginActivityInterface {
     public static final String SHARED_PER = "SHAREDfILE";
     public static final String USER_EMAIL = "USER_EMAIL";
@@ -40,6 +50,10 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
     FloatingActionButton btnLoginWithGoogle;
     ProgressBar progressBar;
     LoginPresenterInterface presenter;
+    GoogleSignInOptions gso;
+    String idToken = "";
+    GoogleSignInClient mGoogleSignInClient;
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,10 +72,60 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
         initUI();
         btnLogin.setOnClickListener(view -> userLogin());
         btnLoginWithGoogle.setOnClickListener(view -> {
-           // prsenter.signInUsingGoogle();
+            loginRequestUsingGoogle();
         });
         txtSign.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), SignUpActivity.class)));
 
+    }
+
+    private void loginRequestUsingGoogle() {
+        integrateGoogle();
+        signInWithGoogle();
+    }
+
+    private void integrateGoogle() {
+        FirebaseNetwork.getInstance(this);
+        mAuth = FirebaseNetwork.myAuth;
+        if (gso == null) {
+            gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken("34466279240-s8bq17uu086iq8pa9rvh2hdt6av81i7n.apps.googleusercontent.com")
+                    .requestEmail()
+                    .build();
+//            gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                    //.requestIdToken()
+//                    .requestEmail()
+//                    .build();
+
+        }
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+    }
+
+    private void signInWithGoogle() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, 123);
+    }
+
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 123) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+//                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+
+
+                idToken = account.getIdToken();
+
+                presenter.isAlreadySignedWithGoogle(account.getEmail());
+
+            } catch (ApiException e) {
+                Log.i("login",e.getLocalizedMessage());
+                Toast.makeText(getApplicationContext(),"sign failed",Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
 
@@ -74,6 +138,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
         progressBar= findViewById(R.id.progressBar);
 
     }
+
     private void userLogin() {
         String email = editEmail.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
@@ -136,6 +201,11 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
     public void setFailureResponse(String errorMassage) {
         Toast.makeText(getApplicationContext(), errorMassage , Toast.LENGTH_SHORT).show();
         progressBar.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void setRespons(boolean response) {
+        presenter.signInUsingGoogle(idToken);
     }
 
     @SuppressLint("NewApi")
