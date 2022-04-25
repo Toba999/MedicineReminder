@@ -14,6 +14,7 @@ import com.example.medicinereminder.R;
 import com.example.medicinereminder.medication_for_patient.view.MedicationForPatient;
 import com.example.medicinereminder.model.PatientDTO;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientViewHolder> {
@@ -44,7 +45,7 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientV
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), MedicationForPatient.class);
-                intent.putExtra("patientEmail", holder.emailTextView.getText().toString());
+                intent.putExtra("patient", (Serializable)patients.get(position));
                 view.getContext().startActivity(intent);
             }
         });

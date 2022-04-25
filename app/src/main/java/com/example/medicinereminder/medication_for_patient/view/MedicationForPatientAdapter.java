@@ -12,13 +12,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import com.example.medicinereminder.R;
+import com.example.medicinereminder.medication_screen.view.MedicationInsideAdapter;
+import com.example.medicinereminder.model.MedicationPOJO;
+import com.example.medicinereminder.model.PatientDTO;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 public class MedicationForPatientAdapter extends RecyclerView.Adapter<MedicationForPatientAdapter.MedicationForPatientViewHolder> {
 
     Context context;
+    List<MedicationPOJO> medications = null;
 
     public MedicationForPatientAdapter(Context context){
         this.context = context;
+    }
+
+    public void setMedications(List<MedicationPOJO> medications) {
+        this.medications = medications;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -29,12 +42,39 @@ public class MedicationForPatientAdapter extends RecyclerView.Adapter<Medication
 
     @Override
     public void onBindViewHolder(@NonNull MedicationForPatientViewHolder holder, int position) {
+        setImage(holder, medications.get(position).getMedicationType());
+        holder.medName.setText(medications.get(position).getMedicationName().toString());
+        Date date=new Date(medications.get(position).getStartDate());
+        SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yyyy");
+        String dateText = df2.format(date);
+        holder.medStartDate.setText(dateText); //
+        date=new Date(medications.get(position).getEndDate());
+        df2 = new SimpleDateFormat("dd/MM/yyyy");
+        dateText = df2.format(date);
+        holder.medEndDate.setText(dateText); //
+        holder.medStartTime.setText(medications.get(position)
+                .getTimeSimpleTaken().keySet().toArray()[0].toString());
+    }
 
+    public void setImage(MedicationForPatientAdapter.MedicationForPatientViewHolder holder,
+                         String imgName){
+        if(imgName.equals("drops"))
+            holder.medImage.setImageResource(R.mipmap.drops);
+        else if(imgName.equals("injections"))
+            holder.medImage.setImageResource(R.mipmap.injections);
+        else if(imgName.equals("pills"))
+            holder.medImage.setImageResource(R.mipmap.pills);
+        else if(imgName.equals("syrup"))
+            holder.medImage.setImageResource(R.mipmap.syrup);
+        else
+            holder.medImage.setImageResource(R.mipmap.powder);
     }
 
     @Override
     public int getItemCount() {
-        return 1;
+        if(medications == null)
+            return 0;
+        return medications.size();
     }
 
     class MedicationForPatientViewHolder extends ViewHolder{

@@ -33,8 +33,8 @@ public class Repository implements RepositoryInterface{
     private Repository(NetworkDelegate myDelegation, Context context) {
         this.context = context;
         this.myDelegation=myDelegation;
-        myRemote= FirebaseNetwork.getInstance(myDelegation);
-        localSource= LocalSource.getConcreteLocalClassInstance(context);
+        myRemote = FirebaseNetwork.getInstance(myDelegation);
+        localSource = LocalSource.getConcreteLocalClassInstance(context);
     }
 
 
