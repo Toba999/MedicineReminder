@@ -154,6 +154,10 @@ public class Repository implements RepositoryInterface{
     public void deleteTaker(String takerEmail, String patientEmail) {
         myRemote.deleteTracker(takerEmail, patientEmail);
     }
+    @Override
+    public void deletePatient(String patientEmail, String trackerEmail) {
+        myRemote.deletePatient(patientEmail, trackerEmail);
+    }
 
     @Override
     public void updateToRoomFromFirebase(List<MedicationPOJO> medications) {

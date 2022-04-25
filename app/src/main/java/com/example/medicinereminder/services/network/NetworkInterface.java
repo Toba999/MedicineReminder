@@ -50,6 +50,7 @@ public interface NetworkInterface {
     void UserExistence(String email);
 
     void deleteTracker(String takerEmail,String patientEmail);
+    void deletePatient(String patientEmail, String trackerEmail);
 
     void deleteInPatientMedicationList(String email, String medicationID);
 

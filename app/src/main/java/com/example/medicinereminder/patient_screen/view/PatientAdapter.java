@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,9 +22,11 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientV
 
     private Context context;
     List<PatientDTO> patients = null;
+    PatientActivityInterface activity;
 
-    public PatientAdapter(Context context){
+    public PatientAdapter(Context context, PatientActivityInterface activity){
         this.context = context;
+        this.activity = activity;
     }
 
     public void setPatients(List<PatientDTO> patients){
@@ -40,6 +43,16 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientV
     @Override
     public void onBindViewHolder(@NonNull PatientViewHolder holder, int position) {
         holder.emailTextView.setText(patients.get(position).getEmail());
+        holder.nameTextView.setText(patients.get(position).getName());
+        holder.imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String  patientEmail = patients.get(position).getEmail();
+                String trackerEmail = patients.get(position).gettrakerEmail();
+                activity.deletePatient(patientEmail,trackerEmail);
+                notifyDataSetChanged();
+            }
+        });
 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,12 +73,16 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.PatientV
 
     class PatientViewHolder extends RecyclerView.ViewHolder {
         TextView emailTextView;
+        TextView nameTextView;
+        ImageButton imageButton;
         View view;
 
         public PatientViewHolder(@NonNull View view){
             super(view);
             this.view = view;
             emailTextView = view.findViewById(R.id.patientEmail);
+            imageButton = view.findViewById(R.id.deletePatientBtn);
+            nameTextView = view.findViewById(R.id.patientName);
         }
     }
 }
