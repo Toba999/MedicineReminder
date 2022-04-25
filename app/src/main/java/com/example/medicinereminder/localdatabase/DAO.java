@@ -24,7 +24,7 @@ public interface DAO {
     @Query("Select * from medications")
     Single<List<MedicationPOJO>> getAllMedicationSync();
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertMedication(MedicationPOJO medication);
 
     //for specified medicine
