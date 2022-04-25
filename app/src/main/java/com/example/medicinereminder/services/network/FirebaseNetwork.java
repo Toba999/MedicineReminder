@@ -374,6 +374,7 @@ public class FirebaseNetwork implements NetworkInterface{
             String key = String.valueOf(meds.getId());
             databaseReference.child("medications").child(key).setValue(meds);
         }
+        myDelegate.onSuccess();
     }
 
     @Override

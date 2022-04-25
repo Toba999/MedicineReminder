@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.example.medicinereminder.AddEditMedicine.view.AddAndEditMedicationInterface;
+import com.example.medicinereminder.broadcast.NetworkStateListener;
 import com.example.medicinereminder.model.MedicationPOJO;
 import com.example.medicinereminder.model.NetworkValidation;
 import com.example.medicinereminder.model.PatientDTO;
@@ -31,14 +32,24 @@ public class AddMedicationPresenter implements AddMedicationPresenterInterface, 
 
     @Override
     public void updateToDatabase(MedicationPOJO medication,String email) {
-        repository.updateMedications(medication);
-        checkUpdateToFirebase(medication,email);
+        if (NetworkStateListener.isConnected){
+            repository.updateMedications(medication);
+        }else{
+            repository.updateMedications(medication);
+            checkUpdateToFirebase(medication,email);
+        }
+
     }
 
     @Override
     public void addToDatabase(MedicationPOJO medication,String email) {
-        repository.insertMedication(medication);
-        checkUpdateToFirebase(medication,email);
+        if (NetworkStateListener.isConnected){
+            repository.insertMedication(medication);
+        }else{
+            repository.insertMedication(medication);
+            checkUpdateToFirebase(medication,email);
+        }
+
     }
 
     private void checkUpdateToFirebase(MedicationPOJO medication,String email){

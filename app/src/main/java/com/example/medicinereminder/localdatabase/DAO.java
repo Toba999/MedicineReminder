@@ -21,7 +21,10 @@ public interface DAO {
     @Query("Select * from medications")
     LiveData<List<MedicationPOJO>> getAllMedication();
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Query("Select * from medications")
+    Single<List<MedicationPOJO>> getAllMedicationSync();
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertMedication(MedicationPOJO medication);
 
     //for specified medicine

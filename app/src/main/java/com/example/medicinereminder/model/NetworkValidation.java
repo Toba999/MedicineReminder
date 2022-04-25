@@ -16,7 +16,7 @@ public class NetworkValidation {
         ConnectivityManager connectivityManager =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
-        return netInfo.isConnectedOrConnecting();
+        return netInfo != null && netInfo.isConnected();
     }
 
     public static String checkShared(Context context) {
