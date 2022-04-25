@@ -10,7 +10,7 @@
         android:id="@+id/fl_header_image"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@drawable/action_bar"
+        android:background="@drawable/second_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <RelativeLayout
@@ -25,12 +25,13 @@
                 android:gravity="center"
                 android:paddingStart="@dimen/toolbar_title_paddingStart"
                 android:paddingEnd="0dp"
-                android:text="@string/more"
+                android:text="More"
                 android:textColor="@color/white"
                 android:textSize="@dimen/toolbar_title_text_size"
                 android:textStyle="bold" />
 
         </RelativeLayout>
+
     </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -90,29 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/line1"
-        android:fontFamily="@font/roboto_bold"
-        android:id="@+id/moreMyProfileButton"
-        android:textSize="18dp"
-        android:text="   My Profile"
-        android:drawableLeft="@drawable/profile_icon"
-        android:textDirection="ltr"
-        android:textAlignment="viewStart"
-        android:padding="20dp"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:background="@color/white"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:id="@+id/line2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/moreMyProfileButton"
-        android:background="@color/ScreenColor"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/line2"
-        android:fontFamily="@font/roboto_bold"
+        android:fontFamily="@font/roboto"
         android:id="@+id/morePatientButton"
         android:textSize="18dp"
         android:text="   Patients"
@@ -134,7 +113,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/line3"
-        android:fontFamily="@font/roboto_bold"
+        android:fontFamily="@font/roboto"
         android:id="@+id/moreTrackerButton"
         android:textSize="18dp"
         android:drawableLeft="@drawable/tracker_icon1"
@@ -159,7 +138,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:drawableLeft="@drawable/ic_baseline_co_present_24"
-        android:fontFamily="@font/roboto_bold"
+        android:fontFamily="@font/roboto"
         android:padding="20dp"
         android:text="   Requests"
         android:textAlignment="viewStart"

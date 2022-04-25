@@ -3,8 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/drawable/btn_background.xml" value="0.13802083333333334" />
         <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/drawable/plus_icon.xml" value="0.13802083333333334" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/activity_add_edit_med.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/activity_medication_for_patient.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/activity_patient.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/activity_profile.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/activity_requests.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/activity_sign_up.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/activity_tracker.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/add_edit_time_cell.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/fragment_home.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/fragment_medications.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/fragment_more.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/medication_inactive_active_row.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/medication_row.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/medicine_cell.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/medicine_dialog.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/medicine_reminder_dialog.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/medicines_section_cell.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/patient_medication_row.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/patient_row.xml" value="0.121875" />
         <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/refill_reminder_dialog.xml" value="0.10091743119266056" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/request_row.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/tracker_row.xml" value="0.121875" />
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/drawable/action_bar.xml" value="0.25833333333333336" />
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/drawable/second_bar.xml" value="0.25833333333333336" />
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/activity_display_med.xml" value="0.2" />
