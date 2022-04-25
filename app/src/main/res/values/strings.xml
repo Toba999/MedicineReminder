@@ -62,5 +62,6 @@
     <string name="cancel_med_dialog">Cancel</string>
     <string name="_1">1</string>
     <string name="refill">Refill</string>
+    <string name="doneBtnSecondMedicineDialog">Done</string>
 
 </resources>

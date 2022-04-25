@@ -13,7 +13,14 @@ import com.example.medicinereminder.services.network.NetworkDelegate;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class MedicationForPatientPresenter implements MedicationForPatientPresenterInterface, NetworkDelegate {
 
@@ -34,15 +41,16 @@ public class MedicationForPatientPresenter implements MedicationForPatientPresen
 
     @Override
     public void onSuccessReturnMedicationList(List<MedicationPOJO> medicationPOJOList) {
+        Date date=new Date(Calendar.getInstance().getTimeInMillis());
+        SimpleDateFormat df2 = new SimpleDateFormat("dd-MM-yyyy");
+        String dateText = df2.format(date);
+
+        filterMedicinesOfCurrentDate(medicationPOJOList, dateText);
         view.showMedications(medicationPOJOList);
     }
 
-    public void updateMedStatus(MedicationPOJO med, String time, String date){
-        med.getTimeSimpleTaken().put(time,true);
-        Long absTime = simpleTimeToAbs(time);
-        med.getDateTimeAbsTaken().put(absTime.toString(),true);
-        med.getDateTimeSimpleTaken().put(date,true);
-        repository.updateTakenMedicine(med);
+    public void updateMedStatus(String email, MedicationPOJO med){
+        repository.updatePatientMedicationList(email, med);
     }
 
     private Long simpleTimeToAbs(String time) {
@@ -56,7 +64,26 @@ public class MedicationForPatientPresenter implements MedicationForPatientPresen
             res += (12 * 60);
         }
         return res;
+    }
 
+    private List<MedicationPOJO> filterMedicinesOfCurrentDate(List<MedicationPOJO> allData,String currentData) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        List<MedicationPOJO> todayMed = new ArrayList<>();
+
+        for(MedicationPOJO med : allData)
+        {
+            for(Map.Entry<String,Boolean> opp : med.getDateTimeSimpleTaken().entrySet())
+            {
+
+                LocalDate date = LocalDate.parse(opp.getKey(),formatter);
+                LocalDate currentLocal = LocalDate.parse(currentData,formatter);
+                if(date.isEqual(currentLocal))
+                {
+                    todayMed.add(med);
+                }
+            }
+        }
+        return todayMed;
     }
 
     @Override

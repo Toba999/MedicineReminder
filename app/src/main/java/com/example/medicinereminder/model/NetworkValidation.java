@@ -21,7 +21,7 @@ public class NetworkValidation {
 
     public static String checkShared(Context context) {
         sharedPref = context.getSharedPreferences(SignUpActivity.SHARED_PER, Context.MODE_PRIVATE);
-        email = sharedPref.getString(SignUpActivity.EMAIL, "null");
+        email = sharedPref.getString(SignUpActivity.USER_EMAIL, "null");
         return email;
     }
 

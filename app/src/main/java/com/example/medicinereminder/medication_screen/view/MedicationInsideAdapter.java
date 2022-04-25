@@ -63,14 +63,14 @@ public class MedicationInsideAdapter extends RecyclerView.Adapter<MedicationInsi
                 MedicationPOJO medication = medicineStores.get(position);
                 boolean isActive = medication.getIsActive();
                 medication.setActive(!isActive);
-                medicationFragment.updateMedToDatabase(medication);
+                medicationFragment.updateMed(medication);
 
             }
         });
         holder.deleteMedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                medicationFragment.deleteMedToDatabase(medicineStores.get(position));
+                medicationFragment.deleteMed(medicineStores.get(position));
             }
         });
     }

@@ -3,7 +3,6 @@ package com.example.medicinereminder.tracker_screen.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,9 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.example.medicinereminder.R;
 import com.example.medicinereminder.login.view.LoginActivity;
 import com.example.medicinereminder.model.RequestDTO;
@@ -22,7 +19,6 @@ import com.example.medicinereminder.model.TrackerDTO;
 import com.example.medicinereminder.tracker_screen.presenter.TrakerPresenter;
 import com.example.medicinereminder.tracker_screen.presenter.TrakerPresenterInterface;
 import com.google.firebase.auth.FirebaseUser;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,10 +42,7 @@ public class TrackerActivity extends AppCompatActivity implements TrakerActivity
         FirebaseUser user = presenter.currentUser();
         senderEmail = user.getEmail();
         presenter.loadTrackers(senderEmail);
-//        FirebaseUser user = presenter.currentUser();
-//        senderEmail = user.getEmail();
-//        senderUserName = user.getDisplayName();
-//        Log.i("email",senderUserName);
+
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,8 +70,6 @@ public class TrackerActivity extends AppCompatActivity implements TrakerActivity
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
         List<TrackerDTO> trackers = new ArrayList<>();
-       // trackers.add(new String("mariam@gmail.com"));
-       // trackers.add(new String("hanan@gmail.com"));
          trackerAdapter = new TrackerAdapter(this, trackers,TrackerActivity.this);
         recyclerView.setAdapter(trackerAdapter);
     }
@@ -86,16 +77,40 @@ public class TrackerActivity extends AppCompatActivity implements TrakerActivity
     @Override
     public void setUserExiste(boolean respons) {
         if(respons){
-            RequestDTO request = new RequestDTO(senderUserName,trakerEmail,senderEmail,0,senderEmail.split("\\.")[0]);
-            Log.i("name",senderUserName);
+            presenter.trakerExistence(senderEmail,trakerEmail);
 
-            presenter.sendRequest(request);
-            Toast.makeText(getApplicationContext(), "the request send", Toast.LENGTH_SHORT).show();
+//                RequestDTO request = new RequestDTO(senderUserName, trakerEmail, senderEmail, 0, senderEmail.split("\\.")[0]);
+//                Log.i("name", senderUserName);
+//
+//                presenter.sendRequest(request);
+//                Toast.makeText(getApplicationContext(), "the request send", Toast.LENGTH_SHORT).show();
+////            }else {
+////                Toast.makeText(getApplicationContext(), "You add This Tracker before", Toast.LENGTH_SHORT).show();
+////            }
 
         }else{
             Toast.makeText(getApplicationContext(), "the request cant send", Toast.LENGTH_SHORT).show();
 
         }
+
+    }
+
+    @Override
+    public void setTrakerExiste(boolean respons) {
+        if(!respons){
+            RequestDTO request = new RequestDTO(senderUserName, trakerEmail, senderEmail, 0, senderEmail.split("\\.")[0]);
+            Log.i("name", senderUserName);
+            if(trakerEmail.equals(senderEmail)){
+                Toast.makeText(getApplicationContext(), "sorry but you can't add yourself", Toast.LENGTH_SHORT).show();
+
+            }else{
+                presenter.sendRequest(request);
+                Toast.makeText(getApplicationContext(), "the request send", Toast.LENGTH_SHORT).show();
+            }
+
+            }else {
+                Toast.makeText(getApplicationContext(), "You add This Tracker before", Toast.LENGTH_SHORT).show();
+            }
 
     }
 

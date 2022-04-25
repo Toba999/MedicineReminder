@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer;
 
 import com.example.medicinereminder.medication_screen.view.MedicationFragmentInterface;
 import com.example.medicinereminder.model.MedicationPOJO;
+import com.example.medicinereminder.model.NetworkValidation;
 import com.example.medicinereminder.model.PatientDTO;
 import com.example.medicinereminder.model.RequestDTO;
 import com.example.medicinereminder.model.TrackerDTO;
@@ -25,13 +26,17 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
     private List<MedicationPOJO> _inActiveMedicines = null;
     private List<MedicationPOJO> _activeMedicines = null;
     private int counter = 0;
+    private Context context;
     private RepositoryInterface _repo;
     private MedicationFragmentInterface _medicationFragmentInterface;
 
 
-    public MedicationFragmentPresenter(Context context, MedicationFragmentInterface medicationFragmentInterface, LifecycleOwner lifecycleOwner) {
+    public MedicationFragmentPresenter(Context context, MedicationFragmentInterface medicationFragmentInterface,
+                                       LifecycleOwner lifecycleOwner) {
         this._medicationFragmentInterface = medicationFragmentInterface;
         _repo = Repository.getInstance(this, context);
+        _repo.setRemoteDelegate(this);
+        this.context=context;
         getActiveMedicines(lifecycleOwner);
         getInactiveMedicines(lifecycleOwner);
     }
@@ -66,20 +71,36 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
     }
 
     @Override
-    public void deleteMedToDatabase(MedicationPOJO medication) {
+    public void deleteMed(MedicationPOJO medication, String email) {
         _repo.deleteMedication(medication);
+        if (NetworkValidation.checkShared(context)!=null){
+           _repo.deleteInPatientMedicationList(NetworkValidation.checkShared(context),medication.getId());
+        }
         _medicationFragmentInterface.refreshRecyclerView();
     }
 
     @Override
-    public void updateMedToDatabase(MedicationPOJO medication) {
+    public void updateMed(MedicationPOJO medication, String email) {
         _repo.updateMedications(medication);
+        checkUpdateDatabase(email, medication);
         _medicationFragmentInterface.refreshRecyclerView();
+    }
+
+    private void checkDeleteDatabase(String email, String medicationID){
+        if(email != null){
+            _repo.deleteInPatientMedicationList(email, medicationID);
+        }
+    }
+    private void checkUpdateDatabase(String email, MedicationPOJO medication){
+        if(email != null){
+            _repo.updatePatientMedicationList(email, medication);
+        }
     }
 
     @Override
     public void onSuccess() {
-
+        _medicationFragmentInterface.refreshRecyclerView();
+        Log.i("inside medication","deleted successfully");
     }
 
     @Override
@@ -124,7 +145,7 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
 
     @Override
     public void onUpdateMedicationFromFirebase(List<MedicationPOJO> medications) {
-
+        _medicationFragmentInterface.refreshRecyclerView();
     }
 
     @Override

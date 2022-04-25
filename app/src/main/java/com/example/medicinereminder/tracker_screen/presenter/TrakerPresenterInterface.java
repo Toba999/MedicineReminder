@@ -10,4 +10,5 @@ public interface TrakerPresenterInterface {
     void getUserFromRealDB(String email);
     void loadTrackers(String email);
     void deleteTracker(String takerEmail, String patientEmail);
+    boolean trakerExistence(String userEmail, String trakerEmail);
 }
