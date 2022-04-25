@@ -6,6 +6,7 @@
         <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/drawable/btn_background.xml" value="0.13802083333333334" />
         <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/drawable/plus_icon.xml" value="0.13802083333333334" />
         <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/activity_add_edit_med.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/activity_home_screen.xml" value="0.121875" />
         <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/activity_medication_for_patient.xml" value="0.121875" />
         <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/activity_patient.xml" value="0.121875" />
         <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/activity_profile.xml" value="0.121875" />
@@ -128,7 +129,6 @@
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/drawable-v24/ic_white_color_back_24dp.xml" value="0.18552631578947368" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/drawable/action_bar.xml" value="0.18552631578947368" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/drawable/btn_background.xml" value="0.18552631578947368" />
-        <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/drawable/splash_bg.xml" value="0.2203125" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/drawable/tv_background.xml" value="0.18552631578947368" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/drawable/view_shape.xml" value="0.18552631578947368" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/activity_add_edit_med.xml" value="0.18" />

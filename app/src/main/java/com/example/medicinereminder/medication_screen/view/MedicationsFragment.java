@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -24,7 +25,7 @@ public class MedicationsFragment extends Fragment implements MedicationFragmentI
     ProgressDialog progressDialog;
     boolean active, inActive;
     RecyclerView recyclerView;
-    TextView noMed;
+    ImageView noMedImage;
     View view;
 
     MedicationMainAdapter medicationMainAdapter;
@@ -45,7 +46,7 @@ public class MedicationsFragment extends Fragment implements MedicationFragmentI
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_medications, container, false);
         showProgressDialod();
-        noMed = (TextView) view.findViewById(R.id.medicationsNoMedYet);
+        noMedImage = (ImageView) view.findViewById(R.id.medicationsNoMedYet);
         recyclerView = view.findViewById(R.id.medicationRecyclerView);
         this.view = view;
         return view;
@@ -85,7 +86,7 @@ public class MedicationsFragment extends Fragment implements MedicationFragmentI
         if(active == true || inActive == true)
             initRecyclerView(view, active, inActive);
         else{
-            noMed.setVisibility(View.VISIBLE);
+            noMedImage.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.INVISIBLE);
         }
             //make text no Medicines
