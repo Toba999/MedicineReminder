@@ -29,7 +29,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class FirebaseNetwork implements NetworkInterface{
-    //Activity _activity;
+    Activity _activity;
     public static FirebaseAuth myAuth;
     private static FirebaseNetwork myFireBase;
 
@@ -53,6 +53,18 @@ public class FirebaseNetwork implements NetworkInterface{
         if (myFireBase == null) {
             myAuth = FirebaseAuth.getInstance();
             myFireBase = new FirebaseNetwork(networkDelegate);
+        }
+        return myFireBase;
+    }
+
+    private FirebaseNetwork(Activity myActivity) {
+        _activity = myActivity;
+    }
+
+    public static FirebaseNetwork getInstance(Activity myActivity) {
+        if (myFireBase == null) {
+            myAuth = FirebaseAuth.getInstance();
+            myFireBase = new FirebaseNetwork(myActivity);
         }
         return myFireBase;
     }

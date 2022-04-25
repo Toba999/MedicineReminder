@@ -24,6 +24,7 @@ public class LoginPresenter implements NetworkDelegate ,LoginPresenterInterface{
         this.context = context;
         this.view = view;
         repository = Repository.getInstance(this,context);
+        repository.setRemoteDelegate(this);
 
     }
 
@@ -36,6 +37,11 @@ public class LoginPresenter implements NetworkDelegate ,LoginPresenterInterface{
     @Override
     public void signInUsingGoogle(String idToken) {
         repository.signInUsingGoogle(idToken);
+    }
+
+    @Override
+    public void isAlreadySignedWithGoogle(String email) {
+        repository.isSignedWithGoogle(email);
     }
 
     @Override
@@ -70,7 +76,7 @@ public class LoginPresenter implements NetworkDelegate ,LoginPresenterInterface{
 
     @Override
     public void onSuccess(boolean response) {
-
+        view.setRespons(response);
     }
 
     @Override
