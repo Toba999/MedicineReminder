@@ -58,7 +58,7 @@ public class PatientActivity extends AppCompatActivity implements PatientActivit
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        patientAdapter = new PatientAdapter(this);
+        patientAdapter = new PatientAdapter(this, this);
         recyclerView.setAdapter(patientAdapter);
     }
 
@@ -66,5 +66,10 @@ public class PatientActivity extends AppCompatActivity implements PatientActivit
     public void showPatient(List<PatientDTO> patients) {
         progressDialog.dismiss();
         patientAdapter.setPatients(patients);
+    }
+
+    @Override
+    public void deletePatient(String patientEmail, String trackerEmail) {
+        patientPresenter.deletePatient(patientEmail, trackerEmail);
     }
 }
