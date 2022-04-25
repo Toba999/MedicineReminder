@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class TimeUtility {
@@ -72,6 +73,21 @@ public class TimeUtility {
 
         }
         return hour+":"+minute+" "+format;
+    }
+
+
+    public static Long getDateInMilli(String dateStr)
+    {
+        String[] dateDet = dateStr.split("-");
+        Calendar date = new GregorianCalendar();
+        // reset hour, minutes, seconds and millis
+        date.set(Calendar.HOUR_OF_DAY, 0);
+        date.set(Calendar.MINUTE, 0);
+        date.set(Calendar.SECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);
+        date.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateDet[0]));
+        date.set(Calendar.MONTH,Integer.parseInt(dateDet[1]) -1);
+        return date.getTimeInMillis();
     }
 
 

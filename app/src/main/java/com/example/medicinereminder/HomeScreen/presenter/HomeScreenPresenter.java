@@ -24,6 +24,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 
@@ -110,18 +111,15 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
     }
 
     @Override
-    public void updateMedStatus(MedicationPOJO med,String time,String interval,String date) {
+    public void updateMedStatus(MedicationPOJO med,String interval,String timeStr,String dateStr) {
+        Long time = simpleDateTimeToAbs(timeStr,dateStr);
         switch (interval)
         {
             case "Morning":
                 for(MedicationPOJO medicine : morningMed)
                 {
                     if(med == medicine) {
-                        med.getTimeSimpleTaken().put(time,true);
-                        Long absTime = simpleTimeToAbs(time);
-                        med.getDateTimeAbsTaken().put(absTime.toString(),true);
-                        med.getDateTimeSimpleTaken().put(date,true);
-                        //TODO: update date abs
+                        med.getDateTimeAbsTaken().put(time.toString(),true);
                     }
                 }
                 break;
@@ -129,11 +127,7 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
                 for(MedicationPOJO medicine : afternoonMed)
                 {
                     if(med == medicine) {
-                        med.getTimeSimpleTaken().put(time,true);
-                        Long absTime = simpleTimeToAbs(time);
-                        med.getDateTimeAbsTaken().put(absTime.toString(),true);
-                        med.getDateTimeSimpleTaken().put(date,true);
-                        //TODO: update date abs
+                        med.getDateTimeAbsTaken().put(time.toString(),true);
                     }
                 }
                 break;
@@ -141,16 +135,30 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
                 for(MedicationPOJO medicine : eveningMed)
                 {
                     if(med == medicine) {
-                        med.getTimeSimpleTaken().put(time,true);
-                        Long absTime = simpleTimeToAbs(time);
-                        med.getDateTimeAbsTaken().put(absTime.toString(),true);
-                        med.getDateTimeSimpleTaken().put(date,true);
-                        //TODO: update date abs
+                        med.getDateTimeAbsTaken().put(time.toString(),true);
                     }
                 }
                 break;
         }
         repo.updateTakenMedicine(med);
+    }
+    private Long simpleDateTimeToAbs(String myTime,String myDate)
+    {
+        String[] dateDet = myDate.split("-");
+        System.out.println(dateDet[0] + "/"+dateDet[1]);
+
+        String[] timeWS = myTime.split(" ");
+        String[] timeDet = timeWS[0].split(":");
+        System.out.println(timeDet[0] + ":"+timeDet[1]);
+        Calendar date = new GregorianCalendar();
+        // reset hour, minutes, seconds and millis
+        date.set(Calendar.HOUR_OF_DAY, Integer.parseInt(timeDet[0]));
+        date.set(Calendar.MINUTE, Integer.parseInt(timeDet[1]));
+        date.set(Calendar.SECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);
+        date.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateDet[0]));
+        date.set(Calendar.MONTH,Integer.parseInt(dateDet[1]) -1 );
+        return date.getTimeInMillis();
     }
     private Long simpleTimeToAbs(String time) {
         String[] times = time.split(":");
