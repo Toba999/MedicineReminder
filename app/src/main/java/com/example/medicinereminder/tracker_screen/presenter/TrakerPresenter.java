@@ -1,7 +1,6 @@
 package com.example.medicinereminder.tracker_screen.presenter;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.example.medicinereminder.model.MedicationPOJO;
 import com.example.medicinereminder.model.PatientDTO;
@@ -60,6 +59,7 @@ public class TrakerPresenter implements TrakerPresenterInterface, NetworkDelegat
 
     @Override
     public void onSuccess(boolean response) {
+       view.setTrakerExiste(response);
 
     }
 
@@ -111,5 +111,11 @@ public class TrakerPresenter implements TrakerPresenterInterface, NetworkDelegat
     @Override
     public void deleteTracker(String takerEmail, String patientEmail) {
         repository.deleteTaker(takerEmail,patientEmail);
+    }
+
+    @Override
+    public boolean trakerExistence(String userEmail, String trakerEmail) {
+        repository.trakerExistence(userEmail, trakerEmail);
+        return false;
     }
 }

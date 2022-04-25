@@ -32,13 +32,11 @@ public class FirebaseNetwork implements NetworkInterface{
     Activity _activity;
     public static FirebaseAuth myAuth;
     private static FirebaseNetwork myFireBase;
-
-
+    private boolean isTrakerExist = false;
     private NetworkDelegate myDelegate;
     private boolean exist = false;
     private boolean listenToUpdates = false;
     private List<MedicationPOJO> updatedMedicationList;
-
     private static String userName="";
 
 
@@ -522,5 +520,30 @@ public class FirebaseNetwork implements NetworkInterface{
 
                     }
                 });
+    }
+
+    @Override
+    public void trakerExistence(String userEmail,String trakerEmail) {
+        String userEmaill = userEmail.split("\\.")[0];
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(userEmaill).child("tracker");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String email = dataSnapshot.child("email").getValue().toString();
+                    String key = email.split("\\.")[0];///email.split("\\.")[0];
+                    String trakere = trakerEmail.split("\\.")[0];
+                    if (key.equals(trakere)) {
+                        isTrakerExist = true;
+                        break;
+                    }
+                }
+                myDelegate.onSuccess(isTrakerExist);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
     }
 }
