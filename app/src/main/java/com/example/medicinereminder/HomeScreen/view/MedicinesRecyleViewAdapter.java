@@ -159,11 +159,21 @@ public class MedicinesRecyleViewAdapter extends RecyclerView.Adapter<MedicinesRe
         String[] part2 = times[1].split(" ");
         Long hours = Long.parseLong(part1);
         Long mins = Long.parseLong(part2[0]);
-        Long res = hours*60 + mins;
-        if(part2[1].equals("PM"))
+        String  format = part2[1];
+        Long res ;
+        if(hours == 12 && format.equals("AM"))
         {
-            res += (12*60);
+            hours = 0L;
         }
+        else if(hours == 12 && format.equals("PM"))
+        {
+            hours = 12L;
+        }
+        else if(hours !=  12 && format.equals("PM"))
+        {
+            hours += 12;
+        }
+        res = hours*60 + mins;
         return res;
 
     }
