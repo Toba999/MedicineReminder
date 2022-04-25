@@ -24,7 +24,7 @@ public class MoreFragment extends Fragment {
     TextView nameTextView;
     TextView emailTextView;
     ImageView imageView;
-    Button profileBtn,patientsBtn,trackersBtn,requestBtn;
+    Button patientsBtn,trackersBtn,requestBtn;
 
     FragmentTransaction fragmentTransaction;
 
@@ -47,18 +47,9 @@ public class MoreFragment extends Fragment {
         imageView = view.findViewById(R.id.moreImageProfile);
         emailTextView = view.findViewById(R.id.moreEmail);
 
-        profileBtn = view.findViewById(R.id.moreMyProfileButton);
         patientsBtn = view.findViewById(R.id.morePatientButton);
         trackersBtn = view.findViewById(R.id.moreTrackerButton);
         requestBtn = view.findViewById(R.id.moreRequestButton);
-        profileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//                fragmentTransaction.replace(R.id.home_fragmentcontainer,new HomeFragment());
-//                fragmentTransaction.commit();
-            }
-        });
         patientsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
