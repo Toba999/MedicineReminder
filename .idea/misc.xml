@@ -21,6 +21,7 @@
         <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/medication_row.xml" value="0.121875" />
         <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/medicine_cell.xml" value="0.121875" />
         <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/medicine_dialog.xml" value="0.121875" />
+        <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/medicine_dialog_second.xml" value="0.4" />
         <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/medicine_reminder_dialog.xml" value="0.121875" />
         <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/medicines_section_cell.xml" value="0.121875" />
         <entry key="..\:/Android_Project/Final_Project/MedicineReminder/app/src/main/res/layout/patient_medication_row.xml" value="0.121875" />
@@ -31,8 +32,11 @@
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/drawable/action_bar.xml" value="0.25833333333333336" />
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/drawable/second_bar.xml" value="0.25833333333333336" />
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/activity_display_med.xml" value="0.2" />
+        <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/activity_medication_for_patient.xml" value="0.1875" />
+        <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/activity_patient.xml" value="0.2421875" />
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/fragment_medications.xml" value="0.2421875" />
         <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/medication_row.xml" value="0.2421875" />
+        <entry key="..\:/Android_Project/Projects/new/MedicineReminder/app/src/main/res/layout/patient_medication_row.xml" value="0.18854166666666666" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/drawable/action_bar.xml" value="0.1962962962962963" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/drawable/btn_background.xml" value="0.1962962962962963" />
         <entry key="..\:/ITI/ITIMaterial/Android Development/Medical Project/MedicineReminder/app/src/main/res/drawable/round_corners_bar.xml" value="0.1962962962962963" />
@@ -141,7 +145,7 @@
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/fragment_more.xml" value="0.1671195652173913" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/medication_row.xml" value="0.15260416666666668" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/medicine_cell.xml" value="0.18614130434782608" />
-        <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/medicine_reminder_dialog.xml" value="0.25" />
+        <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/medicine_reminder_dialog.xml" value="0.22" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/patient_row.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/layout/refill_reminder_dialog.xml" value="0.25" />
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/xml/network_security_config.xml" value="0.17844202898550723" />
@@ -158,7 +162,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

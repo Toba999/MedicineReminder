@@ -29,7 +29,8 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
     private MedicationFragmentInterface _medicationFragmentInterface;
 
 
-    public MedicationFragmentPresenter(Context context, MedicationFragmentInterface medicationFragmentInterface, LifecycleOwner lifecycleOwner) {
+    public MedicationFragmentPresenter(Context context, MedicationFragmentInterface medicationFragmentInterface,
+                                       LifecycleOwner lifecycleOwner) {
         this._medicationFragmentInterface = medicationFragmentInterface;
         _repo = Repository.getInstance(this, context);
         getActiveMedicines(lifecycleOwner);
@@ -66,20 +67,33 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
     }
 
     @Override
-    public void deleteMedToDatabase(MedicationPOJO medication) {
+    public void deleteMed(MedicationPOJO medication, String email) {
         _repo.deleteMedication(medication);
+        checkDeleteDatabase(email, medication.getId());
         _medicationFragmentInterface.refreshRecyclerView();
     }
 
     @Override
-    public void updateMedToDatabase(MedicationPOJO medication) {
+    public void updateMed(MedicationPOJO medication, String email) {
         _repo.updateMedications(medication);
+        checkUpdateDatabase(email, medication);
         _medicationFragmentInterface.refreshRecyclerView();
+    }
+
+    private void checkDeleteDatabase(String email, String medicationID){
+        if(email != null){
+            _repo.deleteInPatientMedicationList(email, medicationID);
+        }
+    }
+    private void checkUpdateDatabase(String email, MedicationPOJO medication){
+        if(email != null){
+            _repo.updatePatientMedicationList(email, medication);
+        }
     }
 
     @Override
     public void onSuccess() {
-
+        _medicationFragmentInterface.refreshRecyclerView();
     }
 
     @Override
@@ -124,7 +138,7 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
 
     @Override
     public void onUpdateMedicationFromFirebase(List<MedicationPOJO> medications) {
-
+        _medicationFragmentInterface.refreshRecyclerView();
     }
 
     @Override

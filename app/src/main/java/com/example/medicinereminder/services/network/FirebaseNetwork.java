@@ -345,8 +345,7 @@ public class FirebaseNetwork implements NetworkInterface{
                     Log.i("AAA", "Exists: ");
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         MedicationPOJO medicationPOJO = dataSnapshot.getValue(MedicationPOJO.class);
-                        if (timeNow <= medicationPOJO.getEndDate()
-                        ) {
+                        if (timeNow <= medicationPOJO.getEndDate()) {
                             medicationPOJOS.add(medicationPOJO);
                         }
                     }
@@ -457,7 +456,6 @@ public class FirebaseNetwork implements NetworkInterface{
             }
         });
     }
-
 
 
     @Override
