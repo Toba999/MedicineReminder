@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ScreenColor"
     tools:context=".medication_for_patient.view.MedicationForPatient">
 
     <FrameLayout
@@ -48,7 +49,7 @@
         android:id="@+id/patient_medication_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:background="@color/ScreenColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fl_header_image"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

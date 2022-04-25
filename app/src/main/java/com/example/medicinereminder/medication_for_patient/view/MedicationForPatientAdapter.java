@@ -24,9 +24,11 @@ public class MedicationForPatientAdapter extends RecyclerView.Adapter<Medication
 
     Context context;
     List<MedicationPOJO> medications = null;
+    MedicationForPatient activity;
 
-    public MedicationForPatientAdapter(Context context){
+    public MedicationForPatientAdapter(Context context, MedicationForPatient activity){
         this.context = context;
+        this.activity = activity;
     }
 
     public void setMedications(List<MedicationPOJO> medications) {
@@ -61,6 +63,13 @@ public class MedicationForPatientAdapter extends RecyclerView.Adapter<Medication
 //        }
 //        else
 //            holder.medIsTakenImage.setImageResource(R.mipmap.wrong_icon);
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activity.showMedicineDialog(medications.get(position), medications.get(position)
+                        .getTimeSimpleTaken().keySet().toArray()[0].toString());
+            }
+        });
     }
 
     public void setImage(MedicationForPatientAdapter.MedicationForPatientViewHolder holder,
