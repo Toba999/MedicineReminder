@@ -29,16 +29,14 @@ import java.util.Calendar;
 import java.util.List;
 
 public class FirebaseNetwork implements NetworkInterface{
-    //Activity _activity;
+    Activity _activity;
     public static FirebaseAuth myAuth;
     private static FirebaseNetwork myFireBase;
-
-
+    private boolean isTrakerExist = false;
     private NetworkDelegate myDelegate;
     private boolean exist = false;
     private boolean listenToUpdates = false;
     private List<MedicationPOJO> updatedMedicationList;
-
     private static String userName="";
 
 
@@ -53,6 +51,18 @@ public class FirebaseNetwork implements NetworkInterface{
         if (myFireBase == null) {
             myAuth = FirebaseAuth.getInstance();
             myFireBase = new FirebaseNetwork(networkDelegate);
+        }
+        return myFireBase;
+    }
+
+    private FirebaseNetwork(Activity myActivity) {
+        _activity = myActivity;
+    }
+
+    public static FirebaseNetwork getInstance(Activity myActivity) {
+        if (myFireBase == null) {
+            myAuth = FirebaseAuth.getInstance();
+            myFireBase = new FirebaseNetwork(myActivity);
         }
         return myFireBase;
     }
@@ -268,6 +278,27 @@ public class FirebaseNetwork implements NetworkInterface{
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child(userId);
         reference.child("request").child(key).removeValue();
     }
+    @Override
+    public void updateMedicationToRoomFromFirebase(String email) {
+        updatedMedicationList = new ArrayList<>();
+        String emailId = email.split("\\.")[0];
+        Query query = FirebaseDatabase.getInstance().getReference().child("users").child(emailId).child("medications");
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                updatedMedicationList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    updatedMedicationList.add(dataSnapshot.getValue(MedicationPOJO.class));
+                }
+                Log.e("SyncToRoom", "updateMedicationToRoomFromFirebase "+updatedMedicationList.size() );
+                myDelegate.onUpdateMedicationFromFirebase(updatedMedicationList);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
     @Override
     public void loadPatients(String email) {
@@ -345,8 +376,7 @@ public class FirebaseNetwork implements NetworkInterface{
                     Log.i("AAA", "Exists: ");
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         MedicationPOJO medicationPOJO = dataSnapshot.getValue(MedicationPOJO.class);
-                        if (timeNow <= medicationPOJO.getEndDate()
-                        ) {
+                        if (timeNow <= medicationPOJO.getEndDate()) {
                             medicationPOJOS.add(medicationPOJO);
                         }
                     }
@@ -436,29 +466,8 @@ public class FirebaseNetwork implements NetworkInterface{
         String uid = email.split("\\.")[0];
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(uid);
         databaseReference.child("medications").child(medicationID).removeValue();
+        myDelegate.onSuccess();
     }
-
-    @Override
-    public void updateMedicationToRoomFromFirebase(String email) {
-        updatedMedicationList = new ArrayList<>();
-        String emailId = email.split("\\.")[0];
-        Query query = FirebaseDatabase.getInstance().getReference().child("users").child(emailId).child("medications");
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                updatedMedicationList.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    updatedMedicationList.add(dataSnapshot.getValue(MedicationPOJO.class));
-                }
-                myDelegate.onUpdateMedicationFromFirebase(updatedMedicationList);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
 
 
     @Override
@@ -510,5 +519,30 @@ public class FirebaseNetwork implements NetworkInterface{
 
                     }
                 });
+    }
+
+    @Override
+    public void trakerExistence(String userEmail,String trakerEmail) {
+        String userEmaill = userEmail.split("\\.")[0];
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(userEmaill).child("tracker");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String email = dataSnapshot.child("email").getValue().toString();
+                    String key = email.split("\\.")[0];///email.split("\\.")[0];
+                    String trakere = trakerEmail.split("\\.")[0];
+                    if (key.equals(trakere)) {
+                        isTrakerExist = true;
+                        break;
+                    }
+                }
+                myDelegate.onSuccess(isTrakerExist);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
     }
 }
