@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface PatientActivityInterface {
     public void showPatient(List<PatientDTO> patients);
+    public void deletePatient(String patientEmail, String trackerEmail);
 }

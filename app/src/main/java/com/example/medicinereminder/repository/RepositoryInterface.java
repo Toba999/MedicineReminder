@@ -30,9 +30,9 @@ public interface RepositoryInterface {
 
     void updateMedications(MedicationPOJO medicationPOJO);
 
-    LiveData<List<MedicationPOJO>> getActiveMedications(long time);
+    LiveData<List<MedicationPOJO>> getActiveMedications();
 
-    LiveData<List<MedicationPOJO>> getInactiveMedications(long time);
+    LiveData<List<MedicationPOJO>> getInactiveMedications();
 
     // fireBase
     void isSignedIn();
@@ -90,5 +90,6 @@ public interface RepositoryInterface {
 
     void updateTakenMedicine(MedicationPOJO medicine);
 
+    void deletePatient(String patientEmail, String trackerEmail);
 
 }

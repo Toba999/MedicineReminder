@@ -418,6 +418,20 @@ public class FirebaseNetwork implements NetworkInterface{
     }
 
     @Override
+    public void deletePatient(String patientEmail, String trackerEmail){
+        String patientKey = patientEmail.split("\\.")[0];
+        String trackerKey = trackerEmail.split("\\.")[0];
+
+
+        DatabaseReference deleteTakerReference = FirebaseDatabase.getInstance().getReference().child("users").child(patientKey);
+        deleteTakerReference.child("tracker").child(trackerKey).removeValue();
+
+        DatabaseReference deletePatientReference = FirebaseDatabase.getInstance().getReference().child("users").child(trackerKey);
+        deletePatientReference.child("patient").child(patientKey).removeValue();
+
+        deletePatientReference.child("request").child(trackerKey).removeValue();
+    }
+    @Override
     public void deleteInPatientMedicationList(String email, String medicationID) {
         String uid = email.split("\\.")[0];
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(uid);

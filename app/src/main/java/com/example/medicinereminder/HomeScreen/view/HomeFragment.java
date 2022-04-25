@@ -160,12 +160,12 @@ public class HomeFragment extends Fragment implements HomeFragmentInterface,Home
 
 
     @Override
-    public void updateMedStatus(MedicationPOJO medicine, String time,String interval,String date) {
-        presenter.updateMedStatus(medicine,time,interval,date);
+    public void updateMedStatus(MedicationPOJO medicine, String interval,String timeStr) {
+        presenter.updateMedStatus(medicine,interval,timeStr,currentData);
     }
 
     @Override
-    public void showMedicineDialog(MedicationPOJO medicine, String timeStr, String interval) {
+    public void showMedicineDialog(MedicationPOJO medicine, String interval,String timeStr) {
         Dialog medicineDialog = new Dialog(getContext());
         medicineDialog.setContentView(R.layout.medicine_dialog);
         medicineDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -189,7 +189,7 @@ public class HomeFragment extends Fragment implements HomeFragmentInterface,Home
         takeMedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                presenter.updateMedStatus(medicine,timeStr,interval,currentData);
+                presenter.updateMedStatus(medicine,interval,timeStr,currentData);
                 medicineDialog.dismiss();
             }
         });

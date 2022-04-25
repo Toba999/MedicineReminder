@@ -79,13 +79,13 @@ public class Repository implements RepositoryInterface{
     }
 
     @Override
-    public LiveData<List<MedicationPOJO>> getActiveMedications(long time) {
-        return localSource.getActiveMedications(time);
+    public LiveData<List<MedicationPOJO>> getActiveMedications() {
+        return localSource.getActiveMedications();
     }
 
     @Override
-    public LiveData<List<MedicationPOJO>> getInactiveMedications(long time) {
-        return localSource.getInactiveMedications(time);
+    public LiveData<List<MedicationPOJO>> getInactiveMedications() {
+        return localSource.getInactiveMedications();
     }
 
     @Override
@@ -158,6 +158,10 @@ public class Repository implements RepositoryInterface{
     @Override
     public void deleteTaker(String takerEmail, String patientEmail) {
         myRemote.deleteTracker(takerEmail, patientEmail);
+    }
+    @Override
+    public void deletePatient(String patientEmail, String trackerEmail) {
+        myRemote.deletePatient(patientEmail, trackerEmail);
     }
 
     @Override

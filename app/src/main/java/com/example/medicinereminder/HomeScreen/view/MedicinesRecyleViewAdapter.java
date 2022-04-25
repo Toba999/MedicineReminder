@@ -20,7 +20,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.medicinereminder.R;
 import com.example.medicinereminder.model.MedicationPOJO;
+import com.example.medicinereminder.model.TimeUtility;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -60,22 +62,36 @@ public class MedicinesRecyleViewAdapter extends RecyclerView.Adapter<MedicinesRe
         holder.noteTxt.setText(medicines.get(position).getInstruction());
         String finalTime = isAmorPm(medicines.get(position).getTimeSimpleTaken(),interval);
         holder.timeTxt.setText(finalTime);
-        if(medicines.get(position).getTimeSimpleTaken().get(finalTime) == true && medicines.get(position).getDateTimeSimpleTaken().get(dateToday) == true)
+        String timeAbs = simpleTimeToAbs(finalTime).toString();
+
+        for(Map.Entry<String,Boolean> time:medicines.get(position).getDateTimeAbsTaken().entrySet())
         {
-            holder.checkImg.setImageResource(R.mipmap.chech_icon_foreground);
-            isTaken = true;
+            Long todayAbs = TimeUtility.getDateInMilli(dateToday);
+            String timeAbsKey = time.getKey();
+            Long timeDataAbs = Long.parseLong(timeAbsKey);
+            if( (timeDataAbs - todayAbs) == simpleTimeToAbs(finalTime)*60000 )
+            {
+                if(medicines.get(position).getDateTimeAbsTaken().get(timeAbsKey) == true)
+                {
+                    holder.checkImg.setImageResource(R.mipmap.chech_icon_foreground);
+                    isTaken = true;
+
+                }
+            }
+
+//
         }
         if(!isTaken)
         {
-            setActionOnMedicineCell(holder.layout,medicines.get(position),finalTime,interval);
+            setActionOnMedicineCell(holder.layout,medicines.get(position),interval,finalTime);
         }
     }
-    public void setActionOnMedicineCell(ConstraintLayout layout,MedicationPOJO med,String time,String interval)
+    public void setActionOnMedicineCell(ConstraintLayout layout,MedicationPOJO med,String interval,String timeStr)
     {
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openMedicineDialog(med,time,interval);
+                openMedicineDialog(med,interval,timeStr);
             }
         });
     }
@@ -153,8 +169,8 @@ public class MedicinesRecyleViewAdapter extends RecyclerView.Adapter<MedicinesRe
     }
 
 
-    void openMedicineDialog(MedicationPOJO medicine,String timeStr,String interval){
-        view.showMedicineDialog(medicine,timeStr,interval);
+    void openMedicineDialog(MedicationPOJO medicine,String interval,String timeStr){
+        view.showMedicineDialog(medicine,interval,timeStr);
     }
     private HomeFragmentViewInterface getView()
     {

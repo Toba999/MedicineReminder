@@ -45,6 +45,11 @@ public class PatientPresenter implements PatientPresenterInterface, NetworkDeleg
     }
 
     @Override
+    public void deletePatient(String patientEmail, String trackerEmail) {
+        repository.deletePatient(patientEmail, trackerEmail);
+    }
+
+    @Override
     public void onSuccess() {
 
     }
