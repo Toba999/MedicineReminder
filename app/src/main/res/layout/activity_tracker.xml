@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ScreenColor"
     tools:context=".tracker_screen.view.TrackerActivity">
 
 
@@ -80,6 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="20dp"
+        android:background="@color/ScreenColor"
         android:id="@+id/trackersRecyclerView"
         app:layout_constraintTop_toBottomOf="@+id/btn_Add_Traker" />
 

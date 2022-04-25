@@ -63,7 +63,7 @@ public class MedicationForPatient extends AppCompatActivity implements Medicatio
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        myAdapter = new MedicationForPatientAdapter(this);
+        myAdapter = new MedicationForPatientAdapter(this, this);
         recyclerView.setAdapter(myAdapter);
     }
 
@@ -74,7 +74,7 @@ public class MedicationForPatient extends AppCompatActivity implements Medicatio
         myAdapter.setMedications(medications);
     }
 
-    public void showMedicineDialog(MedicationPOJO medicine, String timeStr, String interval) {
+    public void showMedicineDialog(MedicationPOJO medicine, String timeStr) {
         Dialog medicineDialog = new Dialog(MedicationForPatient.this);
         medicineDialog.setContentView(R.layout.medicine_dialog);
         medicineDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -98,7 +98,7 @@ public class MedicationForPatient extends AppCompatActivity implements Medicatio
         takeMedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                presenter.updateMedStatus(medicine,timeStr,interval,currentData);
+//                presenter.updateMedStatus(medicine,timeStr,currentData);
                 medicineDialog.dismiss();
             }
         });

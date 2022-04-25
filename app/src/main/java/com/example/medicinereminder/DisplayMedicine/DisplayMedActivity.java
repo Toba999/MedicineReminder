@@ -1,6 +1,7 @@
 package com.example.medicinereminder.DisplayMedicine;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.medicinereminder.AddEditMedicine.view.AddEditMedActivity;
+import com.example.medicinereminder.HomeScreen.view.Home_Screen;
 import com.example.medicinereminder.R;
 import com.example.medicinereminder.medication_screen.view.MedicationsFragment;
 import com.example.medicinereminder.model.MedicationPOJO;
@@ -49,8 +51,13 @@ public class DisplayMedActivity extends AppCompatActivity {
         backIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-                //getSupportFragmentManager().beginTransaction().attach(new MedicationsFragment());
+                //finish();
+
+                //Fragment medFragment = getFragmentManager().findFragmentById(R.layout.fragment_medications);
+                //getSupportFragmentManager().beginTransaction().replace(R.layout.activity_display_med,
+                       // new MedicationsFragment());
+
+                startActivity(new Intent(DisplayMedActivity.this, Home_Screen.class));
             }
         });
         editIcon.setOnClickListener(new View.OnClickListener() {
