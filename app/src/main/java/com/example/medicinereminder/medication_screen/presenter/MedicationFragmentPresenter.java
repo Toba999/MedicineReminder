@@ -74,8 +74,7 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
     public void deleteMed(MedicationPOJO medication, String email) {
         _repo.deleteMedication(medication);
         if (NetworkValidation.checkShared(context)!=null){
-           String email=NetworkValidation.checkShared(context);
-           _repo.deleteInPatientMedicationList(email,medication.getId());
+           _repo.deleteInPatientMedicationList(NetworkValidation.checkShared(context),medication.getId());
         }
         _medicationFragmentInterface.refreshRecyclerView();
     }
