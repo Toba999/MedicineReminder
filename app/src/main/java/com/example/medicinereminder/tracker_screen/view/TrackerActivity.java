@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -27,7 +28,7 @@ import java.util.List;
 
 public class TrackerActivity extends AppCompatActivity implements TrakerActivityInterface{
 
-    ImageView imageView;
+    ImageButton imageButton;
     Button btnAddTraker;
     EditText editTrakerEmail;
     TrakerPresenterInterface presenter;
@@ -38,7 +39,7 @@ public class TrackerActivity extends AppCompatActivity implements TrakerActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tracker);
-        imageView = findViewById(R.id.trackersBackBtn);
+        imageButton = findViewById(R.id.trackersBackBtn);
         editTrakerEmail = findViewById(R.id.editeTrakerEmail);
         btnAddTraker = findViewById(R.id.btn_Add_Traker);
         presenter = new TrakerPresenter(getApplicationContext(),this);
@@ -50,7 +51,7 @@ public class TrackerActivity extends AppCompatActivity implements TrakerActivity
 //        senderUserName = user.getDisplayName();
 //        Log.i("email",senderUserName);
 
-        imageView.setOnClickListener(new View.OnClickListener() {
+        imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

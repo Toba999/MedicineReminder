@@ -280,11 +280,11 @@ public class FirebaseNetwork implements NetworkInterface{
                 patients.clear();
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    if (dataSnapshot.child("patientEmail").getValue() != null) {
-                        PatientDTO patient = new PatientDTO(dataSnapshot.child("email").getValue().toString()
-                                , dataSnapshot.child("patientEmail").getValue().toString()
+                    if (dataSnapshot.child("trakerEmail").getValue() != null) {
+                        PatientDTO patient = new PatientDTO(dataSnapshot.child("trakerEmail").getValue().toString()
+                                , dataSnapshot.child("email").getValue().toString()
                                 , dataSnapshot.child("name").getValue().toString()
-                                , Integer.parseInt(dataSnapshot.child("img").getValue().toString())
+                                , Integer.parseInt(dataSnapshot.child("profileImg").getValue().toString())
                                 //, Integer.parseInt(dataSnapshot.child("patientId").getValue())
                         );
                         patients.add(patient);
@@ -416,6 +416,20 @@ public class FirebaseNetwork implements NetworkInterface{
         deletePatientReference.child("request").child(patientKey).removeValue();
     }
 
+    @Override
+    public void deletePatient(String patientEmail, String trackerEmail){
+        String patientKey = patientEmail.split("\\.")[0];
+        String trackerKey = trackerEmail.split("\\.")[0];
+
+
+        DatabaseReference deleteTakerReference = FirebaseDatabase.getInstance().getReference().child("users").child(patientKey);
+        deleteTakerReference.child("tracker").child(trackerKey).removeValue();
+
+        DatabaseReference deletePatientReference = FirebaseDatabase.getInstance().getReference().child("users").child(trackerKey);
+        deletePatientReference.child("patient").child(patientKey).removeValue();
+
+        deletePatientReference.child("request").child(trackerKey).removeValue();
+    }
     @Override
     public void deleteInPatientMedicationList(String email, String medicationID) {
         String uid = email.split("\\.")[0];

@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="80dp"
         android:layout_margin="10dp"
         app:cardCornerRadius="3dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,22 +20,36 @@
             android:id="@+id/constraintLayout">
 
             <TextView
-                android:id="@+id/patientEmail"
+                android:id="@+id/patientName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="thoriahamdy743@gmail.com"
+                android:text="Thoraya"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/patientEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/roboto"
+                android:text="thoriahamdy743@gmail.com"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/patientName" />
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+            <ImageButton
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_margin="13dp"
-                android:id="@+id/deletePatient"
+                android:id="@+id/deletePatientBtn"
+                android:background="@android:color/transparent"
                 android:src="@drawable/ic_vector_delete_swipe"
                 app:layout_constraintTop_toTopOf="@+id/constraintLayout"
                 app:layout_constraintEnd_toEndOf="@+id/constraintLayout"/>

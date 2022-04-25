@@ -1,6 +1,8 @@
 package com.example.medicinereminder.model;
 
-public class PatientDTO {
+import java.io.Serializable;
+
+public class PatientDTO implements Serializable {
 
     private String email;
     private String name;

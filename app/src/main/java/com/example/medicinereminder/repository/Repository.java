@@ -33,8 +33,8 @@ public class Repository implements RepositoryInterface{
     private Repository(NetworkDelegate myDelegation, Context context) {
         this.context = context;
         this.myDelegation=myDelegation;
-        myRemote= FirebaseNetwork.getInstance(myDelegation);
-        localSource= LocalSource.getConcreteLocalClassInstance(context);
+        myRemote = FirebaseNetwork.getInstance(myDelegation);
+        localSource = LocalSource.getConcreteLocalClassInstance(context);
     }
 
 
@@ -153,6 +153,10 @@ public class Repository implements RepositoryInterface{
     @Override
     public void deleteTaker(String takerEmail, String patientEmail) {
         myRemote.deleteTracker(takerEmail, patientEmail);
+    }
+    @Override
+    public void deletePatient(String patientEmail, String trackerEmail) {
+        myRemote.deletePatient(patientEmail, trackerEmail);
     }
 
     @Override

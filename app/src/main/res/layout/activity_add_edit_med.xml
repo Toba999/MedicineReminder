@@ -233,7 +233,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
                 <Button
-                    android:id="@+id/btn_start_date"
+                    android:id="@+id/btn_start_date_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -270,7 +270,7 @@
                     android:text="@string/end_date_add"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_start_date" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_start_date_edit" />
 
                 <TextView
                     android:id="@+id/tv_selected_end_date"

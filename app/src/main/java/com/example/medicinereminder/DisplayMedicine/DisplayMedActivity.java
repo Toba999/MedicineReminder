@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.medicinereminder.AddEditMedicine.view.AddEditMedActivity;
 import com.example.medicinereminder.R;
+import com.example.medicinereminder.medication_screen.view.MedicationsFragment;
 import com.example.medicinereminder.model.MedicationPOJO;
 
 import java.io.Serializable;
@@ -49,6 +50,7 @@ public class DisplayMedActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                //getSupportFragmentManager().beginTransaction().attach(new MedicationsFragment());
             }
         });
         editIcon.setOnClickListener(new View.OnClickListener() {

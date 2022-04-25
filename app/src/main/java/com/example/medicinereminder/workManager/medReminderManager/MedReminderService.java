@@ -71,7 +71,7 @@ public class MedReminderService extends Service {
     }
 
     private Notification makeNotification() {
-        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+
 
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -90,7 +90,6 @@ public class MedReminderService extends Service {
                 .setStyle(new NotificationCompat.BigTextStyle()
                 .bigText(description))
                 .setAutoCancel(true)
-                .setSound(soundUri)
                 .build();
 
     }
@@ -99,6 +98,13 @@ public class MedReminderService extends Service {
 
 
     private void notificationChannel() {
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .setUsage(AudioAttributes.USAGE_ALARM)
+                .build();
+        Uri soundUri = Uri.parse("android.resource://" + getApplicationContext().getPackageName() +
+                "/" + R.raw.notring);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = getString(R.string.channel_name);
             String description = getString(R.string.channel_description);
@@ -106,6 +112,8 @@ public class MedReminderService extends Service {
             NotificationChannel channel = new NotificationChannel(
                     String.valueOf(CHANNEL_ID), name, importance);
             channel.setDescription(description);
+            channel.setSound(soundUri, audioAttributes);
+
             notificationManager = this.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }

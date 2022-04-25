@@ -10,27 +10,28 @@
     <FrameLayout
         android:id="@+id/fl_header_image"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@drawable/action_bar"
+        android:layout_height="70dp"
+        android:background="@drawable/second_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/trackersBackBtn"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@android:color/transparent"
                 android:layout_gravity="start"
                 android:layout_marginLeft="30dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_white_color_back_24dp" />
 
             <TextView
-                android:id="@+id/trackersTitle"
+                android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
@@ -43,6 +44,7 @@
                 android:textStyle="bold" />
 
         </RelativeLayout>
+
     </FrameLayout>
 
     <EditText
