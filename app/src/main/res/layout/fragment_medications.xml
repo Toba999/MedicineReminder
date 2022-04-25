@@ -35,15 +35,12 @@
 
     </FrameLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:layout_width="260dp"
+        android:layout_height="260dp"
         android:id="@+id/medicationsNoMedYet"
-        android:background="@color/ScreenColor"
         android:gravity="center"
-        android:text="No Medicines Yet"
-        android:textSize="20dp"
-        android:fontFamily="@font/roboto_bold"
+        android:src="@drawable/no_antibiotics"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
