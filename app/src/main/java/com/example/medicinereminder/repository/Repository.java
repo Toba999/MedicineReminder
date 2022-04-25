@@ -53,6 +53,11 @@ public class Repository implements RepositoryInterface{
     }
 
     @Override
+    public Single<List<MedicationPOJO>> getAllMedicationSync() {
+        return localSource.getAllMedicationSync();
+    }
+
+    @Override
     public void insertMedication(MedicationPOJO medication) {
         localSource.insertMedication(medication);
         Log.i("TAG", "insertMedication: ");

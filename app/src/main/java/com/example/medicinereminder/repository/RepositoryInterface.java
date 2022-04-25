@@ -18,6 +18,8 @@ import io.reactivex.Single;
 public interface RepositoryInterface {
     LiveData<List<MedicationPOJO>> getAllMedication();
 
+    Single<List<MedicationPOJO>> getAllMedicationSync();
+
     void insertMedication(MedicationPOJO medication);
 
     void deleteMedication(MedicationPOJO medication);
