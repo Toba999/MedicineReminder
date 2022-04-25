@@ -21,7 +21,10 @@ public interface DAO {
     @Query("Select * from medications")
     LiveData<List<MedicationPOJO>> getAllMedication();
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Query("Select * from medications")
+    Single<List<MedicationPOJO>> getAllMedicationSync();
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertMedication(MedicationPOJO medication);
 
     //for specified medicine
@@ -34,11 +37,13 @@ public interface DAO {
     @Update()
     void updateMedications(MedicationPOJO medicationPOJO);
 
-    @Query("SELECT * FROM Medications WHERE (:time Between startDate AND endDate) AND isActive =1 ")
-    LiveData<List<MedicationPOJO>> getActiveMedications(long time);
+    //@Query("SELECT * FROM Medications WHERE (:time Between startDate AND endDate) AND isActive =1 ")
+    @Query("SELECT * FROM Medications WHERE isActive =1 ")
+    LiveData<List<MedicationPOJO>> getActiveMedications();
 
-    @Query("SELECT * FROM Medications WHERE (:time > endDate) OR isActive =0")
-    LiveData<List<MedicationPOJO>> getInactiveMedications(long time);
+    //@Query("SELECT * FROM Medications WHERE (:time Between startDate AND endDate) OR isActive =0")
+    @Query("SELECT * FROM Medications WHERE isActive =0 ")
+    LiveData<List<MedicationPOJO>> getInactiveMedications();
 
     //for specified medicine
     @Query("SELECT * FROM Medications WHERE (:data Between startDate AND endDate) AND isActive=1 ")

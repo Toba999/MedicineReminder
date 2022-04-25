@@ -37,14 +37,14 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
     }
 
     public void getActiveMedicines(LifecycleOwner lifecycleOwner){
-        _repo.getActiveMedications(Calendar.getInstance().getTimeInMillis()).observe(lifecycleOwner, medicationPOJOS -> {
+        _repo.getActiveMedications().observe(lifecycleOwner, medicationPOJOS -> {
             _activeMedicines = medicationPOJOS;
             ifGetAll();
         });
     }
 
     public void getInactiveMedicines(LifecycleOwner lifecycleOwner){
-        _repo.getInactiveMedications(Calendar.getInstance().getTimeInMillis()).observe(lifecycleOwner, medicationPOJOS -> {
+        _repo.getInactiveMedications().observe(lifecycleOwner, medicationPOJOS -> {
             _inActiveMedicines = medicationPOJOS;
             ifGetAll();
         });

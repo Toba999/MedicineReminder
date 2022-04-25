@@ -22,7 +22,6 @@ public class LocalSource implements LocalSourceInterface{
         MyDataBase db = MyDataBase.getInstance(context);
         dao = db.getDao();
         storedMedications = dao.getAllMedication();
-
     }
 
     public static LocalSource getConcreteLocalClassInstance(Context context) {
@@ -35,6 +34,11 @@ public class LocalSource implements LocalSourceInterface{
     @Override
     public LiveData<List<MedicationPOJO>> getAllMedication() {
         return storedMedications;
+    }
+
+    @Override
+    public Single<List<MedicationPOJO>> getAllMedicationSync() {
+        return  dao.getAllMedicationSync();
     }
 
     @Override
@@ -76,13 +80,13 @@ public class LocalSource implements LocalSourceInterface{
     }
 
     @Override
-    public LiveData<List<MedicationPOJO>> getActiveMedications(long time) {
-        return dao.getActiveMedications(time);
+    public LiveData<List<MedicationPOJO>> getActiveMedications() {
+        return dao.getActiveMedications();
     }
 
     @Override
-    public LiveData<List<MedicationPOJO>> getInactiveMedications(long time) {
-        return dao.getInactiveMedications(time);
+    public LiveData<List<MedicationPOJO>> getInactiveMedications() {
+        return dao.getInactiveMedications();
     }
 
     @Override

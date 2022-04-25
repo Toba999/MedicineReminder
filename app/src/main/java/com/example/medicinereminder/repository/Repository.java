@@ -53,6 +53,11 @@ public class Repository implements RepositoryInterface{
     }
 
     @Override
+    public Single<List<MedicationPOJO>> getAllMedicationSync() {
+        return localSource.getAllMedicationSync();
+    }
+
+    @Override
     public void insertMedication(MedicationPOJO medication) {
         localSource.insertMedication(medication);
         Log.i("TAG", "insertMedication: ");
@@ -74,13 +79,13 @@ public class Repository implements RepositoryInterface{
     }
 
     @Override
-    public LiveData<List<MedicationPOJO>> getActiveMedications(long time) {
-        return localSource.getActiveMedications(time);
+    public LiveData<List<MedicationPOJO>> getActiveMedications() {
+        return localSource.getActiveMedications();
     }
 
     @Override
-    public LiveData<List<MedicationPOJO>> getInactiveMedications(long time) {
-        return localSource.getInactiveMedications(time);
+    public LiveData<List<MedicationPOJO>> getInactiveMedications() {
+        return localSource.getInactiveMedications();
     }
 
     @Override

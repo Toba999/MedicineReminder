@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ScreenColor"
     tools:context=".patient_screen.view.PatientActivity">
 
     <FrameLayout
@@ -51,6 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="20dp"
+        android:background="@color/ScreenColor"
         android:id="@+id/patientsRecyclerView"
         app:layout_constraintTop_toBottomOf="@+id/fl_header_image" />
 

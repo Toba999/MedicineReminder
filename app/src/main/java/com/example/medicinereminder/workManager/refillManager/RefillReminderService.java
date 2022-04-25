@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.AudioAttributes;
+import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
 import android.provider.Settings;
@@ -81,11 +83,19 @@ public class RefillReminderService extends Service {
     }
 
     private void notificationChannel() {
+        AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .setUsage(AudioAttributes.USAGE_ALARM)
+                .build();
+        Uri soundUri = Uri.parse("android.resource://" + getApplicationContext().getPackageName() +
+                "/" + R.raw.refillring);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(
                     String.valueOf(CHANNEL_ID), channelName, importance);
             channel.setDescription(NOTIFICATION_CHANNEL_ID);
+            channel.setSound(soundUri, audioAttributes);
             notificationManager = this.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
