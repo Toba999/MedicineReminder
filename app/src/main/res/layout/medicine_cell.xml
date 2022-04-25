@@ -34,7 +34,7 @@
                 android:layout_marginBottom="16dp"
                 app:srcCompat="@drawable/medicine" />
             <View
-                style="@style/Divider"
+                style="@style/Vertical_Divider"
                 android:layout_marginLeft="8dp"
                 android:background="@color/LightBlue"
                 />

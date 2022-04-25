@@ -28,12 +28,12 @@
 
             <ImageView
                 android:id="@+id/imgMedNotification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:contentDescription="@string/imgmednotification"
-                android:src="@drawable/ic_baseline_home_24"
+                android:src="@drawable/medicine"
                 android:textAlignment="gravity"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtTime" />
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:textSize="@dimen/et_textSize"
+                android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/imgMedNotification"
                 app:layout_constraintStart_toStartOf="@+id/txtMedTimeNotification"
                 app:layout_constraintTop_toTopOf="@+id/imgMedNotification"
@@ -51,22 +51,22 @@
 
             <ImageView
                 android:id="@+id/imgSchedule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:contentDescription="@string/imgmednotification"
-                android:src="@drawable/ic_baseline_date_range_24"
+                android:src="@drawable/calendar_icon"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dial_med_name" />
 
             <ImageView
                 android:id="@+id/imgDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
                 android:layout_marginTop="16dp"
                 android:contentDescription="@string/imgmednotification"
-                android:src="@drawable/ic_baseline_error_outline_24"
+                android:src="@drawable/information_icon"
                 app:layout_constraintStart_toStartOf="@+id/imgSchedule"
                 app:layout_constraintTop_toBottomOf="@+id/imgSchedule" />
 
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imgSchedule"
                 app:layout_constraintStart_toEndOf="@+id/imgSchedule"
                 app:layout_constraintTop_toTopOf="@+id/imgSchedule"
@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/txtMedTimeNotification"
                 app:layout_constraintTop_toTopOf="@+id/imgDetails"
                 tools:text="take 1 pill, 50g" />
@@ -98,7 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/black"
+                android:textColor="@color/mainColor"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -113,7 +113,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="79dp"
                 android:layout_marginEnd="79dp"
-                android:src="@mipmap/accept"
+                android:src="@drawable/done_icon"
                 app:layout_constraintBottom_toBottomOf="@+id/imgSkip"
                 app:layout_constraintEnd_toStartOf="@+id/imgSnooze"
                 app:layout_constraintStart_toEndOf="@+id/imgSkip"
@@ -125,7 +125,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="28dp"
-                android:src="@mipmap/snooze"
+                android:src="@drawable/snooze_icon"
                 app:layout_constraintBottom_toBottomOf="@+id/imgAccept"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:ignore="ImageContrastCheck" />

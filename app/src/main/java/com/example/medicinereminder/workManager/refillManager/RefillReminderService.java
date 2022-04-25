@@ -65,7 +65,7 @@ public class RefillReminderService extends Service {
     private Notification createNotification() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.pills);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.refill_icon2_foreground);
         String desc ="you only have "+myMedicine.getLeftNumber()+" "+myMedicine.getMedicationType()+"(s) left";
         return new NotificationCompat.Builder(getApplicationContext(),
                 String.valueOf(CHANNEL_ID))
@@ -75,7 +75,7 @@ public class RefillReminderService extends Service {
                 .setLargeIcon(bitmap)
                 .setStyle(new NotificationCompat.BigTextStyle()
                 .bigText(desc))
-                .setSmallIcon(R.mipmap.pills)
+                .setSmallIcon(R.mipmap.refill_icon2_foreground)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(Notification.CATEGORY_SERVICE)
                 .build();

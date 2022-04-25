@@ -81,7 +81,7 @@ public class MedicinesRecyleViewAdapter extends RecyclerView.Adapter<MedicinesRe
 
 //
         }
-        if(!isTaken)
+        if(!isTaken && medicines.get(position).getLeftNumber() > 0)
         {
             setActionOnMedicineCell(holder.layout,medicines.get(position),interval,finalTime);
         }
