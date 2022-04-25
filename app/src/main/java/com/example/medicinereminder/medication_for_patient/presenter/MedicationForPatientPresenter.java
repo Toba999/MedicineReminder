@@ -37,6 +37,28 @@ public class MedicationForPatientPresenter implements MedicationForPatientPresen
         view.showMedications(medicationPOJOList);
     }
 
+    public void updateMedStatus(MedicationPOJO med, String time, String date){
+        med.getTimeSimpleTaken().put(time,true);
+        Long absTime = simpleTimeToAbs(time);
+        med.getDateTimeAbsTaken().put(absTime.toString(),true);
+        med.getDateTimeSimpleTaken().put(date,true);
+        repository.updateTakenMedicine(med);
+    }
+
+    private Long simpleTimeToAbs(String time) {
+        String[] times = time.split(":");
+        String part1 = times[0]; // 004
+        String[] part2 = times[1].split(" ");
+        Long hours = Long.parseLong(part1);
+        Long mins = Long.parseLong(part2[0]);
+        Long res = hours * 60 + mins;
+        if (part2[1].equals("PM")) {
+            res += (12 * 60);
+        }
+        return res;
+
+    }
+
     @Override
     public void onSuccess() {
 

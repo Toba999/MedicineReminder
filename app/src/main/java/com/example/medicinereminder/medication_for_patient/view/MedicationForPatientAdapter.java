@@ -54,6 +54,13 @@ public class MedicationForPatientAdapter extends RecyclerView.Adapter<Medication
         holder.medEndDate.setText(dateText); //
         holder.medStartTime.setText(medications.get(position)
                 .getTimeSimpleTaken().keySet().toArray()[0].toString());
+        //boolean isTaken = medications.get(position).getTimeSimpleTaken().values().toArray()[0];
+//        boolean isTaken = true;
+//        if(isTaken){
+//            holder.medIsTakenImage.setImageResource(R.mipmap.correct_icon);
+//        }
+//        else
+//            holder.medIsTakenImage.setImageResource(R.mipmap.wrong_icon);
     }
 
     public void setImage(MedicationForPatientAdapter.MedicationForPatientViewHolder holder,
