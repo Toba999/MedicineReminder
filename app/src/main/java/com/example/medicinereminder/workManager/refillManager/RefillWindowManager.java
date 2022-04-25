@@ -120,7 +120,7 @@ public class RefillWindowManager {
 
         binding = RefillReminderDialogBinding.bind(mView);
         binding.refillTitleDialog.setText("Refill " + medicationPOJO.getMedicationName() + " before finish!");
-        binding.medIcon.setImageResource(R.mipmap.pills);
+        binding.medIcon.setImageResource(R.mipmap.refill_icon2_foreground);
         binding.refillNumber.setText(String.valueOf(medicationPOJO.getLeftNumber()));
 
         binding.decreaseRefill.setOnClickListener(view -> {

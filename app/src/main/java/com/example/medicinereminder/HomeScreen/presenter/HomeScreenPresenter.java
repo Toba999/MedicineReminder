@@ -120,6 +120,7 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
                 {
                     if(med == medicine) {
                         med.getDateTimeAbsTaken().put(time.toString(),true);
+                        med.setLeftNumber(med.getLeftNumber() - 1 );
                     }
                 }
                 break;
@@ -128,6 +129,7 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
                 {
                     if(med == medicine) {
                         med.getDateTimeAbsTaken().put(time.toString(),true);
+                        med.setLeftNumber(med.getLeftNumber() - 1 );
                     }
                 }
                 break;
@@ -136,6 +138,7 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
                 {
                     if(med == medicine) {
                         med.getDateTimeAbsTaken().put(time.toString(),true);
+                        med.setLeftNumber(med.getLeftNumber() - 1 );
                     }
                 }
                 break;

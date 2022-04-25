@@ -143,16 +143,18 @@
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="@dimen/et_textSize"
                     android:text="@string/cancel_med_dialog"/>
+
                 <Button
                     android:id="@+id/take_Btn_Dia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:padding="8dp"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="@dimen/et_textSize"
                     android:gravity="center"
-                    android:text="@string/take_medicine_dialog"/>
+                    android:isScrollContainer="false"
+                    android:padding="8dp"
+                    android:text="@string/take_medicine_dialog"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
             </LinearLayout>
 
         </LinearLayout>
