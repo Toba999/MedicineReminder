@@ -280,6 +280,27 @@ public class FirebaseNetwork implements NetworkInterface{
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child(userId);
         reference.child("request").child(key).removeValue();
     }
+    @Override
+    public void updateMedicationToRoomFromFirebase(String email) {
+        updatedMedicationList = new ArrayList<>();
+        String emailId = email.split("\\.")[0];
+        Query query = FirebaseDatabase.getInstance().getReference().child("users").child(emailId).child("medications");
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                updatedMedicationList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    updatedMedicationList.add(dataSnapshot.getValue(MedicationPOJO.class));
+                }
+                Log.e("SyncToRoom", "updateMedicationToRoomFromFirebase "+updatedMedicationList.size() );
+                myDelegate.onUpdateMedicationFromFirebase(updatedMedicationList);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
     @Override
     public void loadPatients(String email) {
@@ -448,27 +469,7 @@ public class FirebaseNetwork implements NetworkInterface{
         String uid = email.split("\\.")[0];
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(uid);
         databaseReference.child("medications").child(medicationID).removeValue();
-    }
-
-    @Override
-    public void updateMedicationToRoomFromFirebase(String email) {
-        updatedMedicationList = new ArrayList<>();
-        String emailId = email.split("\\.")[0];
-        Query query = FirebaseDatabase.getInstance().getReference().child("users").child(emailId).child("medications");
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                updatedMedicationList.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    updatedMedicationList.add(dataSnapshot.getValue(MedicationPOJO.class));
-                }
-                myDelegate.onUpdateMedicationFromFirebase(updatedMedicationList);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        myDelegate.onSuccess();
     }
 
 

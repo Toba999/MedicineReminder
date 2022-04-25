@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.example.medicinereminder.model.MedicationPOJO;
 import com.example.medicinereminder.model.NetworkValidation;
@@ -27,7 +26,7 @@ import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
 
 public class NetworkStateListener extends BroadcastReceiver implements NetworkDelegate {
-
+    private String email;
     RepositoryInterface repo;
     public static boolean isConnected = false;
     Single<List<MedicationPOJO>> medicationSingleList;
@@ -37,6 +36,9 @@ public class NetworkStateListener extends BroadcastReceiver implements NetworkDe
         repo= Repository.getInstance(this, context);
         repo.setRemoteDelegate(this);
         boolean status = NetworkValidation.isOnline(context);
+        if (NetworkValidation.checkShared(context)!=null){
+            email=NetworkValidation.checkShared(context);
+        }
         Log.e("network receiver", "network");
         if ("android.net.conn.CONNECTIVITY_CHANGE".equals(intent.getAction())) {
             if (!status) {
@@ -44,45 +46,68 @@ public class NetworkStateListener extends BroadcastReceiver implements NetworkDe
                 isConnected =false;
             } else {
                 isConnected = true;
-                sync();
+                syncToFirebase();
+                if (email!=null){
+                    Log.e("Remote fetching", "onSuccess "+email );
+                    SyncToRoom(email);
+                }
                 Log.e("network receiver", "network back");
             }
         }
     }
-    public void sync(){
-        Log.e("network receiver", "sync: " );
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                medicationSingleList = repo.getAllMedicationSync();
-                medicationSingleList.subscribe(new SingleObserver<List<MedicationPOJO>>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
+    public void syncToFirebase(){
+        Log.e("network receiver", "syncToFirebase: " );
+        new Thread(() -> {
+            medicationSingleList = repo.getAllMedicationSync();
+            medicationSingleList.subscribe(new SingleObserver<List<MedicationPOJO>>() {
+                @Override
+                public void onSubscribe(@NonNull Disposable d) {
 
-                    }
-
-                    @Override
-                    public void onSuccess(@NonNull List<MedicationPOJO> medicationPojos) {
-                        medList = medicationPojos;
-                        Log.e("Local Fetch", "onSuccess:" +medicationPojos.size());
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        Log.e("Local Fetch", "onError:" +e.toString());
-                    }
-                });
-                if(!medList.isEmpty()){
-                    Log.e("Remote update", "onSuccess: "+medList.get(0).getEmail() );
-                    repo.addMedicationListFromRoomToFirebase(medList,medList.get(0).getEmail());
                 }
+
+                @Override
+                public void onSuccess(@NonNull List<MedicationPOJO> medicationPojos) {
+                    medList = medicationPojos;
+                    Log.e("Local Fetch", "onSuccess:" +medicationPojos.size());
+                }
+
+                @Override
+                public void onError(@NonNull Throwable e) {
+                    Log.e("Local Fetch", "onError:" +e.toString());
+                }
+            });
+            if(!medList.isEmpty()){
+                Log.e("Remote update", "onSuccess: "+medList.get(0).getEmail() );
+                repo.addMedicationListFromRoomToFirebase(medList,medList.get(0).getEmail());
             }
+        }).start();
+    }
+
+    public void SyncToRoom(String myEmail){
+        Log.e("network receiver", "SyncToRoom: " );
+        new Thread(() -> {
+            repo.notifyMedicationChangeFromFirebase(myEmail);
+            Log.e("SyncToRoom", "start fetching " );
+
         }).start();
     }
 
     @Override
     public void onSuccess() {
-        Log.e("Remote update", "onSuccess" );
+
+    }
+    @Override
+    public void onUpdateMedicationFromFirebase(List<MedicationPOJO> medications) {
+        if (!medications.isEmpty()){
+            Log.e("insert to Local",medications.size()+"");
+            repo.updateToRoomFromFirebase(medications);
+        }
+    }
+
+
+    @Override
+    public void onSuccessReturnMedicationList(List<MedicationPOJO> medicationPOJOList) {
+
     }
 
     @Override
@@ -125,13 +150,5 @@ public class NetworkStateListener extends BroadcastReceiver implements NetworkDe
 
     }
 
-    @Override
-    public void onUpdateMedicationFromFirebase(List<MedicationPOJO> medications) {
 
-    }
-
-    @Override
-    public void onSuccessReturnMedicationList(List<MedicationPOJO> medicationPOJOList) {
-
-    }
 }

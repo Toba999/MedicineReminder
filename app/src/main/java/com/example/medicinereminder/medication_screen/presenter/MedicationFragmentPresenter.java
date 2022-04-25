@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer;
 
 import com.example.medicinereminder.medication_screen.view.MedicationFragmentInterface;
 import com.example.medicinereminder.model.MedicationPOJO;
+import com.example.medicinereminder.model.NetworkValidation;
 import com.example.medicinereminder.model.PatientDTO;
 import com.example.medicinereminder.model.RequestDTO;
 import com.example.medicinereminder.model.TrackerDTO;
@@ -25,6 +26,7 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
     private List<MedicationPOJO> _inActiveMedicines = null;
     private List<MedicationPOJO> _activeMedicines = null;
     private int counter = 0;
+    private Context context;
     private RepositoryInterface _repo;
     private MedicationFragmentInterface _medicationFragmentInterface;
 
@@ -32,6 +34,8 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
     public MedicationFragmentPresenter(Context context, MedicationFragmentInterface medicationFragmentInterface, LifecycleOwner lifecycleOwner) {
         this._medicationFragmentInterface = medicationFragmentInterface;
         _repo = Repository.getInstance(this, context);
+        _repo.setRemoteDelegate(this);
+        this.context=context;
         getActiveMedicines(lifecycleOwner);
         getInactiveMedicines(lifecycleOwner);
     }
@@ -68,6 +72,10 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
     @Override
     public void deleteMedToDatabase(MedicationPOJO medication) {
         _repo.deleteMedication(medication);
+        if (NetworkValidation.checkShared(context)!=null){
+           String email=NetworkValidation.checkShared(context);
+           _repo.deleteInPatientMedicationList(email,medication.getId());
+        }
         _medicationFragmentInterface.refreshRecyclerView();
     }
 
@@ -79,7 +87,7 @@ public class MedicationFragmentPresenter implements MedicationFragmentPresenterI
 
     @Override
     public void onSuccess() {
-
+        Log.i("inside medication","deleted successfully");
     }
 
     @Override

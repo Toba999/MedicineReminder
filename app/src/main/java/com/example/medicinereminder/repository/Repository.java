@@ -167,8 +167,8 @@ public class Repository implements RepositoryInterface{
     @Override
     public void updateToRoomFromFirebase(List<MedicationPOJO> medications) {
         for (MedicationPOJO medication : medications) {
-            localSource.updateMedications(medication);
-            Log.i("ahmed", "updateToRoomFromFirebase: "+medication.getStrength());
+            localSource.insertMedication(medication);
+            Log.i("update to local", "updateToRoomFromFirebase: "+medication.getStrength());
         }
     }
 
