@@ -27,17 +27,23 @@ public class MedicineOfDayRecyleAdapter extends RecyclerView.Adapter<MedicineOfD
     List<MedicationPOJO> afternoonMed;
     List<MedicationPOJO> eveningMed;
     HomeFragmentViewInterface view;
-
-    public void setDateToday(String dateToday) {
-        this.dateToday = dateToday;
-    }
-
     String dateToday;
+
     public MedicineOfDayRecyleAdapter(Context context,HomeFragmentViewInterface view) {
         this.context = context;
         mediData = new ArrayList<>();
         this.view= view;
         this.dateToday = dateToday;
+    }
+    public void setDateToday(String dateToday) {
+        this.dateToday = dateToday;
+    }
+
+    public void getData(List<MedicationPOJO> morningMed,List<MedicationPOJO> afternoonMed,List<MedicationPOJO> eveningMed)
+    {
+        this.morningMed   = morningMed;
+        this.afternoonMed = afternoonMed;
+        this.eveningMed   = eveningMed;
     }
 
     @NonNull
@@ -115,10 +121,5 @@ public class MedicineOfDayRecyleAdapter extends RecyclerView.Adapter<MedicineOfD
         recyclerView.setLayoutManager(new LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
         recyclerView.setAdapter(medicinesRecyleViewAdapter);
     }
-    public void getData(List<MedicationPOJO> morningMed,List<MedicationPOJO> afternoonMed,List<MedicationPOJO> eveningMed)
-    {
-           this.morningMed   = morningMed;
-           this.afternoonMed = afternoonMed;
-           this.eveningMed   = eveningMed;
-    }
+
 }
