@@ -78,7 +78,7 @@ public class MoreFragment extends Fragment {
         email=preferences.getString(USER_EMAIL,"null");
         imageView = view.findViewById(R.id.moreImageProfile);
         emailTextView = view.findViewById(R.id.moreEmail);
-        if(email != null){
+        if(email != "null"){
             emailTextView.setText(email);
         }else{
             emailTextView.setText("Me");
