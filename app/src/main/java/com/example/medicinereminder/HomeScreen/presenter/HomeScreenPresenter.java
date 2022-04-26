@@ -6,6 +6,10 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
+import androidx.work.Constraints;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import com.example.medicinereminder.HomeScreen.view.HomeFragmentInterface;
 import com.example.medicinereminder.model.MedicationPOJO;
@@ -14,6 +18,7 @@ import com.example.medicinereminder.model.RequestDTO;
 import com.example.medicinereminder.model.TrackerDTO;
 import com.example.medicinereminder.repository.Repository;
 import com.example.medicinereminder.services.network.NetworkDelegate;
+import com.example.medicinereminder.workManager.MyPeriodicManager;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
@@ -27,12 +32,13 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class HomeScreenPresenter implements HomePresenterInterface, NetworkDelegate {
     
     private HomeFragmentInterface view;
     private Repository repo;
-
+    private Context context;
     List<MedicationPOJO> morningMed;
     List<MedicationPOJO> afternoonMed;
     List<MedicationPOJO> eveningMed;
@@ -40,6 +46,7 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
     public HomeScreenPresenter(HomeFragmentInterface view,Context context) {
         this.view = view;
         repo = Repository.getInstance(this,context);
+        this.context = context;
     }
 
     //HomePresenterInterface Implementation
@@ -143,8 +150,23 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
                 }
                 break;
         }
+        setWorkTimer();
         repo.updateTakenMedicine(med);
     }
+    private void setWorkTimer() {
+        Constraints constraints = new Constraints.Builder()
+                .setRequiresBatteryNotLow(true)
+                .build();
+
+        PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(MyPeriodicManager.class,
+                3, TimeUnit.HOURS)
+                .setConstraints(constraints)
+                .build();
+
+        WorkManager.getInstance(context).enqueueUniquePeriodicWork("Counter", ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
+
+    }
+
     private Long simpleDateTimeToAbs(String myTime,String myDate)
     {
         String[] dateDet = myDate.split("-");

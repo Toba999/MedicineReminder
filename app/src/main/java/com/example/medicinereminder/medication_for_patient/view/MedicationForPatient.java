@@ -92,6 +92,8 @@ public class MedicationForPatient extends AppCompatActivity implements Medicatio
 
         Button doneBtn,cancelBtn;
 
+
+
         CardView cardView = medicineDialog.findViewById(R.id.second_dialog_medicine_cardView);
         doneBtn = medicineDialog.findViewById(R.id.second_dialog_done_Btn);
         cancelBtn = medicineDialog.findViewById(R.id.second_dialog_cancel_Btn);
@@ -148,18 +150,22 @@ public class MedicationForPatient extends AppCompatActivity implements Medicatio
                 timeFour.setClickable(false);
             }
         }
+        timeTwo.setVisibility(View.VISIBLE);
+        timeThree.setVisibility(View.VISIBLE);
+        timeFour.setVisibility(View.VISIBLE);
+
         switch (size){
             case 1:
-                timeTwo.setVisibility(View.INVISIBLE);
-                timeThree.setVisibility(View.INVISIBLE);
-                timeFour.setVisibility(View.INVISIBLE);
+                timeTwo.setVisibility(View.GONE);
+                timeThree.setVisibility(View.GONE);
+                timeFour.setVisibility(View.GONE);
                 break;
             case 2:
-                timeThree.setVisibility(View.INVISIBLE);
-                timeFour.setVisibility(View.INVISIBLE);
+                timeThree.setVisibility(View.GONE);
+                timeFour.setVisibility(View.GONE);
                 break;
             case 3:
-                timeFour.setVisibility(View.INVISIBLE);
+                timeFour.setVisibility(View.GONE);
                 break;
         }
 

@@ -61,15 +61,18 @@ public class MoreFragment extends Fragment {
         logOutBtn = view.findViewById(R.id.sign_out);
 
 
-        if(NetworkValidation.checkShared(getContext())==null){
+        if(!NetworkValidation.isOnline(getContext())){
             patientsBtn.setEnabled(false);
             trackersBtn.setEnabled(false);
             requestBtn.setEnabled(false);
-        }
-        else {
+            logOutBtn.setVisibility(View.GONE);
+
+        } else {
             patientsBtn.setEnabled(true);
             trackersBtn.setEnabled(true);
             requestBtn.setEnabled(true);
+            logOutBtn.setVisibility(View.VISIBLE);
+
         }
         preferences = getActivity().getSharedPreferences(SHARED_PER, Context.MODE_PRIVATE);
         email=preferences.getString(USER_EMAIL,"null");
