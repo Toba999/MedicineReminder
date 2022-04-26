@@ -116,25 +116,37 @@ public class MedicationForPatient extends AppCompatActivity implements Medicatio
         int size = medicine.getTimeSimpleTaken().size();
         timeOne.setText(medicine.getTimeSimpleTaken().keySet().toArray()[0].toString());
 
-        oldOneIsTaken = Boolean.getBoolean(medicine.getTimeSimpleTaken().values().toArray()[0].toString());
+        oldOneIsTaken = (Boolean) medicine.getTimeSimpleTaken().values().toArray()[0];
         MedicationPOJO oldMedication = medicine;
 
+
         timeOne.setChecked(oldOneIsTaken);
+        if(oldOneIsTaken == true){
+            timeOne.setClickable(false);
+        }
         if(size >= 2){
-            oldTwoIsTaken = Boolean.getBoolean(medicine.getTimeSimpleTaken().values().toArray()[1].toString());
+            oldTwoIsTaken = (Boolean)medicine.getTimeSimpleTaken().values().toArray()[1];
             timeTwo.setText(medicine.getTimeSimpleTaken().keySet().toArray()[1].toString());
             timeTwo.setChecked(oldTwoIsTaken);
+            if(oldTwoIsTaken == true){
+                timeTwo.setClickable(false);
+            }
         }
         if(size >= 3){
-            oldThreeIsTaken = Boolean.getBoolean(medicine.getTimeSimpleTaken().values().toArray()[2].toString());
+            oldThreeIsTaken = (Boolean)medicine.getTimeSimpleTaken().values().toArray()[2];
             timeThree.setText(medicine.getTimeSimpleTaken().keySet().toArray()[2].toString());
             timeThree.setChecked(oldThreeIsTaken);
+            if(oldThreeIsTaken == true){
+                timeThree.setClickable(false);
+            }
         }
         if(size == 4){
-            oldFourIsTaken = Boolean.getBoolean(medicine.getTimeSimpleTaken().values().toArray()[3].toString());
+            oldFourIsTaken = (Boolean)medicine.getTimeSimpleTaken().values().toArray()[3];
             timeFour.setText(medicine.getTimeSimpleTaken().keySet().toArray()[3].toString());
             timeFour.setChecked(oldFourIsTaken);
-
+            if(oldFourIsTaken == true){
+                timeFour.setClickable(false);
+            }
         }
         switch (size){
             case 1:
@@ -155,7 +167,7 @@ public class MedicationForPatient extends AppCompatActivity implements Medicatio
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(oldOneIsTaken != true && timeOne.isChecked() == true){
-                    updateMed(timeOne.isChecked(), medicine, 0);
+                    presenter.updateMedObject(timeOne.isChecked(), medicine, 0);
                 }
             }
         });
@@ -163,7 +175,7 @@ public class MedicationForPatient extends AppCompatActivity implements Medicatio
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(oldTwoIsTaken != true && timeTwo.isChecked() == true){
-                    updateMed(timeTwo.isChecked(), medicine, 1);
+                    presenter.updateMedObject(timeTwo.isChecked(), medicine, 1);
                 }
             }
         });
@@ -171,7 +183,7 @@ public class MedicationForPatient extends AppCompatActivity implements Medicatio
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(oldThreeIsTaken != true && timeThree.isChecked() == true){
-                    updateMed(timeThree.isChecked(), medicine, 2);
+                    presenter.updateMedObject(timeThree.isChecked(), medicine, 2);
                 }
             }
         });
@@ -179,7 +191,7 @@ public class MedicationForPatient extends AppCompatActivity implements Medicatio
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(oldFourIsTaken != true && timeFour.isChecked() == true){
-                    updateMed(timeFour.isChecked(), medicine, 3);
+                    presenter.updateMedObject(timeFour.isChecked(), medicine, 3);
                 }
             }
         });
@@ -199,27 +211,5 @@ public class MedicationForPatient extends AppCompatActivity implements Medicatio
             }
         });
         medicineDialog.show();
-    }
-    private Long simpleTimeToAbs(String time) {
-        String[] times = time.split(":");
-        String part1 = times[0]; // 004
-        String[] part2 = times[1].split(" ");
-        Long hours = Long.parseLong(part1);
-        Long mins = Long.parseLong(part2[0]);
-        Long res = hours * 60 + mins;
-        if (part2[1].equals("PM")) {
-            res += (12 * 60);
-        }
-        return res;
-    }
-    private void updateMed(Boolean checked, MedicationPOJO medicine, int position){
-        String time = medicine.getTimeSimpleTaken().keySet().toArray()[position].toString();
-        medicine.getTimeSimpleTaken().put(time, checked);
-        Long absTime = simpleTimeToAbs(time);
-        medicine.getDateTimeAbsTaken().put(absTime.toString(),true);
-        Date date=new Date(Calendar.getInstance().getTimeInMillis());
-        SimpleDateFormat df2 = new SimpleDateFormat("dd-MM-yyyy");
-        String dateText = df2.format(date);
-        medicine.getDateTimeSimpleTaken().put(dateText,true);
     }
 }
