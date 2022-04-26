@@ -524,15 +524,16 @@ public class FirebaseNetwork implements NetworkInterface{
     @Override
     public void trakerExistence(String userEmail,String trakerEmail) {
         String userEmaill = userEmail.split("\\.")[0];
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(userEmaill).child("tracker");
+        String trakere = trakerEmail.split("\\.")[0];
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(trakere).child("request");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    String email = dataSnapshot.child("email").getValue().toString();
+                    String email = dataSnapshot.child("myEmail").getValue().toString();
                     String key = email.split("\\.")[0];///email.split("\\.")[0];
-                    String trakere = trakerEmail.split("\\.")[0];
-                    if (key.equals(trakere)) {
+
+                    if (key.equals(userEmaill)) {
                         isTrakerExist = true;
                         break;
                     }

@@ -101,6 +101,7 @@ public class TrackerActivity extends AppCompatActivity implements TrakerActivity
             RequestDTO request = new RequestDTO(senderUserName, trakerEmail, senderEmail, 0, senderEmail.split("\\.")[0]);
             Log.i("name", senderUserName);
             if(trakerEmail.equals(senderEmail)){
+                editTrakerEmail.setText("");
                 Toast.makeText(getApplicationContext(), "sorry but you can't add yourself", Toast.LENGTH_SHORT).show();
 
             }else{
@@ -110,7 +111,8 @@ public class TrackerActivity extends AppCompatActivity implements TrakerActivity
             }
 
             }else {
-                Toast.makeText(getApplicationContext(), "You add This Tracker before", Toast.LENGTH_SHORT).show();
+            editTrakerEmail.setText("");
+            Toast.makeText(getApplicationContext(), "You add This request before", Toast.LENGTH_SHORT).show();
             }
 
     }
