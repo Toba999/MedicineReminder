@@ -86,9 +86,7 @@ public class MyPeriodicManager extends Worker {
     private void subscribeOnSingleForMedicationReminder() {
         medicationSingleList.subscribe(new SingleObserver<List<MedicationPOJO>>() {
             @Override
-            public void onSubscribe(Disposable d) {
-
-            }
+            public void onSubscribe(Disposable d) {}
 
             @Override
             public void onSuccess(List<MedicationPOJO> medicationPOJOS) {

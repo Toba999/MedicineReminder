@@ -37,15 +37,12 @@ public class MedReminderService extends Service {
     String description;
     MedWindowManager medWindowManager;
 
-    public MedReminderService() {
-    }
+    public MedReminderService() { }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
-
-
         myMedicine = fomStringPojo(intent.getStringExtra(MedOneTimeWorkManger.MEDICINE_TAG));
         key = intent.getStringExtra(MedOneTimeWorkManger.KEY_TAG);
         isTaken = intent.getBooleanExtra(MedOneTimeWorkManger.VALUE_TAG, false);
@@ -80,6 +77,7 @@ public class MedReminderService extends Service {
         Log.i("makeNotification","start*********");
         description = "take " + myMedicine.getDoseNum() + " " + myMedicine.getMedicationType() + "(s), " +
                 myMedicine.getStrength() + " "+ myMedicine.getStrengthType() + " "+myMedicine.getInstruction();
+
         return new NotificationCompat.Builder(getApplicationContext(),
                 String.valueOf(CHANNEL_ID))
                 .setSmallIcon(R.mipmap.pills)
