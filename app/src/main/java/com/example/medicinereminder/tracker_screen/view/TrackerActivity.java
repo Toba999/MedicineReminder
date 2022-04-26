@@ -105,6 +105,7 @@ public class TrackerActivity extends AppCompatActivity implements TrakerActivity
 
             }else{
                 presenter.sendRequest(request);
+                editTrakerEmail.setText("");
                 Toast.makeText(getApplicationContext(), "the request send", Toast.LENGTH_SHORT).show();
             }
 
