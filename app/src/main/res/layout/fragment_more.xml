@@ -49,34 +49,23 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="30dp"
             android:layout_marginLeft="20dp"
-            android:src="@drawable/yy"
+            android:src="@drawable/person2"
             android:scaleType="centerCrop"
             android:id="@+id/moreImageProfile"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thoraya Hamdy"
-            android:id="@+id/moreName"
-            android:fontFamily="@font/roboto_bold"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="20dp"
-            app:layout_constraintStart_toEndOf="@+id/moreImageProfile"
-            app:layout_constraintTop_toTopOf="parent"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="thoriahamdy743@gmail.com"
             android:id="@+id/moreEmail"
             android:fontFamily="@font/roboto_bold"
-            android:textSize="15dp"
+            android:textSize="20dp"
             android:textColor="@color/black"
             android:textAllCaps="false"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="50dp"
             android:layout_marginLeft="20dp"
             app:layout_constraintStart_toEndOf="@+id/moreImageProfile"
-            app:layout_constraintTop_toBottomOf="@+id/moreName"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

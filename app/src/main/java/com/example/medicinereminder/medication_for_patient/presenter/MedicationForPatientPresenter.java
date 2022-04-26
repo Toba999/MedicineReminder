@@ -53,17 +53,40 @@ public class MedicationForPatientPresenter implements MedicationForPatientPresen
         repository.updatePatientMedicationList(email, med);
     }
 
-    private Long simpleTimeToAbs(String time) {
+    public Long simpleTimeToAbs(String time)
+    {
         String[] times = time.split(":");
         String part1 = times[0]; // 004
         String[] part2 = times[1].split(" ");
         Long hours = Long.parseLong(part1);
         Long mins = Long.parseLong(part2[0]);
-        Long res = hours * 60 + mins;
-        if (part2[1].equals("PM")) {
-            res += (12 * 60);
+        String  format = part2[1];
+        Long res ;
+        if(hours == 12 && format.equals("AM"))
+        {
+            hours = 0L;
         }
+        else if(hours == 12 && format.equals("PM"))
+        {
+            hours = 12L;
+        }
+        else if(hours !=  12 && format.equals("PM"))
+        {
+            hours += 12;
+        }
+        res = hours*60 + mins;
         return res;
+
+    }
+    public void updateMedObject(Boolean checked, MedicationPOJO medicine, int position){
+        String time = medicine.getTimeSimpleTaken().keySet().toArray()[position].toString();
+        medicine.getTimeSimpleTaken().put(time, checked);
+        Long absTime = simpleTimeToAbs(time);
+        medicine.getDateTimeAbsTaken().put(absTime.toString(),checked);
+        Date date=new Date(Calendar.getInstance().getTimeInMillis());
+        SimpleDateFormat df2 = new SimpleDateFormat("dd-MM-yyyy");
+        String dateText = df2.format(date);
+        medicine.getDateTimeSimpleTaken().put(dateText,true);
     }
 
     private List<MedicationPOJO> filterMedicinesOfCurrentDate(List<MedicationPOJO> allData,String currentData) {
