@@ -148,14 +148,22 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
     private Long simpleDateTimeToAbs(String myTime,String myDate)
     {
         String[] dateDet = myDate.split("-");
-        System.out.println(dateDet[0] + "/"+dateDet[1]);
 
         String[] timeWS = myTime.split(" ");
         String[] timeDet = timeWS[0].split(":");
         int hours = Integer.parseInt(timeDet[0]);
-        if(timeWS[1].equals("PM"))
+        String format = timeWS[1];
+        if(hours !=  12 &&format.equals("PM"))
         {
             hours+=12;
+        }
+        else if(hours == 12 && format.equals("PM"))
+        {
+            hours = 12;
+        }
+        else if(hours == 12 && format.equals("AM"))
+        {
+            hours = 0;
         }
 
 
@@ -170,16 +178,28 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
         date.set(Calendar.MONTH,Integer.parseInt(dateDet[1]) -1 );
         return date.getTimeInMillis();
     }
-    private Long simpleTimeToAbs(String time) {
+    private Long simpleTimeToAbs(String time)
+    {
         String[] times = time.split(":");
         String part1 = times[0]; // 004
         String[] part2 = times[1].split(" ");
         Long hours = Long.parseLong(part1);
         Long mins = Long.parseLong(part2[0]);
-        Long res = hours * 60 + mins;
-        if (part2[1].equals("PM")) {
-            res += (12 * 60);
+        String  format = part2[1];
+        Long res ;
+        if(hours == 12 && format.equals("AM"))
+        {
+            hours = 0L;
         }
+        else if(hours == 12 && format.equals("PM"))
+        {
+            hours = 12L;
+        }
+        else if(hours !=  12 && format.equals("PM"))
+        {
+            hours += 12;
+        }
+        res = hours*60 + mins;
         return res;
 
     }

@@ -12,18 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:backgroundTint="@color/mainColor"
-        android:background="@drawable/action_bar"
+        android:background="@drawable/second_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/RequestsBackBtn"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_gravity="start"
+                android:background="@android:color/transparent"
                 android:layout_marginLeft="30dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"

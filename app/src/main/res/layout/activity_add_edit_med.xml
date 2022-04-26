@@ -10,17 +10,18 @@
         android:id="@+id/fl_header_image"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@drawable/action_bar"
+        android:background="@drawable/second_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/iv_add_back"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@android:color/transparent"
                 android:layout_gravity="start"
                 android:layout_marginStart="30dp"
                 android:layout_centerVertical="true"
@@ -32,7 +33,6 @@
                 android:id="@+id/tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerVertical="true"
                 android:gravity="center"
                 android:paddingStart="@dimen/toolbar_title_paddingStart"
                 android:paddingEnd="0dp"
