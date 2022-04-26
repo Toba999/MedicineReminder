@@ -126,11 +126,14 @@
         <entry key="..\:/Users/ElHandaSia/AndroidStudioProjects/MedicineReminder/app/src/main/res/xml/network_security_config.xml" value="0.17844202898550723" />
         <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/activity_home_screen.xml" value="0.12817028985507245" />
         <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/activity_requests.xml" value="0.1" />
         <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/activity_tracker.xml" value="0.25" />
         <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/fragment_home.xml" value="0.14945652173913043" />
+        <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/fragment_medications.xml" value="0.12817028985507245" />
         <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/fragment_more.xml" value="0.18" />
         <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/patient_row.xml" value="0.15896739130434784" />
+        <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/request_row.xml" value="0.1" />
         <entry key="..\:/Users/dell/Desktop/LastProject/MedicineReminder/app/src/main/res/layout/tracker_row.xml" value="0.15896739130434784" />
         <entry key="..\:/Users/dell/Desktop/projectlast/MedicineReminder/app/src/main/res/layout/activity_add_taker.xml" value="0.25" />
         <entry key="..\:/Users/dell/Desktop/projectlast/MedicineReminder/app/src/main/res/layout/activity_login.xml" value="0.18" />
