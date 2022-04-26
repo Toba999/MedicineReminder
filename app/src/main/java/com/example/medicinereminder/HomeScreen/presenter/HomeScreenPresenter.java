@@ -150,10 +150,23 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
                 }
                 break;
         }
-
         setWorkTimer();
         repo.updateTakenMedicine(med);
     }
+    private void setWorkTimer() {
+        Constraints constraints = new Constraints.Builder()
+                .setRequiresBatteryNotLow(true)
+                .build();
+
+        PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(MyPeriodicManager.class,
+                3, TimeUnit.HOURS)
+                .setConstraints(constraints)
+                .build();
+
+        WorkManager.getInstance(context).enqueueUniquePeriodicWork("Counter", ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
+
+    }
+
     private Long simpleDateTimeToAbs(String myTime,String myDate)
     {
         String[] dateDet = myDate.split("-");
