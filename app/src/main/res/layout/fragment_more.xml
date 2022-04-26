@@ -137,6 +137,14 @@
         android:textSize="18dp"
         app:layout_constraintTop_toBottomOf="@+id/line4" />
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:id="@+id/line5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/moreRequestButton"
+        android:background="@color/ScreenColor"/>
     <Button
         android:id="@+id/sign_out"
         android:layout_width="match_parent"
@@ -151,6 +159,6 @@
         android:textColor="@color/black"
         android:textDirection="ltr"
         android:textSize="18dp"
-        app:layout_constraintTop_toBottomOf="@+id/moreRequestButton" />
+        app:layout_constraintTop_toBottomOf="@+id/line5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
