@@ -23,6 +23,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.Constraints;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
 import com.example.medicinereminder.AddEditMedicine.view.AddEditMedActivity;
 import com.example.medicinereminder.HomeScreen.presenter.HomePresenterInterface;
@@ -30,6 +34,7 @@ import com.example.medicinereminder.HomeScreen.presenter.HomeScreenPresenter;
 import com.example.medicinereminder.HomeScreen.view.MedicineOfDayRecyleAdapter;
 import com.example.medicinereminder.R;
 import com.example.medicinereminder.model.MedicationPOJO;
+import com.example.medicinereminder.workManager.MyPeriodicManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.DateFormat;
@@ -43,6 +48,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
@@ -202,5 +208,7 @@ public class HomeFragment extends Fragment implements HomeFragmentInterface,Home
         });
         medicineDialog.show();
     }
+
+
 
 }
