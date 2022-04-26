@@ -575,8 +575,4 @@ public class AddEditMedActivity extends AppCompatActivity implements onClickAddM
         WorkManager.getInstance(this).enqueueUniquePeriodicWork("Counter", ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
 
     }
-
-
-
-
 }
