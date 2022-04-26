@@ -14,10 +14,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/app_reminder_icon"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/app_reminder_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicineReminder"
         android:usesCleartextTraffic="true">

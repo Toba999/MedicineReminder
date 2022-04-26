@@ -16,9 +16,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.medicinereminder.R;
+
+import com.example.medicinereminder.login.view.LoginActivity;
+
 import com.example.medicinereminder.model.NetworkValidation;
+
 import com.example.medicinereminder.patient_screen.view.PatientActivity;
 import com.example.medicinereminder.requests.view.RequestsActivity;
+import com.example.medicinereminder.signup.view.SignUpActivity;
 import com.example.medicinereminder.tracker_screen.view.TrackerActivity;
 
 
@@ -27,8 +32,7 @@ public class MoreFragment extends Fragment {
     TextView nameTextView;
     TextView emailTextView;
     ImageView imageView;
-    Button patientsBtn,trackersBtn,requestBtn;
-
+    Button patientsBtn,trackersBtn,requestBtn,logOutBtn;
     FragmentTransaction fragmentTransaction;
     SharedPreferences preferences;
     public static final String SHARED_PER = "SHAREDfILE";
@@ -54,6 +58,9 @@ public class MoreFragment extends Fragment {
         trackersBtn = view.findViewById(R.id.moreTrackerButton);
         requestBtn = view.findViewById(R.id.moreRequestButton);
 
+        logOutBtn = view.findViewById(R.id.sign_out);
+
+
         if(NetworkValidation.checkShared(getContext())==null){
             patientsBtn.setEnabled(false);
             trackersBtn.setEnabled(false);
@@ -70,6 +77,7 @@ public class MoreFragment extends Fragment {
         imageView = view.findViewById(R.id.moreImageProfile);
         emailTextView = view.findViewById(R.id.moreEmail);
         emailTextView.setText(email);
+
 
         patientsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +98,22 @@ public class MoreFragment extends Fragment {
                 startActivity(new Intent(view.getContext(), RequestsActivity.class));
             }
         });
-
+        sigoutUser();
         return view;
+    }
+
+    private void sigoutUser()
+    {
+        logOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = getContext();
+                SharedPreferences sharedPreferences = context.getSharedPreferences(SignUpActivity.SHARED_PER, Context.MODE_PRIVATE);
+                sharedPreferences.edit().remove("USER_EMAIL").apply();
+                sharedPreferences.edit().remove("isLogin").apply();
+                sharedPreferences.edit().apply();
+                startActivity(new Intent(context, LoginActivity.class));
+            }
+        });
     }
 }
