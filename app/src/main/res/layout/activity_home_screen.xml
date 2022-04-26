@@ -31,7 +31,7 @@
             app:bt_icon="@drawable/home"
             app:bt_active="true"
             android:layout_weight="1"
-            app:bt_colorActive="@color/mainColor"
+            app:bt_colorActive="@color/barColor"
             app:bt_colorInactive="@color/black"
             android:layout_margin="10dp"/>
 
@@ -42,7 +42,7 @@
             app:bt_title="Medications"
             app:bt_icon="@drawable/medications"
             app:bt_active="true"
-            app:bt_colorActive="@color/mainColor"
+            app:bt_colorActive="@color/barColor"
             app:bt_colorInactive="@color/black"
             android:layout_weight="1"
             android:layout_margin="10dp">
@@ -55,7 +55,7 @@
             app:bt_title="More"
             app:bt_icon="@drawable/more"
             app:bt_active="true"
-            app:bt_colorActive="@color/mainColor"
+            app:bt_colorActive="@color/barColor"
             app:bt_colorInactive="@color/black"
             android:layout_weight="1"
             android:layout_margin="10dp">
