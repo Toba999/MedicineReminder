@@ -150,6 +150,7 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
                 }
                 break;
         }
+
         setWorkTimer();
         repo.updateTakenMedicine(med);
     }
