@@ -25,4 +25,13 @@
 # Tools and Technologies that used
 <p>Storing data remotely using Firebase and locally using Room database</p>
 <p>MVP architecture design pattern is used</p>
-<p>
+<p>Android Studio</p>
+<p>Github and Git</p> <br>
+
+# Team members
+<p>Mohamed Toba Mohamed Gomaa</p>
+<p>Mohamed Adel Ibrahim Ali</p>
+<p>Tasnem Hatem Hesuin Eldeeb</p>
+<p>Thoraya Hamdy Elsayed Abdal Majeed</p>
+
+# Screenshots
