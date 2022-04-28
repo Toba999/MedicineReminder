@@ -11,6 +11,7 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class TimeUtility {
+
     public static Long getDateMillis(String date) {
         long milliseconds = -1;
         SimpleDateFormat f = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
