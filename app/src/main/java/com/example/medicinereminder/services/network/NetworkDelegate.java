@@ -1,5 +1,7 @@
 package com.example.medicinereminder.services.network;
 
+import android.util.Log;
+
 import com.example.medicinereminder.model.PatientDTO;
 import com.example.medicinereminder.model.RequestDTO;
 import com.example.medicinereminder.model.TrackerDTO;
@@ -11,19 +13,40 @@ import java.util.List;
 
 public interface NetworkDelegate {
 
-    void onSuccess();
-    void onFailure( Task<AuthResult> task);
-    void onFailure(String errorMessage);
+    default void onSuccess(){
+        Log.i("onSuccess","onSuccess");
+    }
+    default void onFailure( Task<AuthResult> task){
 
+    }
+    default void onFailure(String errorMessage){
+
+    }
     // for response
-    void onSuccessReturn(String userName);
-    void onSuccessRequest(List<RequestDTO> requestDTOS);
-    void onSuccessTracker(List<TrackerDTO> trackerDTOS);
-    void onSuccess(boolean response);
-    void onSuccessPatient(List<PatientDTO> patientDTOS);
-    void isUserExist(boolean existance);
-    void onUpdateMedicationFromFirebase(List<MedicationPOJO> medications);
+    default void onSuccessReturn(String userName){
 
-    void onSuccessReturnMedicationList(List<MedicationPOJO> medicationPOJOList); //Medication
+    }
+    default void onSuccessRequest(List<RequestDTO> requestDTOS){
+
+    }
+    default void onSuccessTracker(List<TrackerDTO> trackerDTOS){
+
+    }
+    default void onSuccess(boolean response){
+
+    }
+    default void onSuccessPatient(List<PatientDTO> patientDTOS){
+
+    }
+    default void isUserExist(boolean existance){
+
+    }
+    default void onUpdateMedicationFromFirebase(List<MedicationPOJO> medications){
+
+    }
+
+    default void onSuccessReturnMedicationList(List<MedicationPOJO> medicationPOJOList) {
+
+    }
 
 }
