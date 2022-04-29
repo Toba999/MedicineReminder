@@ -109,6 +109,17 @@ public class LocalSource implements LocalSourceInterface{
     }
 
     @Override
+    public void clearAllDataWhenUserOut() {
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                dao.clearAllDataWhenUserOut();
+            }
+        }.start();
+    }
+
+    @Override
     public void updateTakenMedicines(MedicationPOJO medicine) {
         new Thread()
         {
@@ -119,5 +130,7 @@ public class LocalSource implements LocalSourceInterface{
             }
         }.start();
     }
+
+
 
 }

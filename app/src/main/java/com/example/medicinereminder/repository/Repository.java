@@ -170,6 +170,11 @@ public class Repository implements RepositoryInterface{
     }
 
     @Override
+    public void clearAllData() {
+        localSource.clearAllDataWhenUserOut();
+    }
+
+    @Override
     public void updateToRoomFromFirebase(List<MedicationPOJO> medications) {
         for (MedicationPOJO medication : medications) {
             localSource.insertMedication(medication);

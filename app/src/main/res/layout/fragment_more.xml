@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".more_screen.view.MoreFragment">
+    tools:context=".more_screen.view.view.MoreFragment">
 
     <FrameLayout
         android:id="@+id/fl_header_image"
