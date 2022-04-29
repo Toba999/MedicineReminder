@@ -150,6 +150,10 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
                 }
                 break;
         }
+<<<<<<< HEAD
+
+=======
+>>>>>>> e9293b6bdbe1b73bb83ec60ba54a2632c89cbbcf
         setWorkTimer();
         repo.updateTakenMedicine(med);
     }
@@ -225,7 +229,19 @@ public class HomeScreenPresenter implements HomePresenterInterface, NetworkDeleg
         return res;
 
     }
+    private void setWorkTimer() {
+        Constraints constraints = new Constraints.Builder()
+                .setRequiresBatteryNotLow(true)
+                .build();
 
+        PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(MyPeriodicManager.class,
+                3, TimeUnit.HOURS)
+                .setConstraints(constraints)
+                .build();
+
+        WorkManager.getInstance(context).enqueueUniquePeriodicWork("Counter", ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
+
+    }
 
     private Boolean isInEvening(String dateStr)
     {

@@ -1,4 +1,4 @@
-package com.example.medicinereminder.more_screen.view;
+package com.example.medicinereminder.more_screen.view.view;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,18 +21,21 @@ import com.example.medicinereminder.login.view.LoginActivity;
 
 import com.example.medicinereminder.model.NetworkValidation;
 
+import com.example.medicinereminder.more_screen.view.presenter.MoreScreenPresenter;
+import com.example.medicinereminder.more_screen.view.presenter.MoreScreenPresenterInterface;
 import com.example.medicinereminder.patient_screen.view.PatientActivity;
 import com.example.medicinereminder.requests.view.RequestsActivity;
 import com.example.medicinereminder.signup.view.SignUpActivity;
 import com.example.medicinereminder.tracker_screen.view.TrackerActivity;
 
 
-public class MoreFragment extends Fragment {
+public class MoreFragment extends Fragment implements MoreFragmentInterface {
 
     TextView nameTextView;
     TextView emailTextView;
     ImageView imageView;
     Button patientsBtn,trackersBtn,requestBtn,logOutBtn;
+    MoreScreenPresenterInterface presenter;
     FragmentTransaction fragmentTransaction;
     SharedPreferences preferences;
     public static final String SHARED_PER = "SHAREDfILE";
@@ -53,7 +56,7 @@ public class MoreFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_more, container, false);
-
+        presenter = new MoreScreenPresenter(getContext(),this);
         patientsBtn = view.findViewById(R.id.morePatientButton);
         trackersBtn = view.findViewById(R.id.moreTrackerButton);
         requestBtn = view.findViewById(R.id.moreRequestButton);
@@ -121,6 +124,7 @@ public class MoreFragment extends Fragment {
                 sharedPreferences.edit().remove("USER_EMAIL").apply();
                 sharedPreferences.edit().remove("isLogin").apply();
                 sharedPreferences.edit().apply();
+                presenter.clearAllData();
                 startActivity(new Intent(context, LoginActivity.class));
             }
         });

@@ -31,4 +31,6 @@ public interface LocalSourceInterface {
 
     Single<List<MedicationPOJO>> getRefillReminderListLive(long time);
 
+    void clearAllDataWhenUserOut();
+
 }

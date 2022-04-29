@@ -24,7 +24,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityI
 
     public static final String SHARED_PER = "SHAREDfILE";
     public static final String USER_EMAIL = "USER_EMAIL";
-    public static final String USER_NAME = "USER_NAME";
     String email ;
     String name ;
     SharedPreferences sharedPref;
@@ -101,14 +100,14 @@ public class SignUpActivity extends AppCompatActivity implements SignUpActivityI
 
         presenter.registerWithEmailAndPass(SignUpActivity.this,email,password,name);
         progressBar.setVisibility(View.VISIBLE);
-        initShared(email);
+        initShared(name);
     }
 
-    private void initShared(String myEmail) {
+    private void initShared(String myname) {
         Context context = this;
         sharedPref = context.getSharedPreferences(SHARED_PER, Context.MODE_PRIVATE);
         editor = sharedPref.edit();
-        editor.putString(USER_EMAIL, myEmail);
+        editor.putString(USER_EMAIL,myname);
         editor.apply();
     }
 

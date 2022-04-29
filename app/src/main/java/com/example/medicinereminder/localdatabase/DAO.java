@@ -62,4 +62,7 @@ public interface DAO {
     @Query("SELECT * FROM Medications WHERE (:time Between startDate AND endDate) AND isActive=1")
     Single<List<MedicationPOJO>> getRefillReminderListLive(long time);
 
+    @Query("DELETE FROM Medications")
+    void clearAllDataWhenUserOut();
+
 }
