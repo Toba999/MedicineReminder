@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -21,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.medicinereminder.HomeScreen.view.Home_Screen;
 import com.example.medicinereminder.R;
+import com.example.medicinereminder.broadcast.NetworkStateListener;
 import com.example.medicinereminder.login.presenter.LoginPresenter;
 import com.example.medicinereminder.login.presenter.LoginPresenterInterface;
 import com.example.medicinereminder.services.network.FirebaseNetwork;
@@ -81,6 +84,11 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
     private void loginRequestUsingGoogle() {
         integrateGoogle();
         signInWithGoogle();
+    }
+    private void initConnectionListener(){
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(new NetworkStateListener(), intentFilter);
     }
 
     private void integrateGoogle() {
@@ -169,6 +177,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
         }
         presenter.signInWithEmailAndPass(LoginActivity.this,email,password);
         progressBar.setVisibility(View.VISIBLE);
+        initConnectionListener();
 
 
     }
