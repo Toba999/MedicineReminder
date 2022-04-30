@@ -107,8 +107,10 @@ public class FirebaseNetwork implements NetworkInterface{
         myAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(myActivity, task -> {
                     if (task.isSuccessful()) {
+                        Log.e("sign in","successful");
                         myDelegate.onSuccess();
                     } else {
+                        Log.e("sign in","fail");
                         String errorMessage = handleFireBaseException(task);
                         myDelegate.onFailure(errorMessage);
                     }
@@ -121,8 +123,10 @@ public class FirebaseNetwork implements NetworkInterface{
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         if (!task.getResult().getSignInMethods().isEmpty()) {
+
                             myDelegate.onSuccess(true);
                         } else {
+
                             myDelegate.onSuccess(false);
 
                         }

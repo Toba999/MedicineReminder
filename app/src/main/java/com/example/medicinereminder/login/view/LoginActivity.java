@@ -61,6 +61,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        presenter = new LoginPresenter(LoginActivity.this,this);
         checkDrawOverlayPermission();
         sharedPref = getSharedPreferences(SHARED_PER, Context.MODE_PRIVATE);
        // sharedPref.edit().remove(USER_EMAIL).commit();
@@ -71,7 +72,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
            finish();
        }
 
-        presenter = new LoginPresenter(LoginActivity.this,this);
         initUI();
         btnLogin.setOnClickListener(view -> userLogin());
         btnLoginWithGoogle.setOnClickListener(view -> {
@@ -177,7 +177,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
         }
         presenter.signInWithEmailAndPass(LoginActivity.this,email,password);
         progressBar.setVisibility(View.VISIBLE);
-        initConnectionListener();
 
 
     }
@@ -198,7 +197,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInt
 
     @Override
     public void setSuccessfulResponse() {
-
+        initConnectionListener();
         startActivity(new Intent(getApplicationContext(), Home_Screen.class));
         progressBar.setVisibility(View.INVISIBLE);
         finish();
