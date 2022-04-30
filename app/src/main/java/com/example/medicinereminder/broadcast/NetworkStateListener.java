@@ -92,62 +92,13 @@ public class NetworkStateListener extends BroadcastReceiver implements NetworkDe
         }).start();
     }
 
-    @Override
-    public void onSuccess() {
 
-    }
     @Override
     public void onUpdateMedicationFromFirebase(List<MedicationPOJO> medications) {
         if (!medications.isEmpty()){
             Log.e("insert to Local",medications.size()+"");
             repo.updateToRoomFromFirebase(medications);
         }
-    }
-
-
-    @Override
-    public void onSuccessReturnMedicationList(List<MedicationPOJO> medicationPOJOList) {
-
-    }
-
-    @Override
-    public void onFailure(Task<AuthResult> task) {
-
-    }
-
-    @Override
-    public void onFailure(String errorMessage) {
-
-    }
-
-    @Override
-    public void onSuccessReturn(String userName) {
-
-    }
-
-    @Override
-    public void onSuccessRequest(List<RequestDTO> requestDTOS) {
-
-    }
-
-    @Override
-    public void onSuccessTracker(List<TrackerDTO> trackerDTOS) {
-
-    }
-
-    @Override
-    public void onSuccess(boolean response) {
-
-    }
-
-    @Override
-    public void onSuccessPatient(List<PatientDTO> patientDTOS) {
-
-    }
-
-    @Override
-    public void isUserExist(boolean existance) {
-
     }
 
 

@@ -30,8 +30,8 @@ public class LoginPresenter implements NetworkDelegate ,LoginPresenterInterface{
 
     @Override
     public void signInWithEmailAndPass(Activity activity, String email, String password) {
-        repository.signInWithEmailAndPass(activity,email,password);
         repository.setRemoteDelegate(this);
+        repository.signInWithEmailAndPass(activity,email,password);
     }
 
     @Override
@@ -46,12 +46,8 @@ public class LoginPresenter implements NetworkDelegate ,LoginPresenterInterface{
 
     @Override
     public void onSuccess() {
+        Log.e("sign in","onSuccess");
         view.setSuccessfulResponse();
-    }
-
-    @Override
-    public void onFailure(Task<AuthResult> task) {
-
     }
 
     @Override
@@ -60,28 +56,8 @@ public class LoginPresenter implements NetworkDelegate ,LoginPresenterInterface{
     }
 
     @Override
-    public void onSuccessReturn(String userName) {
-
-    }
-
-    @Override
-    public void onSuccessRequest(List<RequestDTO> requestDTOS) {
-
-    }
-
-    @Override
-    public void onSuccessTracker(List<TrackerDTO> trackerDTOS) {
-
-    }
-
-    @Override
     public void onSuccess(boolean response) {
         view.setRespons(response);
-    }
-
-    @Override
-    public void onSuccessPatient(List<PatientDTO> patientDTOS) {
-
     }
 
     @Override
@@ -89,15 +65,7 @@ public class LoginPresenter implements NetworkDelegate ,LoginPresenterInterface{
         Log.i("presenter","login presenter user exist");
     }
 
-    @Override
-    public void onUpdateMedicationFromFirebase(List<MedicationPOJO> medications) {
 
-    }
-
-    @Override
-    public void onSuccessReturnMedicationList(List<MedicationPOJO> medicationPOJOList) {
-
-    }
 
 
 }
