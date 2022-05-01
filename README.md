@@ -1,5 +1,13 @@
 # MedicineReminderWithTrackers
-<h3>Medicine Reminder Android Application using Java language</h3><br>
+<h3>Medicine Reminder Android Application using Java language</h3>
+<p>Sometimes we forget to take medicine in time. 
+It happens more when we travels a lot or any other reasons. 
+Sometimes we forget to purchase new medicine when it near to finish. 
+We provide this Android App that helps the user to list their medicines with detailed information.
+ User sets the date and time with the medicine name and gets notified by the reminder alarm,
+ also notified to refill their medicine when it reaches the refill number. 
+User can also add many trackers to follow their medication. </p>
+<br>
 
 # The features of the app
 <p>Sign up</p>
