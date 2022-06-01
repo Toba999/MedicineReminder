@@ -15,14 +15,14 @@ import com.example.medicinereminder.login.view.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    MediaPlayer mySong;
+   // MediaPlayer mySong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mySong= MediaPlayer.create(MainActivity.this,R.raw.intro);
-        mySong.start();
+        //mySong= MediaPlayer.create(MainActivity.this,R.raw.intro);
+        //mySong.start();
         initConnectionListener();
         SplashScreen();
     }
